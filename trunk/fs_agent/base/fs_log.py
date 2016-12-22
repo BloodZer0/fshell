@@ -110,7 +110,7 @@ class Log:
     def _loglog(buf, stackIdx, logLevel):
         if logLevel >= BaseConf.LOG_LEVEL:
             msg = "%s[%s]%s: %s\n"  %(_get_log_tm(), _get_log_level(logLevel), _get_location(stackIdx + 1), buf)
-            if BaseConf.IS_CTR_LOG:   sys.stderr.write(msg); sys.stderr.flush() 
+            if BaseConf.CTR_LOG:   sys.stderr.write(msg); sys.stderr.flush() 
             else:   logFile._print_log(msg)
             
             
