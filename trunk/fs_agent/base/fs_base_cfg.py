@@ -108,11 +108,11 @@ class AgentConf:
         except:
             return None
 
-    def weblog_time_sleep(self):
+    def weblog_time_wait(self):
         try:
-            return self.conf.get("WEBLOG", "time_sleep")
+            return self.conf.getint("WEBLOG", "time_wait")
         except:
-            return None
+            return 3
 
     def weblog_log_seek(self):
         try:
@@ -180,7 +180,7 @@ class BaseConf:
     
     
     LOG_FILE        =   conf.weblog_log_file()
-    TIME_SLEEP      =   conf.weblog_time_sleep()
+    TIME_WAIT       =   conf.weblog_time_wait()
     LOG_SEEK        =   conf.weblog_log_seek()
 
     

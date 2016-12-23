@@ -27,7 +27,10 @@ class FsManagerSrv:
         
         bRet = FsContentProto.check_valid(reqJson)
         if not bRet:  return False, ""
-        
+       
+
+        Log.debug("recv_data: %s" % (reqJson))
+
         # 记录心跳
         """
         HpsReportInfoDao.insert_node(
@@ -40,8 +43,8 @@ class FsManagerSrv:
         """
 
         proto = reqJson['msg_type']
-        rspProto = ""
-        rspData = ""
+        rspProto = FsProtoTypeEnum.F_DATA_WEBLOG
+        rspData = "from>>> fss_srv_manager.py"
        
         """
         if proto == HpProtoTypeEnum.T_HPC_ROUTE_SYN_IP_REQ:
@@ -69,4 +72,4 @@ class FsManagerSrv:
         """
 
 
-        return FsContentProto.response_packet(session, reqJson, FsProtoProtoEnum.T_HP_CMD_RSP, rspProto, rspData)
+        return FsContentProto.response_packet(session, reqJson, FsProtoProtoEnum.F_RESULT_DOWN, rspProto, rspData)

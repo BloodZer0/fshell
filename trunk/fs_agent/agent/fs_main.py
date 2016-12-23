@@ -14,6 +14,7 @@ sys.path.append("../net")
 
 from fsa_task import *
 from fsa_task_type import *
+from fs_base_cfg import *
 from det_web_log import *
 from det_statis_tics import *
 from det_file_att import *

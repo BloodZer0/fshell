@@ -8,9 +8,13 @@
 import sys
 import uuid
 
+sys.path.append("../base")
 sys.path.append("../net")
-from fsa_net import *
 
+
+from fs_base_cfg import *
+from fsa_net import *
+from fsa_task_type import *
 
 
 class FsaTaskStatus:
@@ -37,10 +41,10 @@ class FsaTaskClient:
     def _send_pkt(taskData):
         reqJson = {}
         reqJson['task_id'] = uuid.uuid1().get_hex()
-        reqJson['dev_name'] = 'test'
-        reqJson['agent_id'] = 1234
-        reqJson['msg_protocol'] = 3
-        reqJson['msg_type'] = 22
+        reqJson['dev_name'] = BaseConf.DEV_NAME
+        reqJson['agent_id'] = BaseConf.AGENT_ID
+        reqJson['msg_protocol'] = FsProtoProtoEnum.F_RESULT_UP
+        reqJson['msg_type'] = FsProtoTypeEnum.F_DATA_WEBLOG
         reqJson['data'] = taskData
 
         return FsaNet.send_req(reqJson)
@@ -82,5 +86,5 @@ if __name__ == "__main__":
     
     print bRet, taskType
     
-    print FsaTaskClient.report_task("web_log", FsaTaskStatus.T_RUN, "askef xx")
+    print FsaTaskClient.report_task("web_log", FsaTaskStatus.T_RUN, "hi,s0nnet!")
         

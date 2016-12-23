@@ -8,6 +8,11 @@
 
 import re
 import time
+
+if __name__ == "__main__":
+    import sys
+    sys.path.append("../base")
+
 from fs_base_cfg import *
 from fsa_task import *
 from fsa_task_type import *
@@ -19,8 +24,8 @@ class WebLogFilter:
     web log format most be this:
     if not, you will change the follow func of _format_http!
     # 
-    # $remote_addr - [$time_local] - "$request" - $status -
-    # $body_bytes_sent - "$request_body" - "$http_referer"
+    # $remote_addr [$time_local] "$request" $status 
+    # $body_bytes_sent "$request_body" "$http_referer"
     #
     """
     
@@ -109,11 +114,12 @@ class WebLogFilter:
             if not bRet:
                 return False, 'Filter log ERR'
 
-            req_status = reqData['status']
+            Log.debug("web_log: %s" % (reqData))
+            req_status = int(reqData['status'])
             req_url = reqData['url']
             file_exts = os.path.splitext(req_url)[1]
 
-            if (status != 200) or (not file_exts.startswith("."+BaseConf.WEB_ENUM)):
+            if (req_status != 200) or (not file_exts.startswith("."+BaseConf.WEB_ENUM)):
                 continue
             
             reqList.append(reqData)
@@ -125,7 +131,7 @@ class FsaTaskWeblog:
 
     def __init__(self):
         self.log_file = BaseConf.LOG_FILE
-        self.time_sleep = BaseConf.TIME_SLEEP
+        self.time_wait = BaseConf.TIME_WAIT
         self.log_seek = "%s/%s" % (BaseConf.CACHE_DIR, BaseConf.LOG_SEEK)
     
 
@@ -146,30 +152,45 @@ class FsaTaskWeblog:
 
     def _write_seek(self, seek):
         f = open(self.log_seek, 'w')
-        f.write(seek)
+        f.write(str(seek))
         f.close()
 
 
     def start_task(self):
         while True:
+            time.sleep(self.time_wait)
+
             file_seek = self._read_seek()
             f = open(self.log_file, 'r')
             f.seek(file_seek)
             log_content = f.readlines()
-            offset = f.tell()
+            file_seek_end = f.tell()
             f.close()
             
+            if len(log_content) == 0:
+                Log.info("no increase of web log, wait %s(s)" %(self.time_wait))
+                continue
+    
             bRet, logData = WebLogFilter.filter(log_content)
-            if not bRet:
+            if not bRet or len(logData) == 0:
                 Log.err("Filter web log ERR: %s" % (logData))
-                offset = 0
-
-            file_seek += offset 
-            self._write_seek(file_seek)
-
+                continue
+            Log.debug("write seek: %d" % (file_seek_end))
+            self._write_seek(file_seek_end)
+            Log.debug("filter log succ, len: %d" % (len(logData)))
             bRet, sRet = FsaTaskClient.report_task(FsaTaskType.F_WEBLOG, FsaTaskStatus.T_FINISH, logData)
             if not bRet:
                 Log.err("Report web log ERR: %s" % (sRet))
                 #
-            
-            time.sleep(self.time_sleep)    
+                # bababa...
+
+
+
+if __name__ == "__main__":
+
+    tk = FsaTaskWeblog()
+    tk.start_task()
+
+
+
+

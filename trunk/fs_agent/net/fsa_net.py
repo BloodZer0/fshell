@@ -122,6 +122,9 @@ class FsaNet:
         def _get_rsp_info(rspCnt):
             try:
                 rspJson = json.loads(sRet)
+
+                return True, 'GET_rsp_data_ok:(fsa_net.py 126)'
+                """
                 if rspJson['data'].find("code") == -1:
                     Log.err("cmd_rsp: %s is not valid!" %(rspJson['data']))
                     return False, rspJson['data']
@@ -137,6 +140,7 @@ class FsaNet:
                 
                 if code == 0:  return True, val
                 return False, val
+                """
             
             except Exception, e:
                 Log.err(traceback.format_exc())
