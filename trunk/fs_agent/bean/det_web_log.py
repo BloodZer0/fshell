@@ -103,10 +103,9 @@ class WebLogFilter:
 
     @staticmethod
     def filter(log_data):
-        
         reqList = list()
         for line in log_data:
-            bRet, reqData = WebLogFilter._format_http((line)
+            bRet, reqData = WebLogFilter._format_http(line)
             if not bRet:
                 return False, 'Filter log ERR'
 
