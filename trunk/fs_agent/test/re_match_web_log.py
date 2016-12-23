@@ -5,7 +5,7 @@
 # here is the standard web log:
 # ```
 # $remote_addr [$time_local] "$request" $status $body_bytes_sent
-# $request_body $http_referer $http_user_agent $x_forward_for
+# "$request_body" "$http_referer" "$http_user_agent";
 # ```
 
 
