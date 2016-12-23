@@ -131,7 +131,7 @@ class FsaTaskWeblog:
 
     def _read_seek(self):
         if not os.path.exists(self.log_seek):
-            f = open(self.log_seek)
+            f = open(self.log_seek, "w")
             f.close()
             return 0
 
@@ -152,7 +152,7 @@ class FsaTaskWeblog:
 
     def start_task(self):
         while True:
-            file_seek = self._read_seek(self.log_seek)
+            file_seek = self._read_seek()
             f = open(self.log_file, 'r')
             f.seek(file_seek)
             log_content = f.readlines()
