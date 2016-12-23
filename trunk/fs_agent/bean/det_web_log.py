@@ -6,10 +6,12 @@
 # desc: detection web_log
 
 
+import re
 import time
 from fs_base_cfg import *
 from fsa_task import *
 from fsa_task_type import *
+
 
 class WebLogFilter:
 
@@ -21,51 +23,82 @@ class WebLogFilter:
     # $body_bytes_sent - "$request_body" - "$http_referer"
     #
     """
+    
+    @staticmethod
+    def _generate_re_cpl():
+
+        ipP = r"?P<ip>[\d.]*"
+        
+        timeP = r"""?P<time>\[
+                [^\[\]]*
+                \]
+                """
+
+        requestP = r"""?P<request>\"
+                    [^\"]*
+                    \"
+                    """
+        
+        statusP = r"?P<status>\d+"
+
+        bodyBytesSentP = r"?P<bodyByteSent>\d+"
+        
+        requestBodyP = r"""?P<requestBody>\"
+                        [^\"]*
+                        \"
+                        """
+
+        refererP = r"""?P<referer>\"
+                    [^\"]*
+                    \"
+                    """
+
+        userAgentP = r"""?P<userAgent>\"
+                    [^\"]*
+                    \"
+                    """
+
+        re_cpl = re.compile(r"(%s)\ (%s)\ (%s)\ (%s)\ (%s)\ (%s)\ (%s)\ (%s)" % (ipP, timeP, requestP, statusP, bodyBytesSentP, requestBodyP, refererP, userAgentP), re.VERBOSE)
+
+        return re_cpl
+
 
     @staticmethod
-    def _format_http(line, option):
+    def _format_http(line):
         try:
-            row = line.split("-")
+            ReCpl = WebLogFilter._generate_re_cpl()
+            matchs = ReCpl.match(line.strip())
+            if  not matchs:
+                return False, 're match log ERR'
 
-            if option == 'status':
-                status = row[3].strip()
-                return int(status)
+            allGroups = matchs.groups()
+            
+            ip = allGroups[0]
+            time_local = allGroups[1]
+            request = allGroups[2]
+            status = allGroups[3]
+            bodyByteSent = allGroups[4]
+            requestBody = allGroups[5]
+            referer = allGroups[6]
+            useragent = allGroups[7]
+            
+            method = request.split(" ")[0]
+            url = request.split(" ")[1]
 
-            elif option == 'time':
-                time_local = row[1].strip()
-                time_local = time_local[1:20]
-                tm = time.strptime(time_local, "%d/%b/%y:%H:%M:%S")
-                return int(time.mktime(tm))
+            reqData = {
+                "ip": ip,
+                "time": time_local,
+                "status": status,
+                "method": method,
+                "url": url,
+                "request_body": requestBody,
+                "referer": referer
+            }
 
-            elif option == 'referer':
-                referer = row[6].replace('"', '')
-
-
-            else:
-                req = row[2].strip()
-                req = req.replace('"', '')
-                method = req.split(" ")[0]
-                
-                if option == 'uri':
-                    url = req.split(" ")[1]
-                    uri_re = ''
-                    return uri_re
-                
-                if option == 'data':
-                    if method == 'POST':
-                        return row[5].replace('"', '')
-
-                    elif method == "GET":
-
-
-
-                    else:
-                        pass
-                
-                return None
+            return True, reqData
 
         except:
-            return None
+            return False, 're match log ERR'
 
 
     @staticmethod
@@ -73,9 +106,14 @@ class WebLogFilter:
         
         reqList = list()
         for line in log_data:
-            req_status = WebLogFilter._get_http_status(line)
-            req_uri = WebLogFilter._get_http_uri(line)
-            if (status != 200) or (uri.split(".")[-1] != BaseConf.WEB_ENUM):
+            bRet, reqData = WebLogFilter._format_http((line)
+            if not bRet:
+                return False, 'Filter log ERR'
+
+            status = reqData['status']
+            file_exts = os.path.splitext(reqData['url'])[1]
+
+            if (status != 200) or (file_exts.startswith("."+BaseConf.WEB_ENUM):
                 continue
             
             reqData = {
