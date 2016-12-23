@@ -110,19 +110,13 @@ class WebLogFilter:
             if not bRet:
                 return False, 'Filter log ERR'
 
-            status = reqData['status']
-            file_exts = os.path.splitext(reqData['url'])[1]
+            req_status = reqData['status']
+            req_url = reqData['url']
+            file_exts = os.path.splitext(req_url)[1]
 
-            if (status != 200) or (file_exts.startswith("."+BaseConf.WEB_ENUM):
+            if (status != 200) or (not file_exts.startswith("."+BaseConf.WEB_ENUM)):
                 continue
             
-            reqData = {
-                "req_status": req_status,
-                "req_uri": req_uri,
-                "req_time": WebLogFilter._get_http_time(line),
-                "req_data": WebLogFilter._get_http_data(line),
-                "req_refer": WebLogFilter._get_http_refer(line)
-            }
             reqList.append(reqData)
 
         return True, reqList
