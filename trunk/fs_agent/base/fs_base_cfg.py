@@ -118,21 +118,34 @@ class AgentConf:
         try:
             return self.conf.get("WEBLOG", "log_seek")
         except:
-            return None
+            return "web_log_seek.tmp"
 
 
-
-"""
 ##### statics conf
 
-    def statics_(self):
+    def statics_smallest_filesize(self):
         try:
-            return self.conf.get("STATICS", option)
+            return self.conf.getint("STATICS", "smallest_filesize")
+        except:
+            return 30
+    
+    def statics_result_output(self):
+        try:
+            return self.conf.get("STATICS", "result_output")
+        except:
+            return "statistics_output.csv"
+
+    def statics_scan_file_ext(self):
+        try:
+            return self.conf.get("STATICS", "scan_file_ext")
         except:
             return None
 
 
 
+
+
+"""
 ##### fileatt conf
 
     def get_fileatt_conf(option):
@@ -164,6 +177,7 @@ class BaseConf:
 
     conf = AgentConf()
 
+    # define base config
     AGENT_ID        =   conf.base_agent_id()
     DEV_NAME        =   conf.base_dev_name()
     WEB_ENUM        =   conf.base_web_enum()
@@ -179,9 +193,17 @@ class BaseConf:
     CTR_LOG         =   conf.base_ctr_log()
     
     
+    # define weblog config
     LOG_FILE        =   conf.weblog_log_file()
     TIME_WAIT       =   conf.weblog_time_wait()
     LOG_SEEK        =   conf.weblog_log_seek()
+
+    # define statics config
+    SMALLEST_FILESIZE   =   conf.statics_smallest_filesize()
+    STATICS_RESULT      =   conf.statics_result_output()
+    SCAN_FILE_EXT       =   conf.statics_scan_file_ext()
+
+    
 
     
 
