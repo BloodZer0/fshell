@@ -166,7 +166,7 @@ if __name__ == "__main__":
 
     timeStart = time.clock()
 
-    web_dir = "/tmp/wx"
+    web_dir = "/tmp/www/html"
     ext_list = ['php','asp']
     out_file = "./out2.csv"
 
