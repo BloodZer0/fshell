@@ -19,12 +19,10 @@ from collections import defaultdict
 if __name__ == "__main__":
     sys.path.append("../base")
 
+from fs_log import *
 from fs_base_cfg import *
 from fsa_task import *
 from fsa_task_type import *
-   
-
-
 
 
 class LanguageIC:
@@ -96,23 +94,30 @@ class Compression:
 
 
 
-
-
-
 class SearchFile:
-    
+
+    def __init__(self):
+        self.smallest = BaseConf.SMALLEST_FILESIZE
+
     def search_file_path(self, web_dir, regex):
         for root, dirs, files in os.walk(web_dir):
             for file in files:
                 filename = os.path.join(root, file)
 
-                if (re.search(regex, filename)) and (os.path.getsize(filename) > BaseConf.SMALLEST_FILESIZE):
-                    try:
-                        data = open(root + "/" + file, 'rb').read()
-                    except:
-                        data = False
-                        print "Could not read file :: %s/%s" % (root, file)
-                    yield data, filename
+                if not re.search(regex, filename):
+                    continue
+
+                if os.path.getsize(filename) < self.smallest:
+                    continue
+                
+                try:
+                    data = open(root + "/" + file, 'rb').read()
+                except:
+                    data = False
+                    Log.err("Could not read file : %s/%s" % (root, file))
+                yield data, filename
+
+
 
 
 class FsaTaskStatics:
@@ -120,38 +125,86 @@ class FsaTaskStatics:
     def __init__(self):
         self.web_dir = BaseConf.WEB_DIR
         self.out_file = BaseConf.CACHE_DIR + "/" + BaseConf.STATICS_RESULT
+        self.out_file_tmp = self.out_file + ".tmp"
         scan_file_ext = BaseConf.SCAN_FILE_EXT
         ext_regex = scan_file_ext.replace(".", "\.")
         self.regex = re.compile("(%s)$" % (ext_regex))
+        self.fileList = []
 
-    tests = []
-    tests.append(LanguageIC())
-    tests.append(Entropy())
-    tests.append(LongestWord())
-    tests.append(Compression())
+        tests = []
+        tests.append(LanguageIC())
+        tests.append(Entropy())
+        tests.append(LongestWord())
+        tests.append(Compression())
+        self.tests = tests
 
-    locator = SearchFile()
+        self.locator = SearchFile()
 
-    # CSV file output array
-    csv_array = []
 
-    # Grab the file and calculate each test against file
-    for data, filename in locator.search_file_path(web_dir, regex):
-        if not data: continue
+    def _read_local_db(self):
         
-        # a row array for the CSV
-        csv_row = []
-        csv_row.append(filename)
-
-        for test in tests:
-            calculated_value = test.calculate(data, filename)
-            csv_row.append(calculated_value)
-        csv_array.append(csv_row)
-    
-    fileOutput = csv.writer(open(out_file, "wb"))
-    fileOutput.writerows(csv_array)
+        if not os.path.exists(self.out_file):
+            return False, None
+        
+        with open(self.out_file) as f:
+            f_csv = csv.DictReader(f)
+        
+        return True, f_csv
 
 
+    def _write_local_db_tmp(self):
+        
+        csv_rows = list()
+        csv_headers = ["filename"]
 
+        for data, filename in self.locator.search_file_path(web_dir, regex):
+            if not data: continue
+
+            calc_value = dict()
+            for test in tests:
+                test_name = test.__class__.__name__
+                calc_value[test_name] = test.calculate(data, filename)
+                if len(csv_headers) < len(test) +1:
+                    csv_headers.append(test_name)
+            
+            csv_rows.append(calc_value)
+            self.fileList.append(filename)
+            
+        with open(self.out_file_tmp) as f:
+            f_csv = csv.DictWriter(f, csv_headers)
+            f_csv.writeheader()
+            f_csv.writerows(csv_rows)
+        
+        return True, csv_rows
+
+
+    def start_task(self):
+        F_Flag = True
+
+        bRet, rows_db_tmp = self._write_local_db_tmp()
+        if not bRet:
+            return False, 'calc or write result ERR'
+
+        bRet, rows_db = self._read_local_db()
+        if not bRet:
+            os.unlink(self.out_file)
+            os.rename(self.out_file_tmp, self.out_file)
+            F_Flag = False
+
+        # find the no need source file from the
+        # rows_db and append it to the rows_db_tmp list.
+        if F_Flag:
+            for item in rows_db:
+                if item['filename'] in self.fileList:
+                    continue
+
+                item = {"filename": item["filename"], "deleted": 1}
+            rows_db_tmp.append(item)
+
+        bRet, sRet = FsaTaskClient.report_task(FsaTaskType.F_STATICS, FsaTaskStatics.T_FINISH, rows_db_tmp)
+        if not bRet:
+            Log.err("Report statistics ERR: %s" % (sRet))
+            #
+            # bababa...
 
 
