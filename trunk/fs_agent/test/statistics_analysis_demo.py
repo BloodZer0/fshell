@@ -31,33 +31,6 @@ class LanguageIC:
         self.results = []
         self.ic_total_results = ""
 
-    def calculate_char_count(self,data):
-        """Method to calculate character counts for a particular data file."""
-        if not data:
-            return 0
-        for x in range(256):
-            char = chr(x)
-            charcount = data.count(char)
-            self.char_count[char] += charcount
-            self.total_char_count += charcount
-        return
-
-    def calculate_IC(self):
-        """Calculate the Index of Coincidence for the self variables"""
-        total = 0
-        for val in self.char_count.values():
-
-            if val == 0:
-                continue
-            total += val * (val-1)
-
-        try:
-            ic_total = float(total)/(self.total_char_count * (self.total_char_count - 1))
-        except:
-            ic_total = 0
-        self.ic_total_results = ic_total
-        return
-
     def calculate(self,data,filename):
         """Calculate the Index of Coincidence for a file and append to self.ic_results array"""
         if not data:
@@ -72,9 +45,6 @@ class LanguageIC:
             total_char_count += charcount
 
         ic = float(char_count)/(total_char_count * (total_char_count - 1))
-        self.results.append({"filename":filename, "value":ic})
-        # Call method to calculate_char_count and append to total_char_count
-        self.calculate_char_count(data)
         return ic
 
 
@@ -96,7 +66,6 @@ class Entropy:
             p_x = float(self.stripped_data.count(chr(x)))/len(self.stripped_data)
             if p_x > 0:
                 entropy += - p_x * math.log(p_x, 2)
-        self.results.append({"filename":filename, "value":entropy})
         return entropy
 
 
@@ -119,7 +88,6 @@ class LongestWord:
                 if length > longest:
                     longest = length
                     longest_word = word
-        self.results.append({"filename":filename, "value":longest})
         return longest
 
 
@@ -135,23 +103,18 @@ class Compression:
             return "", 0
         compressed = zlib.compress(data)
         ratio = float(len(compressed)) / float(len(data))
-        self.results.append({"filename":filename, "value":ratio})
         return ratio
 
 
 
 class SearchFile:
     
-    def search_file_path(self, web_dir, ext_list):
+    def search_file_path(self, web_dir, regex):
         for root, dirs, files in os.walk(web_dir):
             for file in files:
                 filename = os.path.join(root, file)
-                #file_ext = file.split(".")[1]
-                #print '>>>', file_ext
-                #sys.exit(0)
 
-                SMALLEST = 60
-                if (re.search('(\.php|\.asp|\.py)$', filename)) and (os.path.getsize(filename) > SMALLEST):
+                if (re.search(regex, filename)) and (os.path.getsize(filename) > SMALLEST):
                     try:
                         data = open(root + "/" + file, 'rb').read()
                     except:
@@ -162,17 +125,11 @@ class SearchFile:
 
 
 if __name__ == "__main__":
-    """Parse all the options"""
 
-    timeStart = time.clock()
-
-    web_dir = "/tmp/www/html"
-    ext_list = ['php','asp']
+    web_dir = "./"
     out_file = "./out2.csv"
+    regex = re.compile("(\.php|\.py)$")
 
-    # Error on an invalid path
-    if os.path.exists(web_dir) == False:
-        parser.error("Invalid path")
    
     tests = []
     tests.append(LanguageIC())
@@ -188,9 +145,7 @@ if __name__ == "__main__":
     csv_header = ["filename"]
 
     # Grab the file and calculate each test against file
-    fileCount = 0
-    fileIgnoreCount = 0
-    for data, filename in locator.search_file_path(web_dir, ext_list):
+    for data, filename in locator.search_file_path(web_dir, regex):
         if data:
             # a row array for the CSV
             csv_row = []
@@ -202,19 +157,13 @@ if __name__ == "__main__":
                 if len(csv_header) < len(tests) + 1:
                     csv_header.append(test.__class__.__name__)
                 csv_row.append(calculated_value)
-                fileCount = fileCount + 1
             csv_array.append(csv_row)
 
     csv_array.insert(0,csv_header)
     fileOutput = csv.writer(open(out_file, "wb"))
     fileOutput.writerows(csv_array)
 
-    timeFinish = time.clock()
-
-    # Print some stats
-    print "\n[[ Total files scanned: %i ]]" % (fileCount)
-    print "[[ Total files ignored: %i ]]" % (fileIgnoreCount)
-    print "[[ Scan Time: %f seconds ]]" % (timeFinish - timeStart)
+    print "[+] Write the result to %s success!" % (out_file)
 
 
 
