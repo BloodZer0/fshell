@@ -80,7 +80,7 @@ class GetCacheDb:
         return True, f_csv
 
 
-    def write_cache_db_tmp(self, out_file_tmp, locater, web_dir, regex):
+    def write_cache_db_tmp(self, out_file_tmp, tests, locater, web_dir, regex):
 
         csv_rows = list()
         csv_headers = ["filename"]
