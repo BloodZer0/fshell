@@ -171,16 +171,25 @@ class AgentConf:
             return self.conf.get("DANFUNC", option)
         except:
             return None
+"""
+
 
 ##### fuzzhash conf
 
-    def get_fuzzhash_conf(option):
+    def fuzzhash_result_output(self):
         try:
-            return self.conf.get("FUZZHASH", option)
+            return self.conf.get("FUZZHASH", "result_output")
+        except:
+            return "funzhash_output.csv"
+
+    def fuzzhash_scan_file_ext(self):
+        try:
+            return self.conf.get("FUZZHASH", "scan_file_ext")
         except:
             return None
 
-"""
+
+
 
 class BaseConf:
 
@@ -216,6 +225,15 @@ class BaseConf:
     FILEATT_RESULT          =   conf.fileatt_result_output()
     FILEATT_SCAN_FILE_EXT   =   conf.fileatt_scan_file_ext()
 
+
+    # define danger func config
+
+
+
+
+    # define fuzzy hash config
+    FUNZHASH_RESULT         =   conf.fuzzhash_result_output() 
+    FUZZHASH_SCAN_FILE_EXT  =   conf.fuzzhash_scan_file_ext()
 
     
 
