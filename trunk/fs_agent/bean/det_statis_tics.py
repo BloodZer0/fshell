@@ -126,7 +126,7 @@ class FsaTaskStatics:
         self.web_dir = BaseConf.WEB_DIR
         self.out_file = BaseConf.CACHE_DIR + "/" + BaseConf.STATICS_RESULT
         self.out_file_tmp = self.out_file + ".tmp"
-        scan_file_ext = BaseConf.SCAN_FILE_EXT
+        scan_file_ext = BaseConf.STATICS_SCAN_FILE_EXT
         ext_regex = scan_file_ext.replace(".", "\.")
         self.regex = re.compile("(%s)$" % (ext_regex))
         self.fileList = []

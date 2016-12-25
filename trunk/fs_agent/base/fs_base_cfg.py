@@ -143,17 +143,26 @@ class AgentConf:
 
 
 
-
-
-"""
 ##### fileatt conf
 
-    def get_fileatt_conf(option):
+    def fileatt_result_output(self):
         try:
-            return self.conf.get("FILEATT", option)
+            return self.conf.get("FILEATT", "result_output")
+        except:
+            return "fileatt_output.csv"
+
+    def fileatt_scan_file_ext(self):
+        try:
+            return self.conf.get("FILEATT", "scan_file_ext")
         except:
             return None
 
+
+
+
+
+
+"""
 ##### danfunc conf
 
 
@@ -199,11 +208,14 @@ class BaseConf:
     LOG_SEEK        =   conf.weblog_log_seek()
 
     # define statics config
-    SMALLEST_FILESIZE   =   conf.statics_smallest_filesize()
-    STATICS_RESULT      =   conf.statics_result_output()
-    SCAN_FILE_EXT       =   conf.statics_scan_file_ext()
+    SMALLEST_FILESIZE       =   conf.statics_smallest_filesize()
+    STATICS_RESULT          =   conf.statics_result_output()
+    STATICS_SCAN_FILE_EXT   =   conf.statics_scan_file_ext()
 
-    
+    # define file attribute config
+    FILEATT_RESULT          =   conf.fileatt_result_output()
+    FILEATT_SCAN_FILE_EXT   =   conf.fileatt_scan_file_ext()
+
 
     
 
