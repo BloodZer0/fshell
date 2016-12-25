@@ -9,17 +9,17 @@
 import sys
 import os
 import re
-import csv
 import pyssdeep
 
 if __name__ == "__main__":
     sys.path.append("../base")
 
+
 from fs_log import *
+from fs_util import *
 from fs_base_cfg import *
 from fsa_task import *
 from fsa_task_type import *
-
 
 
 class FuzzHash:
@@ -54,57 +54,20 @@ class FsaTaskFuzzhash:
         scan_file_ext = BaseConf.FUZZHASH_SCAN_FILE_EXT
         ext_regex = scan_file_ext.replace(".", "\.")
         self.regex = re.compile("(%s)$" % (ext_regex))
-        self.fileList = []
 
         self.test = FuzzHash()
-        self.locator = SearchFile()
-
-
-    def _read_local_db(self):
+        self.locator = SearchFile_V2()
+        self.cachedb = GetCacheDb()
         
-        if not os.path.exists(self.out_file):
-            return False, None
-        
-        with open(self.out_file) as f:
-            f_csv = csv.DictReader(f)
-        
-        return True, f_csv
-
-
-    def _write_local_db_tmp(self):
-        
-        csv_rows = list()
-        csv_headers = ["filename"]
-
-        for filesize, filename in self.locator.search_file_path(web_dir, regex):
-            if filesize == 0: continue
-
-            calc_value = dict()
-            
-            test_name = self.test.__class__.__name__
-            calc_value[test_name] = self.test.calculate(filename)
-            if len(csv_headers) < len(test) +1:
-                csv_headers.append(test_name)
-            
-            csv_rows.append(calc_value)
-            self.fileList.append(filename)
-            
-        with open(self.out_file_tmp) as f:
-            f_csv = csv.DictWriter(f, csv_headers)
-            f_csv.writeheader()
-            f_csv.writerows(csv_rows)
-        
-        return True, csv_rows
-
 
     def start_task(self):
         F_Flag = True
 
-        bRet, rows_db_tmp = self._write_local_db_tmp()
+        bRet, rows_db_tmp, fileList = self.cachedb.write_cache_db_tmp(self.out_file_tmp, self.locator, self.web_dir,, self.regex)
         if not bRet:
             return False, 'calc or write result ERR'
 
-        bRet, rows_db = self._read_local_db()
+        bRet, rows_db = self.cachedb.read_cache_db(self.out_file)
         if not bRet:
             os.unlink(self.out_file)
             os.rename(self.out_file_tmp, self.out_file)
@@ -114,7 +77,7 @@ class FsaTaskFuzzhash:
         # rows_db and append it to the rows_db_tmp list.
         if F_Flag:
             for item in rows_db:
-                if item['filename'] in self.fileList:
+                if item['filename'] in fileList:
                     continue
 
                 item = {"filename": item["filename"], "deleted": 1}

@@ -13,6 +13,8 @@ if __name__ == "__main__":
     import sys
     sys.path.append("../base")
 
+from fs_log import *
+from fs_util import *
 from fs_base_cfg import *
 from fsa_task import *
 from fsa_task_type import *
