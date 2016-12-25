@@ -28,23 +28,6 @@ class FuzzHash:
         return pyssdeep.fuzzy_hash_filename(filename)
 
 
-
-class SearchFile:
-
-    def search_file_path(self, web_dir, regex):
-        for root, dirs, files in os.walk(web_dir):
-            for file in files:
-                filename = os.path.join(root, file)
-
-                if not re.search(regex, filename):
-                    continue
-
-                filesize = os.path.getsize(filename)
-                
-                yield filesize, filename
-
-
-
 class FsaTaskFuzzhash:
     
     def __init__(self):
