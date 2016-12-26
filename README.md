@@ -1,11 +1,11 @@
 ### fshell 基于机器学习的分布式webshell检测系统
 ------
-#### 项目简介
-baba
 
 
+#### 1. 项目简介
+该项目从web服务器日志、统计学分析、文件属性分析、静态特征检测以及文件fuzz hash的检测这5个维度对webshell进行了基于支持向量机（SVM）和决策树（DT）的监督学习的机器学习算法，从而分类出支持文件和恶意webshell。
 
-#### 项目整体架构设计
+#### 2. 项目整体架构设计
 **fshell系统逻辑架构图**
 ![fshell-system-framework](http://www.s0nnet.com/wp-content/uploads/2016/12/fshell.png)
 
@@ -20,7 +20,7 @@ baba
 * fs_manager模块：fshell的主控制模块。该模块实现：对agent配置管理；用户UI的管理；样本特征库的管理；机器学习检测模块相关配置以及结果的管理；以及其他预警通知、文件传输等的管理。
 
 
-#### 相关博文链接
+#### 3. 相关博文链接
 
 - [基于机器学习的分布式Webshell检测系统-绪论篇](http://www.s0nnet.com/archives/fshell)
 
