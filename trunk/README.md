@@ -10,7 +10,7 @@
 ![fshell-Agent](http://www.s0nnet.com/wp-content/uploads/2016/12/fshell-Agnet.png)
 
 **fshell Server端技术架构**
-![fshell-Server](http://www.s0nnet.com/wp-content/uploads/2016/12/fshell-Server.png)
+![fshell-Server](http://www.s0nnet.com/wp-content/uploads/2016/12/fshell_Server.png)
 
 **fshell 模块功能说明**
 * fs_agent模块：fshell的agent模块，主要实现：（1）对web_log, statistics, file_attribute, danger_func, fuzz_hash元数据的采集，并发送到fs_server；（2）对server下发到agent配置信息进行更新；（3）读取server的文件读取指令，并将文件内容回传给server。
