@@ -26,11 +26,11 @@ fshell系统中Agent与Server的数据通信采用TCP socket的方式进行通�
 注意：
 1. 消息协议类型(msg_protocol)目前定义四类：data_up, file_req, file_rsp, conf_req, conf_rsp  
 2. 消息响应结果：data = {code：xxx ,val: xxx}  code:  成功为0, 失败为-1 。  
-3. 解决二进制传输问题:msgJson.data[key] = value  
+3. 解决二进制传输问题: msgJson.data[key] = value  
 如果value中存在二进制数据，则转化成：  
 
-> msgJson.data[key_base64] = true  
-> msgJson.data[key] = base64(value)  
+> msgJson.data[key_base64] = true
+> msgJson.data[key] = base64(value)
 4. 该协议数据组装一般在bean层的网络拆/解包时进行。  
 
 #### 2. 网络协议头（网络框架底层封装）
