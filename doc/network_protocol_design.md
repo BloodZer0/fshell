@@ -3,6 +3,7 @@
 
 fshell系统中Agent与Server的数据通信采用TCP socket的方式进行通信，使用TCP长连接+短连接的方式进行元数据上报、配置更新和文件传输。其中，对web日志的数据上报基本是实时的，故采用长连接方式，其他数据传输采用短连接方式。
 
+- - -
 
 #### 1. 消息通用协议（基于TCP层） 
 
@@ -28,9 +29,9 @@ fshell系统中Agent与Server的数据通信采用TCP socket的方式进行通�
 2. 消息响应结果：data = {code：xxx ,val: xxx}  code:  成功为0, 失败为-1 。  
 3. 解决二进制传输问题: msgJson.data[key] = value  
 如果value中存在二进制数据，则转化成：  
-
 > msgJson.data[key_base64] = true
 > msgJson.data[key] = base64(value)
+
 4. 该协议数据组装一般在bean层的网络拆/解包时进行。  
 
 #### 2. 网络协议头（网络框架底层封装）
