@@ -29,7 +29,7 @@ fshell系统中Agent与Server的数据通信采用TCP socket的方式进行通�
 2. 消息响应结果：data = {code：xxx ,val: xxx}  code:  成功为0, 失败为-1 。  
 3. 解决二进制传输问题: msgJson.data[key] = value  
 如果value中存在二进制数据，则转化成：  
-> msgJson.data[key_base64] = true
+> msgJson.data[key_base64] = true  
 > msgJson.data[key] = base64(value)
 
 4. 该协议数据组装一般在bean层的网络拆/解包时进行。  
