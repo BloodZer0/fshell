@@ -38,8 +38,20 @@ class FsDataStore:
             pass
 
 
+        elif msg_type == FsProtoProtoType.F_DATA_DANFUNC:
+            pass
+
+        elif msg_type == FsProtoProtoType.F_DATA_FUZZHASH:
+            pass
+        
+        else:
+            return False, "msg_type error"
 
 
         rspData = {}
+
+
+
+        return True, rspData
 
 
