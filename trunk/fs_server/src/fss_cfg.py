@@ -19,14 +19,14 @@ if CUR_ENV ==  EnvEnum.T_DEV:
     
     BaseConf.IS_CTR_LOG     =   True
     BaseConf.LOG_LEVEL      =   1
-    BaseConf.SQL_HOST       =   "127.0.0.1"
+    BaseConf.SQL_HOST       =   "222.24.62.48"
     BaseConf.SQL_PORT       =   3306
-    BaseConf.SQL_USER       =   "xxx"
-    BaseConf.SQL_PASSWD     =   "xxx"
-    BaseConf.SQL_DB         =   "db_fshell"
+    BaseConf.SQL_USER       =   "fshell"
+    BaseConf.SQL_PASSWD     =   "fs#!pswd"
+    BaseConf.SQL_DB         =   "fshell_db"
     
-    SERVER_IP        =   "127.0.0.1"
-    SERVER_PORT      =   8000
+    SERVER_IP               =   "127.0.0.1"
+    SERVER_PORT             =   8000
 
 else:
     BaseConf.IS_CTR_LOG     =   True
