@@ -28,29 +28,34 @@ class FsDataStore:
             return False, "proto_emum error"
 
         if msg_type == FsProtoProtoType.F_DATA_WEBLOG:
-            pass
-            
-        elif msg_type == FsProtoProtoType.F_DATA_STATICS:
-            pass
+            bRet, sRet = FsWebLogDao.insert_node(agent_id, data)
+            if not bRet: return False, sRet
 
+        elif msg_type == FsProtoProtoType.F_DATA_STATICS:
+            bRet, sRet = FsStaticsDao.insert_node(agent_id, data)
+            if not bRet: return False, sRet
 
         elif msg_type == FsProtoProtoType.F_DATA_FILEATT:
-            pass
-
+            bRet, sRet = FsFileAttDao.insert_node(agent_id, data)
+            if not bRet: return False, sRet
 
         elif msg_type == FsProtoProtoType.F_DATA_DANFUNC:
-            pass
+            bRet, sRet = FsDanFuncDao.insert_node(agent_id, data)
+            if not bRet: return False, sRet
 
         elif msg_type == FsProtoProtoType.F_DATA_FUZZHASH:
-            pass
+            bRet, sRet = FsFuzzHashDao.insert_node(agent_id, data)
+            if not bRet: return False, sRet
         
         else:
             return False, "msg_type error"
 
 
-        rspData = {}
-
-
+        rspData = {
+            "proto_emum": FsProtoProtoEnum.F_RESULT_DOWN,
+            "proto_type": msg_type,
+            "data": ""
+        }
 
         return True, rspData
 
