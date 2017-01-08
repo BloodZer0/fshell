@@ -20,11 +20,9 @@ CREATE TABLE `tb_data_weblog` (
 '''
 
 
-if __name__ == "__main__":
-    import sys
-    sys.path.append("..")
-    sys.path.append("../base")
-
+import sys
+sys.path.append("..")
+sys.path.append("../base")
 
 from fs_cfg import *
 from fs_util import *
