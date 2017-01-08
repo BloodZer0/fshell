@@ -6,6 +6,12 @@
 # desc: data store
 
 
+if __name__ == "__main__":
+    import sys
+    sys.path.append("..")
+    sys.path.append("../base")
+    sys.path.append("../dao")
+
 from fss_proto_type import *
 from fs_data_weblog_dao import *
 from fs_data_statics_dao import *
@@ -58,5 +64,26 @@ class FsDataStore:
         }
 
         return True, rspData
+
+
+if __name__ == "__main__":
+
+    reqJson = {
+        "task_id": "123456qwertyuiop",
+        "dev_name": "websrv_debain_8",
+        "agent_id": 1002,
+        "msg_protocol": 0x01,
+        "msg_type": 0x01,
+        "data": {
+            "client_ip": "222.24.62.100",
+            "time_local": "[12/01/2016 +8000]",
+            "method": "POST",
+            "url": "/user/add/userinfo.php",
+            "req_body": "uid=1004&task=show",
+            "referer": "/index.html"
+        }
+    }
+
+    print FsDanFuncDao.insert_node(reqJson)
 
 
