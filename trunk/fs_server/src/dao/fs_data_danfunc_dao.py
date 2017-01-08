@@ -17,11 +17,9 @@ CREATE TABLE `tb_data_danfunc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 '''
 
-if __name__ == "__main__":
-    import sys
-    sys.path.append("..")
-    sys.path.append("../base")
-
+import sys
+sys.path.append("..")
+sys.path.append("../base")
 from fs_cfg import *
 from fs_util import *
 from fs_database_pid import *
