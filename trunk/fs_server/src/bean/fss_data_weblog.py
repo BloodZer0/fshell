@@ -17,7 +17,8 @@ class FsWebLog:
     def insert_node(agent_id, data):
         
         time_local = data['time_local']
-        data['time_local'] = 
+        data['time_local'] = time_local[1:20]
+
 
         return FsWebLogDao.insert_node(agent_id, data)
 

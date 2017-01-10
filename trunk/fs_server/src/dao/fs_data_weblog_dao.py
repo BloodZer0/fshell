@@ -32,7 +32,7 @@ from fs_database_pid import *
 class FsWebLogDao:
     
     @staticmethod
-    def  insert_node(agent_id, data):
+    def insert_node(agent_id, data):
         client_ip = data['client_ip']
         time_local = data['time_local']
         method = data['method']
@@ -46,11 +46,12 @@ class FsWebLogDao:
               req_body, referer) values(%s, %s, %s, %s, %s, %s, %s)";
         param = (agent_id, client_ip, time_local, method, url, req_body, referer)
         
-        bRet, sRet = DataBase.insert_data(sql, param)
+        bRet, sRet = dataBase.insert_data(sql, param)
         if not bRet:
             return False, sRet
 
         return True, sRet
 
 
-
+if __name__ == "__main__":
+    pass
