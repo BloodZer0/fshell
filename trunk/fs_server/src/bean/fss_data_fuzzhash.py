@@ -8,8 +8,12 @@
 
 import sys
 sys.path.append("./dao")
-from fss_data_fuzzhash import *
+from fss_data_fuzzhash_dao import *
 
 
 class FssFuzzHash:
-    pass
+    
+    @staticmethod
+    def insert_node(agent_id, data):
+
+        return FssFuzzHashDao.insert_node(agent_id, data)

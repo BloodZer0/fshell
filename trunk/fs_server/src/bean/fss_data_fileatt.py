@@ -8,8 +8,13 @@
 
 import sys
 sys.path.append("../dao")
-from fss_data_fileatt import *
+from fss_data_fileatt_dao import *
 
 
 class FssFileAtt:
-    pass
+    
+    @staticmethod
+    def insert_node(agent_id, data):
+
+        return FssFileAttDao.insert_node(agent_id, data)
+

@@ -98,6 +98,46 @@ if __name__ == "__main__":
         }
     }
 
-    print FssDataStore.store_data(reqJson_statics)
+    reqJson_fileatt = {
+        "task_id": "rter324g4645643",
+        "dev_name": "websrv_redhat5",
+        "agent_id": 1004,
+        "msg_protocol": 0x01,
+        "msg_type":  0x03,
+        "data": {
+            "filename": "/admin/order/list.php",
+            "file_ctime": "2016-12-23 12:11:09",
+            "file_mtime": "2017-23-23 22:22:01",
+            "file_mode": 755,
+            "file_owner": "1000.1000",
+        }
+    }
+
+    reqJson_danfunc = {
+        "task_id": "vdgdfgd3453657",
+        "dev_name": "websrv_redhat8",
+        "agent_id": 1005,
+        "msg_protocol": 0x01,
+        "msg_type": 0x04,
+        "data": {
+            "filename": "/admin/user/manager.php",
+            "weight_sum": 104,
+            "functions": "mysql_connect, cmd_exec, get_user, len",
+        }
+    }
+
+    reqJson_funzhash = {
+        "task_id": "gfhdf567hrthgt",
+        "dev_name": "websrv_redhat2",
+        "agent_id": 1006,
+        "msg_protocol": 0x01,
+        "msg_type": 0x05,
+        "data": {
+            "filename": "admin/useradd/shell.php",
+            "fuzz_hash": "F945M340:5543534523495U5343:9F8R3C34W2"
+        }
+    }
+
+    print FssDataStore.store_data(reqJson_funzhash)
 
 

@@ -9,8 +9,12 @@
 
 import sys
 sys.path.append("../dao")
-from fss_data_danfunc import *
+from fss_data_danfunc_dao import *
 
 
 class FssDanFunc:
-    pass
+    
+    @staticmethod
+    def insert_node(agent_id, data):
+
+        return FssDanFuncDao.insert_node(agent_id, data)
