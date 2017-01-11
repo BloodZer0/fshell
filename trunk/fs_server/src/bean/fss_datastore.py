@@ -67,7 +67,7 @@ class FssDataStore:
 
 if __name__ == "__main__":
 
-    reqJson = {
+    reqJson_web_log = {
         "task_id": "123456qwertyuiop",
         "dev_name": "websrv_debain_8",
         "agent_id": 1002,
@@ -83,6 +83,21 @@ if __name__ == "__main__":
         }
     }
 
-    print FssDataStore.store_data(reqJson)
+    reqJson_statics = {
+        "task_id": "qwe32rwrerwqeqw",
+        "dev_name": "websrv_ubuntu_1",
+        "agent_id": 1003,
+        "msg_protocol": 0x01,
+        "msg_type": 0x02,
+        "data": {
+            "filename": "/user/show.php",
+            "text_ic": "0.562345432",
+            "text_ent": "0.934212",
+            "text_lw": 1234,
+            "text_cmp": "0.7322"
+        }
+    }
+
+    print FssDataStore.store_data(reqJson_statics)
 
 

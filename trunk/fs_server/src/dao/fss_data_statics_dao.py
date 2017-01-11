@@ -31,17 +31,17 @@ from fss_database_pid import *
 class FssStaticsDao:
     
     @staticmethod
-    def inert_node(agent_id, data):
+    def insert_node(agent_id, data):
         filename = data['filename']
         text_ic = data['text_ic']
         text_ent = data['text_ent']
         text_lw = data['text_lw']
-        text_cmp = text_cmp['text_cmp']
+        text_cmp = data['text_cmp']
 
         dataBase = DataBase()
-        sql = "insert into tb_data_statics(agent_id, filename, text_ic, text_ent, text_lw, \
-                text_cmp, insert_tm) values(%s, %s, %s, %s, %s, %s %s)"
-        param = (agent_id, filename, text_ic, text_ent, text_lw, text_lw, text_cmp, get_cur_time())
+        sql = "insert into tb_data_statics(agent_id, filename, text_ic, text_ent, text_lw, " \
+              "text_cmp, insert_tm) values(%s, %s, %s, %s, %s, %s, %s)"
+        param = (agent_id, filename, text_ic, text_ent, text_lw, text_cmp, get_cur_time())
 
         bRet, sRet = dataBase.insert_data(sql, param)
         if not bRet:
