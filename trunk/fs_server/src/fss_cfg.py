@@ -6,7 +6,7 @@
 # desc: fs_server conf
 
 
-from fs_base_cfg import *
+from fss_base_cfg import *
 
 class EnvEnum:
     T_DEV       =   "dev"

@@ -9,27 +9,27 @@
 from fss_cfg import *
 from fss_net import *
 from fss_srv_base import *
-from fss_proto_type import *
+from fs_proto_type import *
 from fss_datastore import *
 
 
-class FsManagerSrv:
+class FssManagerSrv:
     
     def __init__(self):
         self.ip      =   SERVER_IP
         self.port    =   SERVER_PORT
-        self.mode    =   FsNetMode.T_SYN_MODE
+        self.mode    =   FssNetMode.T_SYN_MODE
         
     
     def deal_pkg(self, session, reqJson):
         
-        bRet = FsContentProto.check_valid(reqJson)
+        bRet = FssContentProto.check_valid(reqJson)
         if not bRet:  return False, ""
        
         Log.debug("recv_data: %s" % (reqJson))
 
         # data store
-        bRet, rspData = FsDataStore.store_data(reqJson)
+        bRet, rspData = FssDataStore.store_data(reqJson)
         if not bRet:
             return False, ""
 

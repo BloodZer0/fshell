@@ -9,7 +9,7 @@
 from fss_cfg import *
 from fss_net import *
 
-class FsContentProto:
+class FssContentProto:
 
     @staticmethod
     def check_valid(reqJson):
@@ -50,6 +50,6 @@ class FsContentProto:
         rspJson['msg_type'] = rspType
         rspJson['data'] = rspData
         rspStr = json.dumps(rspJson)        
-        g_fsNet.send_req(session, rspStr)
+        g_fssNet.send_req(session, rspStr)
         
         return True, ""

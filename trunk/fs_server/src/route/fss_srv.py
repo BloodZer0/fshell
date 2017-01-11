@@ -25,18 +25,18 @@ from fss_net import *
 from fss_srv_manager import *
 
     
-class FsSrv:
+class FssSrv:
     
     def __init__(self):
 
-        self.fsNet          =   FsNet()
-        self.managerSrv     =   FsManagerSrv()   
+        self.fssNet          =   FssNet()
+        self.managerSrv     =   FssManagerSrv()   
 
 
     def init(self):
         
-        self.fsNet = g_fsNet
-        self.fsNet.append(self.managerSrv.ip, self.managerSrv.port, self.managerSrv.mode,
+        self.fssNet = g_fssNet
+        self.fssNet.append(self.managerSrv.ip, self.managerSrv.port, self.managerSrv.mode,
                            None, self.managerSrv.deal_pkg, None)
         
         return True, None
@@ -44,14 +44,14 @@ class FsSrv:
     
     def run(self):
         
-        self.fsNet.run()
+        self.fssNet.run()
         
 
 if __name__ == "__main__":
     
-    fsSrv = FsSrv()
-    bRet = fsSrv.init()
+    fssSrv = FssSrv()
+    bRet = fssSrv.init()
     if bRet:
-        fsSrv.run()
+        fssSrv.run()
     
     

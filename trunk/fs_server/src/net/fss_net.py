@@ -16,12 +16,12 @@ from fss_nethead import *
     server, 提供事件驱动，但采用阻塞模式
 '''
 
-class FsNetMode:
+class FssNetMode:
     T_SYN_MODE      =   0       # 请求应答模式
     T_ASY_MODE      =   1       # 异步模式
     
 
-class FsNetConf:
+class FssNetConf:
     
     def __init__(self):
         self.ip = None
@@ -31,7 +31,7 @@ class FsNetConf:
         self.pkgFun = None
         self.closeFun = None
         
-class FsSession:
+class FssSession:
     
     class Status:
         T_ACCEPT            =   0
@@ -47,7 +47,7 @@ class FsSession:
     
     @staticmethod
     def new_session(sock, ip, port, status, conf):
-        session = FsSession()
+        session = FssSession()
         session.ip = ip
         session.port = port
         session.sock = sock
@@ -58,7 +58,7 @@ class FsSession:
         return session
     
 
-class FsNet:
+class FssNet:
     
     READ_ONLY = (select.POLLIN | select.POLLPRI | select.POLLHUP | select.POLLERR)
     
@@ -69,7 +69,7 @@ class FsNet:
         
     
     def append(self, ip, port, mode, acceptFun, pkgFun, closeFun):
-        node = FsNetConf()
+        node = FssNetConf()
         node.ip = ip
         node.port = port
         node.mode = mode
@@ -81,10 +81,10 @@ class FsNet:
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.bind((ip, port))
         sock.listen(1024)
-        session = FsSession.new_session(sock, ip, port, FsSession.Status.T_ACCEPT, node)
+        session = FssSession.new_session(sock, ip, port, FssSession.Status.T_ACCEPT, node)
         self.sessionMap[session.sock.fileno()] = session
         
-        self.poller.register(session.sock, FsNet.READ_ONLY)
+        self.poller.register(session.sock, FssNet.READ_ONLY)
         self.confList.append(node)
         
         return True, ""
@@ -94,7 +94,7 @@ class FsNet:
         conn, clientAddr = session.sock.accept()
         ip, port = clientAddr
         
-        cliSession = FsSession.new_session(conn, ip, port, FsSession.Status.T_CONNECTING, conf)
+        cliSession = FssSession.new_session(conn, ip, port, FssSession.Status.T_CONNECTING, conf)
         
         if conf.acceptFun != None:
             bAccept = conf.acceptFun(session, cliSession)
@@ -104,13 +104,13 @@ class FsNet:
                 return True, ""
         
         self.sessionMap[conn.fileno()] = cliSession
-        self.poller.register(cliSession.sock, FsNet.READ_ONLY)
+        self.poller.register(cliSession.sock, FssNet.READ_ONLY)
         
         return True, ""
     
     
     def _close_session(self, session, conf):
-        if session.status == FsSession.Status.T_ACCEPT:
+        if session.status == FssSession.Status.T_ACCEPT:
             Log.err("server sock(%s, %d) ERR!...." %(session.ip, session.fd))
             return 
         
@@ -215,7 +215,7 @@ class FsNet:
                     conf = session.conf
 
                     if flag & select.POLLIN or flag & flag & select.POLLPRI:
-                        if session.status == FsSession.Status.T_ACCEPT:
+                        if session.status == FssSession.Status.T_ACCEPT:
 
                             bRet, sRet = self._accept_conn(session, conf)
                             if not bRet: 
@@ -225,7 +225,7 @@ class FsNet:
                             if not bRet:
                                 Log.err("_read_req(%s, %d) conf:(%s, %d) ERR: %s" %(session.ip, session.port, conf.ip, conf.port, sRet))
 
-                            if conf.mode == FsNetMode.T_SYN_MODE:
+                            if conf.mode == FssNetMode.T_SYN_MODE:
                                 self._close_session(session, conf)
 
 
@@ -242,4 +242,4 @@ class FsNet:
 
                     
                     
-g_fsNet = FsNet()
+g_fssNet = FssNet()
