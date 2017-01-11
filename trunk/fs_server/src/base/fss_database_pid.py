@@ -7,7 +7,7 @@
 
 
 import MySQLdb
-from fs_log import *
+from fss_log import *
 
 class SqlCmdEnum:
     COMMIT_CMD = 0

@@ -6,7 +6,7 @@
 # desc: 时间处理类封装
 
 
-from fs_log import *
+from fss_log import *
 import datetime
 import time
 

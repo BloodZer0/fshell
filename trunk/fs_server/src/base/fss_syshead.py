@@ -25,4 +25,4 @@ try:
 except Exception, e:
     import simplejson as json
 
-from fs_base_cfg import *
+from fss_base_cfg import *

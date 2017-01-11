@@ -6,8 +6,8 @@
 # desc: 基础常规方法封装
 
 
-from fs_log import *
-from fs_time import *
+from fss_log import *
+from fss_time import *
 
 import hashlib
 import zipfile

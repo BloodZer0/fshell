@@ -6,7 +6,7 @@
 # desc: 日志模块封装
 
 
-from fs_syshead import *
+from fss_syshead import *
 
 class LogLevel:
     DEBUG   =   1
