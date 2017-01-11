@@ -25,11 +25,11 @@ sys.path.append("..")
 sys.path.append("../base")
 
 from fss_cfg import *
-from fs_util import *
-from fs_database_pid import *
+from fss_util import *
+from fss_database_pid import *
 
 
-class FsFileAttDao:
+class FssFileAttDao:
     
     @staticmethod
     def insert_node(agent_id, data):
