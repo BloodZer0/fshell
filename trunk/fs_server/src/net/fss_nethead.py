@@ -11,7 +11,7 @@ import sys
 import os
 import time
 
-from fs_log import *
+from fss_log import *
 
 
 class NetHead:
