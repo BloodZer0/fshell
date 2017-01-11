@@ -11,5 +11,5 @@ sys.path.append("./dao")
 from fss_data_fuzzhash import *
 
 
-class FsFuzzHash:
+class FssFuzzHash:
     pass

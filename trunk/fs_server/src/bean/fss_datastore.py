@@ -10,16 +10,15 @@ if __name__ == "__main__":
     import sys
     sys.path.append("..")
     sys.path.append("../base")
-    sys.path.append("../dao")
 
-from fss_proto_type import *
+from fs_proto_type import *
 from fss_data_weblog import *
 from fss_data_statics import *
 from fss_data_fileatt import *
 from fss_data_danfunc import *
 from fss_data_fuzzhash import *
 
-class FsDataStore:
+class FssDataStore:
     
     @staticmethod
     def store_data(reqJson):
@@ -34,23 +33,23 @@ class FsDataStore:
             return False, "proto_emum error"
 
         if msg_type == FsProtoTypeEnum.F_DATA_WEBLOG:
-            bRet, sRet = FsWebLog.insert_node(agent_id, data)
+            bRet, sRet = FssWebLog.insert_node(agent_id, data)
             if not bRet: return False, sRet
 
         elif msg_type == FsProtoTypeEnum.F_DATA_STATICS:
-            bRet, sRet = FsStatics.insert_node(agent_id, data)
+            bRet, sRet = FssStatics.insert_node(agent_id, data)
             if not bRet: return False, sRet
 
         elif msg_type == FsProtoTypeEnum.F_DATA_FILEATT:
-            bRet, sRet = FsFileAtt.insert_node(agent_id, data)
+            bRet, sRet = FssFileAtt.insert_node(agent_id, data)
             if not bRet: return False, sRet
 
         elif msg_type == FsProtoTypeEnum.F_DATA_DANFUNC:
-            bRet, sRet = FsDanFunc.insert_node(agent_id, data)
+            bRet, sRet = FssDanFunc.insert_node(agent_id, data)
             if not bRet: return False, sRet
 
         elif msg_type == FsProtoTypeEnum.F_DATA_FUZZHASH:
-            bRet, sRet = FsFuzzHash.insert_node(agent_id, data)
+            bRet, sRet = FssFuzzHash.insert_node(agent_id, data)
             if not bRet: return False, sRet
         
         else:
@@ -84,6 +83,6 @@ if __name__ == "__main__":
         }
     }
 
-    print FsDataStore.store_data(reqJson)
+    print FssDataStore.store_data(reqJson)
 
 

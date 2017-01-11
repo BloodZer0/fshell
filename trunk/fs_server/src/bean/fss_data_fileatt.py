@@ -11,5 +11,5 @@ sys.path.append("../dao")
 from fss_data_fileatt import *
 
 
-class FsFileAtt:
+class FssFileAtt:
     pass

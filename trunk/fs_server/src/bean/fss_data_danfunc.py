@@ -12,5 +12,5 @@ sys.path.append("../dao")
 from fss_data_danfunc import *
 
 
-class FsDanFunc:
+class FssDanFunc:
     pass
