@@ -123,6 +123,12 @@ class AgentConf:
 
 ##### statics conf
 
+    def statics_run_time(self):
+        try:
+            return self.conf.get("STATICS", "run_time").split(",")
+        except:
+            return None
+
     def statics_smallest_filesize(self):
         try:
             return self.conf.getint("STATICS", "smallest_filesize")
@@ -145,6 +151,12 @@ class AgentConf:
 
 ##### fileatt conf
 
+    def fileatt_run_time(self):
+        try:
+            return self.conf.get("FILEATT", "run_time").split(",")
+        except:
+            return None
+
     def fileatt_result_output(self):
         try:
             return self.conf.get("FILEATT", "result_output")
@@ -161,6 +173,11 @@ class AgentConf:
 
 ##### danfunc conf
 
+    def danfunc_run_time(self):
+        try:
+            return self.conf.get("DANFUNC", "run_time").split(",")
+        except:
+            return None
 
     def danfunc_result_output(self):
         try:
@@ -177,6 +194,12 @@ class AgentConf:
 
 
 ##### fuzzhash conf
+
+    def fuzzhash_run_time(self):
+        try:
+            return self.conf.get("FUNZHASH", "run_time").split(",")
+        except:
+            return None
 
     def fuzzhash_result_output(self):
         try:
@@ -219,21 +242,25 @@ class BaseConf:
     LOG_SEEK        =   conf.weblog_log_seek()
 
     # define statics config
+    STATICS_RUN_TIME        =   conf.statics_run_time()
     SMALLEST_FILESIZE       =   conf.statics_smallest_filesize()
     STATICS_RESULT          =   conf.statics_result_output()
     STATICS_SCAN_FILE_EXT   =   conf.statics_scan_file_ext()
 
     # define file attribute config
+    FILEATT_RUN_TIME        =   conf.fileatt_run_time()
     FILEATT_RESULT          =   conf.fileatt_result_output()
     FILEATT_SCAN_FILE_EXT   =   conf.fileatt_scan_file_ext()
 
 
     # define danger func config
+    DANFUNC_RUN_TIME        =   conf.danfunc_run_time()
     DANFUNC_RESULT          =   conf.danfunc_result_output()
     DANFUNC_SCAN_FILE_EXT   =   conf.danfunc_scan_file_ext()
 
 
     # define fuzzy hash config
+    FUNZHASH_RUN_TIME       =   conf.fuzzhash_run_time() 
     FUNZHASH_RESULT         =   conf.fuzzhash_result_output() 
     FUZZHASH_SCAN_FILE_EXT  =   conf.fuzzhash_scan_file_ext()
 
