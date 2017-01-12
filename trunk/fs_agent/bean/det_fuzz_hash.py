@@ -46,7 +46,7 @@ class FsaTaskFuzzhash:
     def start_task(self):
         F_Flag = True
 
-        bRet, rows_db_tmp, fileList = self.cachedb.write_cache_db_tmp(self.out_file_tmp, self.tests, self.locator, self.web_dir,, self.regex)
+        bRet, rows_db_tmp, fileList = self.cachedb.write_cache_db_tmp(self.out_file_tmp, self.tests, self.locator, self.web_dir, self.regex)
         if not bRet:
             return False, 'calc or write result ERR'
 
