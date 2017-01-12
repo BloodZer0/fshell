@@ -50,7 +50,9 @@ class FsaTaskClient:
     @staticmethod
     def _get_task():
         time_list = [BaseConf.STATICS_RUN_TIME,
-
+                    BaseConf.FILEATT_RUN_TIME,
+                    BaseConf.DANFUNC_RUN_TIME,
+                    BaseConf.FUZZHASH_RUN_TIME]
     
     @staticmethod
     def get_task():
