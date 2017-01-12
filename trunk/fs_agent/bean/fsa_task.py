@@ -17,10 +17,7 @@ from fsa_net import *
 from fsa_task_type import *
 
 
-class FsaTaskStatus:
-    
-    T_RUN       =  "run"
-    T_FAIL      =   "fail"
+class FsaTaskStatus:mZ
     T_FINISH    =   "finish"
     
     statusList = [T_RUN, T_FAIL, T_FINISH]
@@ -49,17 +46,19 @@ class FsaTaskClient:
 
         return FsaNet.send_req(reqJson)
 
+
+    @staticmethod
+    def _get_task():
+        time_list = [BaseConf.STATICS_RUN_TIME,
+
     
     @staticmethod
     def get_task():
+        bRet, taskType = FsaTaskClient._get_task()
+        if not bRet:
+            return False, ""
 
-        # read from local conf file
-
-
-        bRet = True
-        taskType = "web_log"
-
-        return bRet, taskType
+        return True, taskType
     
     
     @staticmethod
