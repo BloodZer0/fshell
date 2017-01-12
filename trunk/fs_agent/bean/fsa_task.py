@@ -52,7 +52,11 @@ class FsaTaskClient:
         time_list = [BaseConf.STATICS_RUN_TIME,
                     BaseConf.FILEATT_RUN_TIME,
                     BaseConf.DANFUNC_RUN_TIME,
-                    BaseConf.FUZZHASH_RUN_TIME]
+                    BaiseConf.FUZZHASH_RUN_TIME]
+        
+        now_tm = get_cur_time()
+
+
     
     @staticmethod
     def get_task():
