@@ -49,13 +49,21 @@ class FsaTaskClient:
 
     @staticmethod
     def _get_task():
-        time_list = [BaseConf.STATICS_RUN_TIME,
-                    BaseConf.FILEATT_RUN_TIME,
-                    BaseConf.DANFUNC_RUN_TIME,
-                    BaiseConf.FUZZHASH_RUN_TIME]
-        
+
         now_tm = get_cur_time()
 
+        time_dict = {
+            "statics": BaseConf.STATICS_RUN_TIME,
+            "fileatt": BaseConf.FILEATT_RUN_TIME,
+            "danfunc": BaseConf.DANFUNC_RUN_TIME,
+            "fuzzhash": BaiseConf.FUZZHASH_RUN_TIME
+        }
+        for key,val in time_dict.items():
+            for tm in val:
+                if tm == now_tm:
+                    return key
+
+        return None
 
     
     @staticmethod
