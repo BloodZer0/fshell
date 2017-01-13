@@ -125,7 +125,7 @@ class AgentConf:
 
     def statics_run_time(self):
         try:
-            return self.conf.get("STATICS", "run_time").split(",")
+            return list(set(self.conf.get("STATICS", "run_time").split(",")))
         except:
             return None
 
@@ -153,7 +153,7 @@ class AgentConf:
 
     def fileatt_run_time(self):
         try:
-            return self.conf.get("FILEATT", "run_time").split(",")
+            return list(set(self.conf.get("FILEATT", "run_time").split(",")))
         except:
             return None
 
@@ -175,7 +175,7 @@ class AgentConf:
 
     def danfunc_run_time(self):
         try:
-            return self.conf.get("DANFUNC", "run_time").split(",")
+            return list(set(self.conf.get("DANFUNC", "run_time").split(",")))
         except:
             return None
 
@@ -197,7 +197,7 @@ class AgentConf:
 
     def fuzzhash_run_time(self):
         try:
-            return self.conf.get("FUNZHASH", "run_time").split(",")
+            return list(set(self.conf.get("FUNZHASH", "run_time").split(",")))
         except:
             return None
 
