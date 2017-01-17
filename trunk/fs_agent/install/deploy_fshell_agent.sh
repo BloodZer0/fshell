@@ -1,5 +1,40 @@
 #!/bin/bash
 
+#
+#
+#
+#
+#
+#
+#
+
+CUR_VERSION="1.0"
+LOG_FILE=fshell_agent.install.log
+
+
+log_to_file()
+{
+    echo $1
+    echo $1 >> ${LOG_FILE}
+}
+
+log_result()
+{
+    if [ $2 -ne 0 ];then
+        log_to_file "[-] $1 failed!"
+    else
+        log_to_file "[+] $1 successed!"
+    fi
+}
+
+
+ibackup_file()
+
+{
+    echo "backup $1 > $1.bak"
+    cp $1 $1.bak
+}
+
 
 
 
