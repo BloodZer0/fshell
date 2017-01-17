@@ -197,7 +197,7 @@ class AgentConf:
 
     def fuzzhash_run_time(self):
         try:
-            return list(set(self.conf.get("FUNZHASH", "run_time").split(",")))
+            return list(set(self.conf.get("FUZZHASH", "run_time").split(",")))
         except:
             return None
 
@@ -260,7 +260,7 @@ class BaseConf:
 
 
     # define fuzzy hash config
-    FUNZHASH_RUN_TIME       =   conf.fuzzhash_run_time() 
+    FUZZHASH_RUN_TIME       =   conf.fuzzhash_run_time() 
     FUNZHASH_RESULT         =   conf.fuzzhash_result_output() 
     FUZZHASH_SCAN_FILE_EXT  =   conf.fuzzhash_scan_file_ext()
 

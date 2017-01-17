@@ -11,7 +11,7 @@ import uuid
 sys.path.append("../base")
 sys.path.append("../net")
 
-
+from fs_time import *
 from fs_base_cfg import *
 from fsa_net import *
 from fsa_task_type import *
@@ -58,8 +58,10 @@ class FsaTaskClient:
             "statics": BaseConf.STATICS_RUN_TIME,
             "fileatt": BaseConf.FILEATT_RUN_TIME,
             "danfunc": BaseConf.DANFUNC_RUN_TIME,
-            "fuzzhash": BaiseConf.FUZZHASH_RUN_TIME
+            "fuzzhash": BaseConf.FUZZHASH_RUN_TIME
         }
+        
+        print time_dict
         for key,val in time_dict.items():
             for tm in val:
                 if tm == now_tm:
