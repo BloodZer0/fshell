@@ -17,7 +17,9 @@ from fsa_net import *
 from fsa_task_type import *
 
 
-class FsaTaskStatus:mZ
+class FsaTaskStatus:
+    T_RUN       =   "run"
+    T_FAIL      =   "fail"
     T_FINISH    =   "finish"
     
     statusList = [T_RUN, T_FAIL, T_FINISH]
@@ -99,5 +101,5 @@ if __name__ == "__main__":
     
     print bRet, taskType
     
-    print FsaTaskClient.report_task("web_log", FsaTaskStatus.T_RUN, "hi,s0nnet!")
+    #print FsaTaskClient.report_task("web_log", FsaTaskStatus.T_RUN, "hi,s0nnet!")
         
