@@ -1,11 +1,9 @@
 #!/bin/bash
 
-#
-#
-#
-#
-#
-#
+# Fshell v1.0 release.
+# This is an install script of linux for fshell agent.
+# For more information, see <http://www.s0nnet.com>
+# if have any question, mailto: s0nnet@qq.com.
 #
 
 CUR_VERSION="1.0"
