@@ -26,7 +26,7 @@ log_result()
 }
 
 
-ibackup_file()
+backup_file()
 
 {
     echo "backup $1 > $1.bak"
