@@ -6,6 +6,14 @@ SSDeep library/tool : http://ssdeep.sourceforge.net
 
 
 #### 安装
+
+先安装ssdeep库：
+```
+解压ssdeep-2.13.tar.gz；
+$ ./configure
+$ make & sudo make install
+$ python setup.py install
+```
 下载源码,并运行:
 ```
 $ python setup.py build
