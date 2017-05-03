@@ -33,6 +33,36 @@ backup_file()
     cp $1 $1.bak
 }
 
+install_basic_suite()
+{
+    yum -y install epel-release
+    yum -y install vim wget gcc g++ 
+    yum -y install python-dev
+    yum -y install 
+
+
+
+
+}
+
+setup_iptables()
+{
+
+
+    echo ""
+}
+
+
+install_python_venv()
+{
+
+    # 安装ssdeep库
+
+    #参考lib下面的说明文档
+
+
+}
+
 
 
 
