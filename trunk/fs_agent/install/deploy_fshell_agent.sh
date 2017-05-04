@@ -38,9 +38,19 @@ install_basic_suite()
     yum -y install epel-release
     yum -y install vim wget gcc g++ 
     yum -y install python-dev
-    yum -y install 
+    yum -y install python-devel
+    yum -y install mysql mysql-server mysql-client
+    yum -y install nginx php-fpm
 
+    systemctl start mysqld.service
+    systemctl start nginx.service
+    systemctl start php-fpm.service
 
+    systemctl enable mysqld.service
+    systemctl enable nginx.service
+    systemctl enable php-fpm.service
+
+    hostnamectl --static set-hostname FS-Agent
 
 
 }

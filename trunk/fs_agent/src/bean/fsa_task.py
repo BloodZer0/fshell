@@ -62,19 +62,24 @@ class FsaTaskClient:
         }
         
         print time_dict
+
         for key,val in time_dict.items():
             for tm in val:
                 if tm == now_tm:
-                    return key
+                    return True, key
 
-        return None
+
+        # debug....
+        return True, 'statics'
+
+        return True, None
 
     
     @staticmethod
     def get_task():
         bRet, taskType = FsaTaskClient._get_task()
-        if not bRet:
-            return False, ""
+        if taskType is None:
+            return True, None
 
         return True, taskType
     
