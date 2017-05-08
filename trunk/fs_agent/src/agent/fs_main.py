@@ -30,32 +30,37 @@ class FsaMain:
         self.task = None
      
     
-    def _task_run(self, taskType):        
+    def _task_run(self, taskType):
         
         if taskType == FsaTaskType.F_WEBLOG:
             taskWeblog = FsaTaskWeblog()
             taskWeblogTid = threading.Thread(target = taskWeblog.start_task)
             taskWeblogTid.start()
+            taskWeblogTid.join(timeout=60*10)
 
         elif taskType == FsaTaskType.F_STATICS:
             taskStatics = FsaTaskStatics()
             taskStaticsTid = threading.Thread(target = taskStatics.start_task)
             taskStaticsTid.start()
+            taskStaticsTid.join(timeout=60*10)
 
         elif taskType == FsaTaskType.F_FILEATT:
             taskFileatt = FsaTaskFileatt()
             taskFileattTid = threading.Thread(target = taskFileatt.start_task)
             taskFileattTid.start()
+            taskFileattTid.join(timeout=60*10)
 
         elif taskType == FsaTaskType.F_DANFUNC:
             taskDanfunc = FsaTaskDanfunc()
             taskDanfuncTid = threading.Thread(target = taskDanfunc.start_task)
             taskDanfuncTid.start()
+            taskDanfuncTid.join(timeout=60*10)
 
         elif taskType == FsaTaskType.F_FUZZHASH:
             taskFuzzhash = FsaTaskFuzzhash()
             taskFuzzhashTid = threading.Thread(target = taskFuzzhash.start_task)
             taskFuzzhashTid.start()
+            taskFuzzhashTid.join(timeout=60*10)
 
         else:
             return False
@@ -81,9 +86,9 @@ class FsaMain:
                 retCode = -1
                 
             if retCode == -1:
-                FsaTaskClient.report_task(self.taskType, FsaTaskStatus.T_FAIL, "task_exec ERR!")
+                FsaTaskClient.report_task(self.taskType, FsaTaskStatus.T_FAIL, "task_exec_ERR")
             else:
-                FsaTaskClient.report_task(self.taskType, FsaTaskStatus.T_FINISH, "sdsd")
+                FsaTaskClient.report_task(self.taskType, FsaTaskStatus.T_FAIL, "task_status_Finish")
             
             os._exit(retCode)
             
@@ -119,11 +124,11 @@ class FsaMain:
                             bRet = self._task_start(taskType)
                             if not bRet:
                                 Log.err("task_start(%s) ERR" %(str(taskType)))
-                                FsaTaskClient.report_task(taskType, FsaTaskStatus.T_FAIL, "task_start Fail!")
+                                FsaTaskClient.report_task(taskType, FsaTaskStatus.T_FAIL, "task_start_Fail")
 
                         except Exception, e:
                             Log.err("taskType: %s, %s" %(taskType, traceback.format_exc()))
-                            FsaTaskClient.report_task(taskType, FsaTaskStatus.T_FAIL, "task_start Fail!")
+                            FsaTaskClient.report_task(taskType, FsaTaskStatus.T_FAIL, "task_start_Fail")
                 
             time.sleep(3)
 

@@ -23,11 +23,11 @@ def get_guid():
 
 # 递归获取web_dir下面的所有文件名文件及其内容
 class SearchFile:
-    
-    def __init__(self):
-        self.smallest = BaseConf.SMALLEST_FILESIZE
 
     def search_file_path(self, web_dir, regex):
+
+        smallest = BaseConf.SMALLEST_FILESIZE
+
         for root, dirs, files in os.walk(web_dir):
             for file in files:
                 filename = os.path.join(root, file)
@@ -35,7 +35,7 @@ class SearchFile:
                 if not re.search(regex, filename):
                     continue
 
-                if os.path.getsize(filename) < self.smallest:
+                if os.path.getsize(filename) < smallest:
                     continue
                     
                 try:
@@ -65,23 +65,43 @@ class SearchFile_V2:
 
 # 读取本地缓存结果数据，避免上传未改动的数据到server
 class GetCacheDb:
-    
-    def __init__(self):
-        self.fileList = []
 
+    # 对比cache_db中的结果，只上传有变动的部分
+    # 1.新增/变动的，上传本次的
+    # 2.已删除的，deleted=1
+    def get_changed_data(self, rows_db_tmp, fileList, rows_db):
+
+        changed_db = list()
+        rows_db_2 = rows_db
+
+        for item in rows_db_tmp:
+            if item in rows_db_2:
+                rows_db_2.remove(item)
+                continue
+            else:
+                changed_db.append(item)
+
+        for item in rows_db:
+            if item['filename'] in fileList:
+                continue
+            else:
+                item = {'filename':item['filename'], 'deleted':1}
+                changed_db.append(item)
+
+        return True, changed_db
 
     def read_cache_db(self, out_file):
         if not os.path.isfile(out_file):
             return False, None
 
         with open(out_file) as f:
-            f_csv = csv.DictReader(f)
+            reader = csv.DictReader(f)
+            rows = [row for row in reader]
 
-        return True, f_csv
+        return True, rows
 
-
-    def write_cache_db_tmp(self, out_file_tmp, tests, locater, web_dir, regex):
-
+    def write_cache_db_tmp(self, out_file_tmp, tests, locator, web_dir, regex):
+        fileList = list()
         csv_rows = list()
         csv_headers = ["filename"]
     
@@ -89,20 +109,22 @@ class GetCacheDb:
             if filesize == 0: continue
 
             calc_value = dict()
+            
             for test in tests:
                 test_name = test.__class__.__name__
-                calc_value[test_name] = test.calculate(filename)
-                if len(csv_headers) < len(test) +1:
+                calc_value[test_name] = str(test.calculate(filename))
+                if len(csv_headers) < len(tests) +1:
                     csv_headers.append(test_name)
-            
-                csv_rows.append(calc_value)
-            self.fileList.append(filename)
-        
-        with open(out_file_tmp) as f:
+
+            calc_value['filename'] = filename
+            csv_rows.append(calc_value)
+            fileList.append(filename)
+
+        with open(out_file_tmp, 'w') as f:
             f_csv = csv.DictWriter(f, csv_headers)
             f_csv.writeheader()
             f_csv.writerows(csv_rows)
-    
+
         return True, csv_rows, fileList
 
 

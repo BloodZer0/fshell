@@ -37,13 +37,13 @@ class FsaTaskStatus:
 class FsaTaskClient:
 
     @staticmethod
-    def _send_pkt(taskData):
+    def _send_pkt(taskData, FsDataProtoType=0x00):
         reqJson = {}
         reqJson['task_id'] = uuid.uuid1().get_hex()
         reqJson['dev_name'] = BaseConf.DEV_NAME
         reqJson['agent_id'] = BaseConf.AGENT_ID
         reqJson['msg_protocol'] = FsProtoProtoEnum.F_RESULT_UP
-        reqJson['msg_type'] = FsProtoTypeEnum.F_DATA_WEBLOG
+        reqJson['msg_type'] = FsDataProtoType
         reqJson['data'] = taskData
 
         return FsaNet.send_req(reqJson)
@@ -60,8 +60,6 @@ class FsaTaskClient:
             "danfunc": BaseConf.DANFUNC_RUN_TIME,
             "fuzzhash": BaseConf.FUZZHASH_RUN_TIME
         }
-        
-        print time_dict
 
         for key,val in time_dict.items():
             for tm in val:
@@ -70,7 +68,7 @@ class FsaTaskClient:
 
 
         # debug....
-        return True, 'statics'
+        return True, 'statis_tics'
 
         return True, None
 
@@ -80,6 +78,8 @@ class FsaTaskClient:
         bRet, taskType = FsaTaskClient._get_task()
         if taskType is None:
             return True, None
+
+        Log.info("getting task: '%s'" % (str(taskType)))
 
         return True, taskType
     
@@ -91,15 +91,21 @@ class FsaTaskClient:
             return False, "status(%d) is not valid" %(taskStatus)
         
         if taskData == None: taskData = taskStatus
-        
-        # 预留　结果本地缓存模块
-        #
-        #
-        #
-        #
-        #
 
-        return FsaTaskClient._send_pkt(taskData)
+        if taskType == FsaTaskType.F_WEBLOG:
+            FsDataProtoType = FsProtoTypeEnum.F_DATA_WEBLOG
+        elif taskType == FsaTaskType.F_STATICS:
+            FsDataProtoType = FsProtoTypeEnum.F_DATA_STATICS
+        elif taskType == FsaTaskType.F_FILEATT:
+            FsDataProtoType = FsProtoTypeEnum.F_DATA_FILEATT
+        elif taskType == FsaTaskType.F_DANFUNC:
+            FsDataProtoType = FsProtoTypeEnum.F_DATA_DANFUNC
+        elif taskType == FsaTaskType.F_FUZZHASH:
+            FsDataProtoType = FsProtoTypeEnum.F_DATA_FUZZHASH
+        else:
+            return False, "valid task_type"
+
+        return FsaTaskClient._send_pkt(taskData, FsDataProtoType)
 
 
 if __name__ == "__main__":

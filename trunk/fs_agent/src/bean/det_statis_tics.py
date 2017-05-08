@@ -19,6 +19,7 @@ if __name__ == "__main__":
     sys.path.append("../base")
 
 from fs_log import *
+from fs_util import *
 from fs_base_cfg import *
 from fsa_task import *
 from fsa_task_type import *
@@ -31,7 +32,9 @@ class LanguageIC:
         self.results = []
         self.ic_total_results = ""
 
-    def calculate(self, data, filename):
+    def calculate(self, filename):
+        data = open(filename, 'rb').read()
+
         if not data: return 0
         char_count = 0
         total_char_count = 0
@@ -43,14 +46,16 @@ class LanguageIC:
             total_char_count += charcount
 
         ic = float(char_count)/(total_char_count * (total_char_count - 1))
-        return ic
+        return ("%.8f" % ic)
 
 
 class Entropy:
     def __init__(self):
         self.results = []
 
-    def calculate(self, data, filename):
+    def calculate(self, filename):
+        data = open(filename, 'rb').read()
+
         if not data: return 0
         entropy = 0
         self.stripped_data = data.replace(' ', '')
@@ -58,14 +63,16 @@ class Entropy:
             p_x = float(self.stripped_data.count(chr(x)))/len(self.stripped_data)
             if p_x > 0:
                 entropy += - p_x * math.log(p_x, 2)
-        return entropy
+        return ("%.8f" % entropy)
 
 
 class LongestWord:
     def __init__(self):
         self.results = []
 
-    def calculate(self, data, filename):
+    def calculate(self, filename):
+        data = open(filename, 'rb').read()
+
         if not data:
             return "", 0
         longest = 0
@@ -84,13 +91,14 @@ class Compression:
     def __init__(self):
         self.results = []
 
-    def calculate(self, data, filename):
+    def calculate(self, filename):
+        data = open(filename, 'rb').read()
+
         if not data:
             return "", 0
         compressed = zlib.compress(data)
         ratio = float(len(compressed)) / float(len(data))
-        return ratio
-
+        return ("%.8f" % ratio)
 
 
 class FsaTaskStatics:
@@ -115,32 +123,23 @@ class FsaTaskStatics:
 
 
     def start_task(self):
-        F_Flag = True
-
         bRet, rows_db_tmp, fileList = self.cachedb.write_cache_db_tmp(self.out_file_tmp, self.tests, self.locator, self.web_dir, self.regex)
         if not bRet:
             return False, 'calc or write result ERR'
 
         bRet, rows_db = self.cachedb.read_cache_db(self.out_file)
         if not bRet:
-            os.unlink(self.out_file)
             os.rename(self.out_file_tmp, self.out_file)
-            F_Flag = False
+        else:
+            bRet, rows_db_tmp = self.cachedb.get_changed_data(rows_db_tmp, fileList, rows_db)
+            if not bRet: rows_db_tmp = None
+            os.rename(self.out_file_tmp, self.out_file)
 
-        # find the no need source file from the
-        # rows_db and append it to the rows_db_tmp list.
-        if F_Flag:
-            for item in rows_db:
-                if item['filename'] in fileList:
-                    continue
-
-                item = {"filename": item["filename"], "deleted": 1}
-            rows_db_tmp.append(item)
-
-        bRet, sRet = FsaTaskClient.report_task(FsaTaskType.F_STATICS, FsaTaskStatics.T_FINISH, rows_db_tmp)
+        bRet, sRet = FsaTaskClient.report_task(FsaTaskType.F_STATICS, FsaTaskStatus.T_FINISH, rows_db_tmp)
         if not bRet:
             Log.err("Report statistics ERR: %s" % (sRet))
-            #
-            # bababa...
+
+
+
 
 
