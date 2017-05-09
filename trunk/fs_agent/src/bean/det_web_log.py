@@ -25,9 +25,9 @@ class WebLogFilter:
     """
     web log format most be this:
     if not, you will change the follow func of _format_http!
-    # 
-    # $remote_addr [$time_local] "$request" $status 
-    # $body_bytes_sent "$request_body" "$http_referer"
+    #
+    # $remote_addr [$time_local] "$request" $status $body_bytes_sent
+    # "$request_body" "$http_referer" "$http_user_agent";
     #
     """
     
@@ -85,27 +85,27 @@ class WebLogFilter:
             request = allGroups[2]
             status = allGroups[3]
             bodyByteSent = allGroups[4]
-            requestBody = allGroups[5]
-            referer = allGroups[6]
-            useragent = allGroups[7]
+            requestBody = allGroups[5][1:-1]
+            referer = allGroups[6][1:-1]
+            useragent = allGroups[7][1:-1]
             
-            method = request.split(" ")[0]
+            method = request.split(" ")[0][1:]
             url = request.split(" ")[1]
 
             reqData = {
-                "ip": ip,
-                "time": time_local,
+                "client_ip": ip,
+                "time_local": time_local,
                 "status": status,
                 "method": method,
                 "url": url,
-                "request_body": requestBody,
+                "req_body": requestBody,
                 "referer": referer
             }
 
             return True, reqData
 
-        except:
-            return False, 're match log ERR'
+        except Exception, e:
+            return False, 're match log ERR: %s' % (str(e))
 
 
     @staticmethod
@@ -114,7 +114,7 @@ class WebLogFilter:
         for line in log_data:
             bRet, reqData = WebLogFilter._format_http(line)
             if not bRet:
-                return False, 'Filter log ERR'
+                return False, reqData
 
             Log.debug("web_log: %s" % (reqData))
             req_status = int(reqData['status'])
@@ -175,16 +175,17 @@ class FsaTaskWeblog:
     
             bRet, logData = WebLogFilter.filter(log_content)
             if not bRet or len(logData) == 0:
-                Log.err("Filter web log ERR: %s" % (logData))
+                Log.err(logData)
                 continue
+
             Log.debug("write seek: %d" % (file_seek_end))
             self._write_seek(file_seek_end)
             Log.debug("filter log succ, len: %d" % (len(logData)))
             bRet, sRet = FsaTaskClient.report_task(FsaTaskType.F_WEBLOG, FsaTaskStatus.T_FINISH, logData)
             if not bRet:
                 Log.err("Report web log ERR: %s" % (sRet))
-                #
-                # bababa...
+   
+            
 
 
 

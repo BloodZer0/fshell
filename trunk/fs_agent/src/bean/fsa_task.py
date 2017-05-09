@@ -68,7 +68,7 @@ class FsaTaskClient:
 
 
         # debug....
-        return True, 'statis_tics'
+        return True, 'dan_func'
 
         return True, None
 

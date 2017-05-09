@@ -31,14 +31,7 @@ class FsaMain:
      
     
     def _task_run(self, taskType):
-        
-        if taskType == FsaTaskType.F_WEBLOG:
-            taskWeblog = FsaTaskWeblog()
-            taskWeblogTid = threading.Thread(target = taskWeblog.start_task)
-            taskWeblogTid.start()
-            taskWeblogTid.join(timeout=60*10)
-
-        elif taskType == FsaTaskType.F_STATICS:
+        if taskType == FsaTaskType.F_STATICS:
             taskStatics = FsaTaskStatics()
             taskStaticsTid = threading.Thread(target = taskStatics.start_task)
             taskStaticsTid.start()
@@ -106,9 +99,19 @@ class FsaMain:
             return False
         
         return True
-    
+        
         
     def run(self):
+        pid = os.fork()
+        if pid == -1:
+            Log.err("os.fork err!")
+            return False
+
+        if pid == 0:
+            taskWeblog = FsaTaskWeblog()
+            taskWeblogTid = threading.Thread(target = taskWeblog.start_task)
+            taskWeblogTid.start()
+
         count = 0
         while True:
             

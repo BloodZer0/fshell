@@ -261,7 +261,7 @@ class BaseConf:
 
     # define fuzzy hash config
     FUZZHASH_RUN_TIME       =   conf.fuzzhash_run_time() 
-    FUNZHASH_RESULT         =   conf.fuzzhash_result_output() 
+    FUZZHASH_RESULT         =   conf.fuzzhash_result_output() 
     FUZZHASH_SCAN_FILE_EXT  =   conf.fuzzhash_scan_file_ext()
 
     

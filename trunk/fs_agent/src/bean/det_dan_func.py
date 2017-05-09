@@ -55,47 +55,34 @@ class FsaTaskDanfunc:
 
 
     def start_task(self):
-        F_Flag = True
-
         bRet, rows_db_tmp, fileList = self.cachedb.write_cache_db_tmp(self.out_file_tmp, self.tests, self.locator, self.web_dir, self.regex)
         if not bRet:
             return False, 'calc or write result ERR'
 
         bRet, rows_db = self.cachedb.read_cache_db(self.out_file)
         if not bRet:
-            os.unlink(self.out_file)
             os.rename(self.out_file_tmp, self.out_file)
-            F_Flag = False
+        else:
+            bRet, rows_db_tmp = self.cachedb.get_changed_data(rows_db_tmp, fileList, rows_db)
+            if not bRet: rows_db_tmp = None
+            os.rename(self.out_file_tmp, self.out_file)
 
-        # find the no need source file from the
-        # rows_db and append it to the rows_db_tmp list.
+
         dataList = list()
-        if F_Flag:
-            for item in rows_db:
-                filename = item["filename"]
-                if filename in fileList: continue
-                
-                item = {"filename": filename, "deleted": 1}
-                dataList.append(item)
-
-        # get the db_tmp's file funcs.
-        for filename in fileList:
+        for item in rows_db_tmp:
+            filename = item['filename']
             bRet, funcList = self._get_all_funcs(filename)
             if not bRet:
                 Log.err("Could not read: %s" % (filename))
-                item = {"filename": filename, "bad_read": 1}
+                #item = {"filename": filename, "bad_read": 1}
             else:
                 item = {"filename":filename, "funclist": funcList}
 
             dataList.append(item)
 
-
-        bRet, sRet = FsaTaskClient.report_task(FsaTaskType.F_FUZZHASH, FsaTaskStatics.T_FINISH, dataList)
+        bRet, sRet = FsaTaskClient.report_task(FsaTaskType.F_DANFUNC, FsaTaskStatus.T_FINISH, dataList)
         if not bRet:
-            Log.err("Report fuzzy hash ERR: %s" % (sRet))
-            #
-            # bababa...
-
+            Log.err("Report task danfunc ERR: %s" % (sRet))
 
 
 
