@@ -10,7 +10,7 @@
 CREATE TABLE `tb_data_danfunc` (
     `id` varchar(20) NOT NULL,
     `agent_id` int(11) NOT NULL,
-    `filename` varchar(50) NOT NULL,
+    `filename` varchar(200) NOT NULL,
     `weight_sum` int(5) NOT NULL,
     `functions` text NOT NULL,
     `insert_tm` datetime NOT NULL

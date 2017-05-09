@@ -16,5 +16,23 @@ class FssDanFunc:
     
     @staticmethod
     def insert_node(agent_id, data):
+        if not isinstance(data, list):
+            return False, "valid reqJson of data"
 
-        return FssDanFuncDao.insert_node(agent_id, data)
+        if len(data)==0:
+            return True, ""
+
+        for item in data:
+            if item.has_key('deleted'):
+                continue
+
+            dataCnt = {
+                "filename": item['filename'],
+                "weight_sum": 0,
+                "functions": str(','.join(item['funclist']))
+            }
+            bRet, sRet = FssDanFuncDao.insert_node(int(agent_id), dataCnt)
+            if not bRet:
+                Log.err("insert dan_func err: %s" % (str(sRet)))
+
+        return True, "" #FssDanFuncDao.insert_node(int(agent_id), dataCnt)

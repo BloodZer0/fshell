@@ -29,7 +29,7 @@ class FssSrv:
     
     def __init__(self):
 
-        self.fssNet          =   FssNet()
+        self.fssNet         =   FssNet()
         self.managerSrv     =   FssManagerSrv()   
 
 

@@ -32,6 +32,7 @@ class FssDataStore:
         if msg_proto != FsProtoProtoEnum.F_RESULT_UP:
             return False, "proto_emum error"
 
+
         if msg_type == FsProtoTypeEnum.F_DATA_WEBLOG:
             bRet, sRet = FssWebLog.insert_node(agent_id, data)
             if not bRet: return False, sRet
@@ -59,7 +60,7 @@ class FssDataStore:
         rspData = {
             "proto_emum": FsProtoProtoEnum.F_RESULT_DOWN,
             "proto_type": msg_type,
-            "data": ""
+            "data": json.dumps({'code': 0, 'val':'report_success'})
         }
 
         return True, rspData
@@ -101,16 +102,16 @@ if __name__ == "__main__":
     reqJson_fileatt = {
         "task_id": "rter324g4645643",
         "dev_name": "websrv_redhat5",
-        "agent_id": 1004,
+        "agent_id": 1001,
         "msg_protocol": 0x01,
         "msg_type":  0x03,
-        "data": {
+        "data": [{
             "filename": "/admin/order/list.php",
-            "file_ctime": "2016-12-23 12:11:09",
-            "file_mtime": "2017-23-23 22:22:01",
-            "file_mode": 755,
-            "file_owner": "1000.1000",
-        }
+            "FileCtime": "1460464816",
+            "FileMtime": "1460464836",
+            "FilePriv": 755,
+            "FileOwner": "1000.1000",
+        },]
     }
 
     reqJson_danfunc = {
@@ -138,6 +139,6 @@ if __name__ == "__main__":
         }
     }
 
-    print FssDataStore.store_data(reqJson_funzhash)
+    print FssDataStore.store_data(reqJson_fileatt)
 
 

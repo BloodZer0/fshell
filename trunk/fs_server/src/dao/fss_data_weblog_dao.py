@@ -42,8 +42,8 @@ class FssWebLogDao:
 
 
         dataBase = DataBase()
-        sql = "insert into tb_data_weblog(agent_id, client_ip, time_local, method, url, \
-              req_body, referer) values(%s, %s, %s, %s, %s, %s, %s)";
+        sql = "insert into tb_data_weblog(agent_id, client_ip, time_local, method, url, " \
+              "req_body, referer) values(%s, %s, %s, %s, %s, %s, %s)";
         param = (agent_id, client_ip, time_local, method, url, req_body, referer)
         
         bRet, sRet = dataBase.insert_data(sql, param)

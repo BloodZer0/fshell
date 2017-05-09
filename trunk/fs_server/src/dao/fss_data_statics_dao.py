@@ -9,7 +9,7 @@
 CREATE TABLE `tb_data_statics` (
     `id` varchar(20) NOT NULL,
     `agent_id` int(11) NOT NULL,
-    `filename` varchar(50) NOT NULL,
+    `filename` varchar(200) NOT NULL,
     `text_ic` varchar(10) NOT NULL,
     `text_ent` varchar(10) NOT NULL,
     `text_lw` int(11) NOT NULL,

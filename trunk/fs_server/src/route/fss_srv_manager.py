@@ -37,4 +37,4 @@ class FssManagerSrv:
         rspProto = rspData['proto_type']
         rspData = rspData['data']
        
-        return FsContentProto.response_packet(session, reqJson, rspEnum, rspProto, rspData)
+        return FssContentProto.response_packet(session, reqJson, rspEnum, rspProto, rspData)

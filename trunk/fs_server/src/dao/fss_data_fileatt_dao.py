@@ -10,9 +10,9 @@
 CREATE TABLE `tb_data_fileatt` (
     `id` varchar(20) NOT NULL,
     `agent_id` int(11) NOT NULL,
-    `filename` varchar(50) NOT NULL,
-    `file_ctime` datetime NOT NULL,
-    `file_mtime` datetime NOT NULL,
+    `filename` varchar(200) NOT NULL,
+    `file_ctime` int(11) NOT NULL,
+    `file_mtime` int(11) NOT NULL,
     `file_mode` int(5) NOT NULL,
     `file_owner` varchar(20) NOT NULL,
     `insert_tm` datetime NOT NULL
@@ -40,8 +40,8 @@ class FssFileAttDao:
         file_owner = data['file_owner']
 
         dataBase = DataBase()
-        sql = "insert into tb_data_fileatt(agent_id, filename, file_ctime, file_mtime, file_mode, \
-              file_owner, insert_tm) values(%s, %s, %s, %s, %s, %s, %s)"
+        sql = "insert into tb_data_fileatt(agent_id, filename, file_ctime, file_mtime, file_mode, " \
+              "file_owner, insert_tm) values(%s, %s, %s, %s, %s, %s, %s)"
         param = (agent_id, filename, file_ctime, file_mtime, file_mode, file_owner, get_cur_time())
 
         bRet, sRet = dataBase.insert_data(sql, param)

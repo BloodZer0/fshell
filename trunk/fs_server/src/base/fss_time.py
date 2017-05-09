@@ -26,7 +26,6 @@ def yg_tm_str_int(strTm, format="%Y-%m-%d %H:%M:%S"):
     tmTuple = time.strptime(strTm, format)
     return time.mktime(tmTuple)
 
-
 def yg_tm_int_str(tm, format="%Y-%m-%d %H:%M:%S"):
     # tmObj = time.localtime(tm)
     tmObj = time.localtime(tm)
@@ -126,4 +125,7 @@ if __name__ == "__main__":
     # test7()
     #test8()
 
-    print get_cur_day(-2,format="%Y-%m-%d")
+    #print get_cur_day(-2,format="%Y-%m-%d")
+    print yg_tm_str_int('09/May/2017:18:06:01')
+
+    pass

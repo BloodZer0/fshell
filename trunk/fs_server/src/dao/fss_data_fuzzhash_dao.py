@@ -10,8 +10,8 @@
 CREATE TABLE `tb_data_fuzzhash` (
     `id` varchar(20) NOT NULL,
     `agent_id` int(11) NOT NULL,
-    `filename` varchar(50) NOT NULL,
-    `fuzz_hash` varchar(50) NOT NULL,
+    `filename` varchar(200) NOT NULL,
+    `fuzz_hash` varchar(300) NOT NULL,
     `insert_tm` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 '''
