@@ -1,0 +1,741 @@
+<!doctype html>
+<html class="fixed">
+	<head>
+
+		<!-- Basic -->
+		<meta charset="UTF-8">
+
+		<title>fshell-webshll detection</title>
+		<meta name="keywords" content="fshell,webshll kill,machine learning" />
+		<meta name="description" content="Fshell, a webshll detection system based machine learning">
+		<meta name="author" content="s0nnet">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- Web Fonts  -->
+		<link href="fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="static/vendor/bootstrap/css/bootstrap.css" />
+
+		<link rel="stylesheet" href="static/vendor/font-awesome/css/font-awesome.css" />
+		<link rel="stylesheet" href="static/vendor/magnific-popup/magnific-popup.css" />
+		<link rel="stylesheet" href="static/vendor/bootstrap-datepicker/css/datepicker3.css" />
+
+		<!-- Specific Page Vendor CSS -->
+		<link rel="stylesheet" href="static/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
+		<link rel="stylesheet" href="static/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
+		<link rel="stylesheet" href="static/vendor/morris/morris.css" />
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="static/stylesheets/theme.css" />
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="static/stylesheets/skins/default.css" />
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="static/stylesheets/theme-custom.css">
+
+		<!-- Head Libs -->
+		<script src="static/vendor/modernizr/modernizr.js"></script>
+	</head>
+	<body>
+		<section class="body">
+
+			<!-- start: header -->
+			<header class="header">
+				<div class="logo-container">
+					<a href="../" class="logo" style="text-decoration:none;"">
+						<img src="static/images/logo.png" height="46" alt="Fshell" />
+						<span style="font-size:25px;"> fshell </span><span style="font-size:13px;color:#1e323c;"> 自动化webshell检测平台</span>
+					</a>
+					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+					</div>
+				</div>
+			
+				<!-- start: search & user box -->
+				<div class="header-right">
+			
+					<form action="pages-search-results.html" class="search nav-form">
+						<div class="input-group input-search">
+							<input type="text" class="form-control" name="q" id="q" placeholder="Search...">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+							</span>
+						</div>
+					</form>
+			
+					<span class="separator"></span>
+			
+					<ul class="notifications">
+						<li>
+							<a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+								<i class="fa fa-eye"></i>
+								<span class="badge">4</span>
+							</a>
+			
+							<div class="dropdown-menu notification-menu">
+								<div class="notification-title">
+									<span class="pull-right label label-default">23</span>
+									最新检测
+								</div>
+			
+								<div class="content">
+									<ul>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-eraser bg-info"></i>
+												</div>
+												<span class="title">发现异常文件</span>
+												<span class="message">agent_test03</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-minus-circle bg-success"></i>
+												</div>
+												<span class="title">web日志异常</span>
+												<span class="message">agent_test02流量过载</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-info-circle bg-warning"></i>
+												</div>
+												<span class="title">发现可疑文件</span>
+												<span class="message">agent_test02</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-bolt bg-danger"></i>
+												</div>
+												<span class="title">发现webshell</span>
+												<span class="message">agent_test01</span>
+											</a>
+										</li>
+									</ul>
+			
+									<hr />
+			
+									<div class="text-right">
+										<a href="#" class="view-more">View All</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+								<i class="fa fa-bell"></i>
+								<span class="badge">3</span>
+							</a>
+			
+							<div class="dropdown-menu notification-menu">
+								<div class="notification-title">
+									<span class="pull-right label label-default">3</span>
+									消息中心
+								</div>
+			
+								<div class="content">
+									<ul>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-space-shuttle bg-danger"></i>
+												</div>
+												<span class="title">Agent掉线</span>
+												<span class="message">agent_test04</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-envelope-o bg-warning"></i>
+												</div>
+												<span class="title">邮件发送成功</span>
+												<span class="message">mailto s0nnet@qq.com</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-cogs bg-success"></i>
+												</div>
+												<span class="title">系统状态正常</span>
+												<span class="message">负载60%</span>
+											</a>
+										</li>
+									</ul>
+			
+									<hr />
+			
+									<div class="text-right">
+										<a href="#" class="view-more">View All</a>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+			
+					<span class="separator"></span>
+			
+					<div id="userbox" class="userbox">
+						<a href="#" data-toggle="dropdown">
+							<figure class="profile-picture">
+								<img src="static/images/logged-user.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="static/images/logged-user.jpg" />
+							</figure>
+							<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
+								<span class="name">s0nnet</span>
+								<span class="role">administrator</span>
+							</div>
+			
+							<i class="fa custom-caret"></i>
+						</a>
+			
+						<div class="dropdown-menu">
+							<ul class="list-unstyled">
+								<li class="divider"></li>
+								<li>
+									<a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fa fa-user"></i> 个人中心</a>
+								</li>
+								<li>
+									<a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fa fa-lock"></i> 锁 屏</a>
+								</li>
+								<li>
+									<a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fa fa-power-off"></i> 退 出</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- end: search & user box -->
+			</header>
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+				<aside id="sidebar-left" class="sidebar-left">
+				
+					<div class="sidebar-header">
+						<div class="sidebar-title">
+							
+						</div>
+						<div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+							<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+						</div>
+					</div>
+				
+					<div class="nano">
+						<div class="nano-content">
+							<nav id="menu" class="nav-main" role="navigation">
+								<ul class="nav nav-main">
+									<li class="nav-active">
+										<a href="index.html">
+											<i class="fa fa-home" aria-hidden="true"></i>
+											<span>Dashboard</span>
+										</a>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-shield" aria-hidden="true"></i>
+											<span>风险监控</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="detection-events.html">
+													 检测事件
+												</a>
+											</li>
+											<li>
+												<a href="detection-top.html">
+													 TOP检测结果
+												</a>
+											</li>
+											<li>
+												<a href="detection-model.html">
+													 模型可视化
+												</a>
+											</li>
+											<li>
+												<a href="detection-webshell.html">
+													 Webshell库
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-tasks" aria-hidden="true"></i>
+											<span>样本库管理</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="lib-fuzzhash.html">
+													 Fuzzhash特征库
+												</a>
+											</li>
+											<li>
+												<a href="lib-danfunc.html">
+													 高危函数特征库
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-sitemap" aria-hidden="true"></i>
+											<span>Agent管理</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="agent-list.html">
+													 Agent列表
+												</a>
+											</li>
+											<li>
+												<a href="agent-add.html">
+													 添加Agent
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-parent nav-expanded nav-active">
+										<a>
+											<i class="fa fa-bell-o" aria-hidden="true"></i>
+											<span>预警通知</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="msg-list.html">
+													 通知列表
+												</a>
+											</li>
+											<li>
+												<a href="msg-send.html">
+													 已发通知
+												</a>
+											</li>
+											<li class="nav-active">
+												<a href="msg-add.html">
+													 添加通知
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-user" aria-hidden="true"></i>
+											<span>用户管理</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="user-list.html">
+													 用户列表
+												</a>
+											</li>
+											<li>
+												<a href="user-add.html">
+													 添加用户
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-gear" aria-hidden="true"></i>
+											<span>系统设置</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="sys-status.html">
+													 系统状态
+												</a>
+											</li>
+											<li>
+												<a href="sys-log.html">
+													 日志审计
+												</a>
+											</li>
+											<li>
+												<a href="sys-reboot.html">
+													 重启设备
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a href="https://github.com/Lingerhk/fshell" target="_blank">
+											<i class="fa fa-external-link" aria-hidden="true"></i>
+											<span>项目文档</span>
+										</a>
+									</li>
+									<li>
+										<a role="menuitem" tabindex="-1" href="pages-signin.html">
+											<i class="fa fa-power-off" aria-hidden="true"></i>
+											<span>Logout</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</aside>
+				<!-- end: sidebar -->
+
+				<section role="main" class="content-body">
+					<header class="page-header">
+						<h2>添加通知</h2>
+					
+						<div class="right-wrapper pull-right">
+							<ol class="breadcrumbs">
+								<li>
+									<a href="index.html">
+										<i class="fa fa-home"></i>
+									</a>
+								</li>
+								<li><span>预警通知</span></li>
+								<li><span>添加通知</span></li>
+							</ol>
+						</div>
+					</header>
+
+					<!-- start: page -->
+					<div class="row">
+						<div class="col-md-6">
+							<form id="form" action="forms-validation.html" class="form-horizontal">
+								<section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+										</div>
+
+										<h2 class="panel-title">Basic Form Validation</h2>
+										<p class="panel-subtitle">
+											Basic validation will display a label with the error after the form control.
+										</p>
+									</header>
+									<div class="panel-body">
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Full Name <span class="required">*</span></label>
+											<div class="col-sm-9">
+												<input type="text" name="fullname" class="form-control" placeholder="eg.: John Doe" required/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Email <span class="required">*</span></label>
+											<div class="col-sm-9">
+												<div class="input-group">
+													<span class="input-group-addon">
+														<i class="fa fa-envelope"></i>
+													</span>
+													<input type="email" name="email" class="form-control" placeholder="eg.: email@email.com" required/>
+												</div>
+											</div>
+											<div class="col-sm-9">
+
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">GitHub</label>
+											<div class="col-sm-9">
+												<input type="url" name="github" class="form-control" placeholder="eg.: https://github.com/johndoe" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Skills <span class="required">*</span></label>
+											<div class="col-sm-9">
+												<textarea name="skills" rows="5" class="form-control" placeholder="Describe your skills" required></textarea>
+											</div>
+										</div>
+									</div>
+									<footer class="panel-footer">
+										<div class="row">
+											<div class="col-sm-9 col-sm-offset-3">
+												<button class="btn btn-primary">Submit</button>
+												<button type="reset" class="btn btn-default">Reset</button>
+											</div>
+										</div>
+									</footer>
+								</section>
+							</form>
+						</div>
+						<!-- col-md-6 -->
+						<div class="col-md-6">
+							<form id="chk-radios-form" action="forms-validation.html">
+								<section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+										</div>
+
+										<h2 class="panel-title">Validating Checkbox and Radios</h2>
+
+										<p class="panel-subtitle">
+											Easily validate checkboxes and radios tags.
+										</p>
+									</header>
+									<div class="panel-body">
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Porto Admin is <span class="required">*</span></label>
+											<div class="col-sm-9">
+												<div class="radio-custom radio-primary">
+													<input id="awesome" name="porto_is" type="radio" value="awesome" required />
+													<label for="awesome">Awesome</label>
+												</div>
+												<div class="radio-custom radio-primary">
+													<input id="very-awesome" name="porto_is" type="radio" value="very-awesome" />
+													<label for="very-awesome">Very Awesome</label>
+												</div>
+												<div class="radio-custom radio-primary">
+													<input id="ultra-awesome" name="porto_is" type="radio" value="ultra-awesome" />
+													<label for="ultra-awesome">Ultra Awesome</label>
+												</div>
+												<label class="error" for="porto_is"></label>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">I will use it for <span class="required">*</span></label>
+											<div class="col-sm-9">
+												<div class="checkbox-custom chekbox-primary">
+													<input id="for-project" value="project" type="checkbox" name="for[]" required />
+													<label for="for-project">My Project</label>
+												</div>
+												<div class="checkbox-custom chekbox-primary">
+													<input id="for-website" value="website" type="checkbox" name="for[]" />
+													<label for="for-website">My Website</label>
+												</div>
+												<div class="checkbox-custom chekbox-primary">
+													<input id="for-all" value="all" type="checkbox" name="for[]" />
+													<label for="for-all">All things I do</label>
+												</div>
+												<label class="error" for="for[]"></label>
+											</div>
+										</div>
+									</div>
+									<footer class="panel-footer">
+										<div class="row">
+											<div class="col-sm-9 col-sm-offset-3">
+												<button class="btn btn-primary">Submit</button>
+												<button type="reset" class="btn btn-default">Reset</button>
+											</div>
+										</div>
+									</footer>
+								</section>
+							</form>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<form id="summary-form" action="forms-validation.html" class="form-horizontal">
+								<section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+										</div>
+
+										<h2 class="panel-title">Validation Summary</h2>
+										<p class="panel-subtitle">
+											Validation summary will display an error list above the form.
+										</p>
+									</header>
+									<div class="panel-body">
+										<div class="validation-message">
+											<ul></ul>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Full Name <span class="required">*</span></label>
+											<div class="col-sm-9">
+												<input type="text" name="fullname" class="form-control" title="Plase enter a name." placeholder="eg.: John Doe" required/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Email <span class="required">*</span></label>
+											<div class="col-sm-9">
+												<input type="email" name="email" class="form-control" title="Please enter an email address." placeholder="eg.: john@doe.com" required/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">GitHub</label>
+											<div class="col-sm-9">
+												<input type="url" name="url" title="Please enter a valid url." class="form-control" placeholder="eg.: https://github.com/johndoe" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Resume <span class="required">*</span></label>
+											<div class="col-sm-9">
+												<textarea name="resume" rows="5" title="Your resume is too short." class="form-control" placeholder="Enter your resume" required></textarea>
+											</div>
+										</div>
+									</div>
+									<footer class="panel-footer">
+										<div class="row">
+											<div class="col-sm-9 col-sm-offset-3">
+												<button class="btn btn-primary">Submit</button>
+												<button type="reset" class="btn btn-default">Reset</button>
+											</div>
+										</div>
+									</footer>
+								</section>
+							</form>
+						</div>
+						<div class="col-md-6">
+							<form id="selects-form" action="forms-validation.html">
+								<section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+										</div>
+
+										<h2 class="panel-title">Validation Selects</h2>
+										<p class="panel-subtitle">
+											Easily validate select tags, does not matter if is single or multiple.
+										</p>
+									</header>
+									<div class="panel-body">
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Company</label>
+											<div class="col-sm-9">
+												<select id="company" class="form-control" required>
+													<option value="">Choose a Company</option>
+													<option value="apple">Apple</option>
+													<option value="google">Google</option>
+													<option value="microsoft">Microsoft</option>
+													<option value="yahoo">Yahoo</option>
+												</select>
+												<label class="error" for="company"></label>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Browsers</label>
+											<div class="col-sm-9">
+												<select id="browsers" name="browsers" title="Please select at least one browser" class="form-control" size="5" multiple="multiple" required>
+													<option value="chrome">Chrome / Safari</option>
+													<option value="ff">Firefox</option>
+													<option value="ie">Internet Explorer</option>
+													<option value="opera">Opera</option>
+												</select>
+												<label class="error" for="browsers"></label>
+											</div>
+										</div>
+									</div>
+									<footer class="panel-footer">
+										<div class="row">
+											<div class="col-sm-9 col-sm-offset-3">
+												<button class="btn btn-primary">Submit</button>
+												<button type="reset" class="btn btn-default">Reset</button>
+											</div>
+										</div>
+									</footer>
+								</section>
+							</form>
+						</div>
+					</div>
+					<!-- end: page -->
+				</section>
+			</div>
+
+			<aside id="sidebar-right" class="sidebar-right">
+				<div class="nano">
+					<div class="nano-content">
+						<a href="#" class="mobile-close visible-xs">
+							Collapse <i class="fa fa-chevron-right"></i>
+						</a>
+			
+						<div class="sidebar-right-wrapper">
+			
+							<div class="sidebar-widget widget-calendar">
+								<h6>Upcoming Tasks</h6>
+								<div data-plugin-datepicker data-plugin-skin="dark" ></div>
+			
+								<ul>
+									<li>
+										<time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
+										<span>Company Meeting</span>
+									</li>
+								</ul>
+							</div>
+			
+							<div class="sidebar-widget widget-friends">
+								<h6>Friends</h6>
+								<ul>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+			
+						</div>
+					</div>
+				</div>
+			</aside>
+		</section>
+
+		<!-- Vendor -->
+		<script src="static/vendor/jquery/jquery.js"></script>
+		<script src="static/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+		<script src="static/vendor/bootstrap/js/bootstrap.js"></script>
+		<script src="static/vendor/nanoscroller/nanoscroller.js"></script>
+		<script src="static/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script src="static/vendor/magnific-popup/magnific-popup.js"></script>
+		<script src="static/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+		
+		<!-- Specific Page Vendor -->
+		<script src="static/vendor/jquery-validation/jquery.validate.js"></script>
+		
+		<!-- Theme Base, Components and Settings -->
+		<script src="static/javascripts/theme.js"></script>
+		
+		<!-- Theme Custom -->
+		<script src="static/javascripts/theme.custom.js"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="static/javascripts/theme.init.js"></script>
+
+
+		<!-- Examples -->
+		<script src="static/javascripts/forms/examples.validation.js"></script>
+	</body>
+</html>

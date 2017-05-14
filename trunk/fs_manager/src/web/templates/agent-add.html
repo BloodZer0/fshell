@@ -1,0 +1,1277 @@
+<!doctype html>
+<html class="fixed">
+	<head>
+
+		<!-- Basic -->
+		<meta charset="UTF-8">
+
+		<title>fshell-webshll detection</title>
+		<meta name="keywords" content="fshell,webshll kill,machine learning" />
+		<meta name="description" content="Fshell, a webshll detection system based machine learning">
+		<meta name="author" content="s0nnet">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- Web Fonts  -->
+		<link href="fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="static/vendor/bootstrap/css/bootstrap.css" />
+
+		<link rel="stylesheet" href="static/vendor/font-awesome/css/font-awesome.css" />
+		<link rel="stylesheet" href="static/vendor/magnific-popup/magnific-popup.css" />
+		<link rel="stylesheet" href="static/vendor/bootstrap-datepicker/css/datepicker3.css" />
+
+		<!-- Specific Page Vendor CSS -->
+		<link rel="stylesheet" href="static/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
+		<link rel="stylesheet" href="static/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
+		<link rel="stylesheet" href="static/vendor/morris/morris.css" />
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="static/stylesheets/theme.css" />
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="static/stylesheets/skins/default.css" />
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="static/stylesheets/theme-custom.css">
+
+		<!-- Head Libs -->
+		<script src="static/vendor/modernizr/modernizr.js"></script>
+	</head>
+	<body>
+		<section class="body">
+
+			<!-- start: header -->
+			<header class="header">
+				<div class="logo-container">
+					<a href="../" class="logo" style="text-decoration:none;"">
+						<img src="static/images/logo.png" height="46" alt="Fshell" />
+						<span style="font-size:25px;"> fshell </span><span style="font-size:13px;color:#1e323c;"> 自动化webshell检测平台</span>
+					</a>
+					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+					</div>
+				</div>
+			
+				<!-- start: search & user box -->
+				<div class="header-right">
+			
+					<form action="pages-search-results.html" class="search nav-form">
+						<div class="input-group input-search">
+							<input type="text" class="form-control" name="q" id="q" placeholder="Search...">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+							</span>
+						</div>
+					</form>
+			
+					<span class="separator"></span>
+			
+					<ul class="notifications">
+						<li>
+							<a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+								<i class="fa fa-eye"></i>
+								<span class="badge">4</span>
+							</a>
+			
+							<div class="dropdown-menu notification-menu">
+								<div class="notification-title">
+									<span class="pull-right label label-default">23</span>
+									最新检测
+								</div>
+			
+								<div class="content">
+									<ul>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-eraser bg-info"></i>
+												</div>
+												<span class="title">发现异常文件</span>
+												<span class="message">agent_test03</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-minus-circle bg-success"></i>
+												</div>
+												<span class="title">web日志异常</span>
+												<span class="message">agent_test02流量过载</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-info-circle bg-warning"></i>
+												</div>
+												<span class="title">发现可疑文件</span>
+												<span class="message">agent_test02</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-bolt bg-danger"></i>
+												</div>
+												<span class="title">发现webshell</span>
+												<span class="message">agent_test01</span>
+											</a>
+										</li>
+									</ul>
+			
+									<hr />
+			
+									<div class="text-right">
+										<a href="#" class="view-more">View All</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+								<i class="fa fa-bell"></i>
+								<span class="badge">3</span>
+							</a>
+			
+							<div class="dropdown-menu notification-menu">
+								<div class="notification-title">
+									<span class="pull-right label label-default">3</span>
+									消息中心
+								</div>
+			
+								<div class="content">
+									<ul>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-space-shuttle bg-danger"></i>
+												</div>
+												<span class="title">Agent掉线</span>
+												<span class="message">agent_test04</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-envelope-o bg-warning"></i>
+												</div>
+												<span class="title">邮件发送成功</span>
+												<span class="message">mailto s0nnet@qq.com</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="clearfix">
+												<div class="image">
+													<i class="fa fa-cogs bg-success"></i>
+												</div>
+												<span class="title">系统状态正常</span>
+												<span class="message">负载60%</span>
+											</a>
+										</li>
+									</ul>
+			
+									<hr />
+			
+									<div class="text-right">
+										<a href="#" class="view-more">View All</a>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+			
+					<span class="separator"></span>
+			
+					<div id="userbox" class="userbox">
+						<a href="#" data-toggle="dropdown">
+							<figure class="profile-picture">
+								<img src="static/images/logged-user.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="static/images/logged-user.jpg" />
+							</figure>
+							<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
+								<span class="name">s0nnet</span>
+								<span class="role">administrator</span>
+							</div>
+			
+							<i class="fa custom-caret"></i>
+						</a>
+			
+						<div class="dropdown-menu">
+							<ul class="list-unstyled">
+								<li class="divider"></li>
+								<li>
+									<a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fa fa-user"></i> 个人中心</a>
+								</li>
+								<li>
+									<a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fa fa-lock"></i> 锁 屏</a>
+								</li>
+								<li>
+									<a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fa fa-power-off"></i> 退 出</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- end: search & user box -->
+			</header>
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+				<aside id="sidebar-left" class="sidebar-left">
+				
+					<div class="sidebar-header">
+						<div class="sidebar-title">
+							
+						</div>
+						<div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+							<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+						</div>
+					</div>
+				
+					<div class="nano">
+						<div class="nano-content">
+							<nav id="menu" class="nav-main" role="navigation">
+								<ul class="nav nav-main">
+									<li class="nav-active">
+										<a href="index.html">
+											<i class="fa fa-home" aria-hidden="true"></i>
+											<span>Dashboard</span>
+										</a>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-shield" aria-hidden="true"></i>
+											<span>风险监控</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="detection-events.html">
+													 检测事件
+												</a>
+											</li>
+											<li>
+												<a href="detection-top.html">
+													 TOP检测结果
+												</a>
+											</li>
+											<li>
+												<a href="detection-model.html">
+													 模型可视化
+												</a>
+											</li>
+											<li>
+												<a href="detection-webshell.html">
+													 Webshell库
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-tasks" aria-hidden="true"></i>
+											<span>样本库管理</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="lib-fuzzhash.html">
+													 Fuzzhash特征库
+												</a>
+											</li>
+											<li>
+												<a href="lib-danfunc.html">
+													 高危函数特征库
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-parent nav-expanded nav-active">
+										<a>
+											<i class="fa fa-sitemap" aria-hidden="true"></i>
+											<span>Agent管理</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="agent-list.html">
+													 Agent列表
+												</a>
+											</li>
+											<li class="nav-active">
+												<a href="agent-add.html">
+													 添加Agent
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-bell-o" aria-hidden="true"></i>
+											<span>预警通知</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="msg-list.html">
+													 通知列表
+												</a>
+											</li>
+											<li>
+												<a href="msg-send.html">
+													 已发通知
+												</a>
+											</li>
+											<li>
+												<a href="msg-add.html">
+													 添加通知
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-user" aria-hidden="true"></i>
+											<span>用户管理</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="user-list.html">
+													 用户列表
+												</a>
+											</li>
+											<li>
+												<a href="user-add.html">
+													 添加用户
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-gear" aria-hidden="true"></i>
+											<span>系统设置</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="sys-status.html">
+													 系统状态
+												</a>
+											</li>
+											<li>
+												<a href="sys-log.html">
+													 日志审计
+												</a>
+											</li>
+											<li>
+												<a href="sys-reboot.html">
+													 重启设备
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a href="https://github.com/Lingerhk/fshell" target="_blank">
+											<i class="fa fa-external-link" aria-hidden="true"></i>
+											<span>项目文档</span>
+										</a>
+									</li>
+									<li>
+										<a role="menuitem" tabindex="-1" href="pages-signin.html">
+											<i class="fa fa-power-off" aria-hidden="true"></i>
+											<span>Logout</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</aside>
+				<!-- end: sidebar -->
+
+				<section role="main" class="content-body">
+					<header class="page-header">
+						<h2>添加Agent</h2>
+					
+						<div class="right-wrapper pull-right">
+							<ol class="breadcrumbs">
+								<li>
+									<a href="index.html">
+										<i class="fa fa-home"></i>
+									</a>
+								</li>
+								<li><span>Agent管理</span></li>
+								<li><span>添加Agent</span></li>
+							</ol>
+						</div>
+					</header>
+
+					<!-- start: page -->
+						<div class="row">
+							<div class="col-lg-12">
+								<section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+										</div>
+						
+										<h2 class="panel-title">Form Elements</h2>
+									</header>
+									<div class="panel-body">
+										<form class="form-horizontal form-bordered" method="get">
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Default</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputDefault">
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputDisabled">Disabled</label>
+												<div class="col-md-6">
+													<input class="form-control" id="inputDisabled" type="text" placeholder="Disabled input here..." disabled="">
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputReadOnly">Read-Only Input</label>
+												<div class="col-md-6">
+													<input type="text" value="Read-Only Input" id="inputReadOnly" class="form-control" readonly="readonly">
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputHelpText">Help text</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputHelpText">
+													<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputRounded">Rounded Input</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control input-rounded" id="inputRounded">
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputFocus">Input focus</label>
+												<div class="col-md-6">
+													<input class="form-control" id="inputFocus" type="text" value="This is focused...">
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputPlaceholder">Placeholder</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" placeholder="placeholder" id="inputPlaceholder">
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputPassword">Password</label>
+												<div class="col-md-6">
+													<input type="password" class="form-control" placeholder="" id="inputPassword">
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class=" col-md-3 control-label">Static control</label>
+												<div class="col-lg-6">
+													<p class="form-control-static">email@example.com</p>
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label">Left Icon</label>
+												<div class="col-md-6">
+													<div class="input-group input-group-icon">
+														<span class="input-group-addon">
+															<span class="icon"><i class="fa fa-user"></i></span>
+														</span>
+														<input type="text" class="form-control" placeholder="Left icon">
+													</div>
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label">Right Icon</label>
+												<div class="col-md-6">
+													<div class="input-group input-group-icon">
+														<input type="text" class="form-control" placeholder="Right icon">
+														<span class="input-group-addon">
+															<span class="icon"><i class="fa fa-user"></i></span>
+														</span>
+													</div>
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label">Search</label>
+												<div class="col-md-6">
+													<div class="input-group input-search">
+														<input type="text" class="form-control" name="q" id="q" placeholder="Search...">
+														<span class="input-group-btn">
+															<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+														</span>
+													</div>
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label">File Upload</label>
+												<div class="col-md-6">
+													<div class="fileupload fileupload-new" data-provides="fileupload">
+														<div class="input-append">
+															<div class="uneditable-input">
+																<i class="fa fa-file fileupload-exists"></i>
+																<span class="fileupload-preview"></span>
+															</div>
+															<span class="btn btn-default btn-file">
+																<span class="fileupload-exists">Change</span>
+																<span class="fileupload-new">Select file</span>
+																<input type="file" />
+															</span>
+															<a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+														</div>
+													</div>
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label">Vertical Group</label>
+												<div class="col-md-6">
+													<section class="form-group-vertical">
+														<input class="form-control" type="text" placeholder="Username">
+														<input class="form-control" type="text" placeholder="Email">
+														<input class="form-control last" type="password" placeholder="Password">
+													</section>
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="control-label col-md-3">Vertical Group w/ icon</label>
+												<div class="col-md-6">
+													<section class="form-group-vertical">
+														<div class="input-group input-group-icon">
+															<span class="input-group-addon">
+																<span class="icon"><i class="fa fa-user"></i></span>
+															</span>
+															<input class="form-control" type="text" placeholder="Username">
+														</div>
+														<div class="input-group input-group-icon">
+															<span class="input-group-addon">
+																<span class="icon"><i class="fa fa-key"></i></span>
+															</span>
+															<input class="form-control" type="text" placeholder="Password">
+														</div>
+													</section>
+												</div>
+											</div>
+						
+											<div class="form-group has-success">
+												<label class="col-md-3 control-label" for="inputSuccess">Input with success</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputSuccess">
+												</div>
+											</div>
+											<div class="form-group has-warning">
+												<label class="col-md-3 control-label" for="inputWarning">Input with warning</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputWarning">
+												</div>
+											</div>
+											<div class="form-group has-error">
+												<label class="col-md-3 control-label" for="inputError">Input with error</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="inputError">
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputTooltip">Input with Tooltip</label>
+												<div class="col-md-6">
+													<input type="text" placeholder="Hover me" title="" data-toggle="tooltip" data-trigger="hover" class="form-control" data-original-title="Place your tooltip info here" id="inputTooltip">
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputPopover">Input with Popover</label>
+												<div class="col-md-6">
+													<input type="text" placeholder="Click Here" class="form-control" data-toggle="popover" data-placement="top" data-original-title="The Title" data-content="Content goes here..." data-trigger="click" id="inputPopover">
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label">Column sizing</label>
+												<div class="col-sm-8">
+													<div class="row">
+														<div class="col-sm-2">
+															<input type="text" class="form-control" placeholder=".col-sm-2">
+														</div>
+														<div class="visible-xs mb-md"></div>
+														<div class="col-sm-3">
+															<input type="text" class="form-control" placeholder=".col-sm-3">
+														</div>
+														<div class="visible-xs mb-md"></div>
+														<div class="col-sm-4">
+															<input type="text" class="form-control" placeholder=".col-sm-4">
+														</div>
+													</div>
+						
+												</div>
+											</div>
+										</form>
+									</div>
+								</section>
+						
+								<section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+										</div>
+						
+										<h2 class="panel-title">Controls sizing</h2>
+									</header>
+									<div class="panel-body">
+										<form class="form-horizontal form-bordered" method="get">
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputSuccess">Input sizing</label>
+												<div class="col-md-6">
+													<input class="form-control input-lg mb-md" type="text" placeholder=".input-lg">
+													<input class="form-control mb-md" type="text" placeholder="Default input">
+													<input class="form-control input-sm mb-md" type="text" placeholder=".input-sm">
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputSuccess">Select sizing</label>
+												<div class="col-md-6">
+													<select class="form-control input-lg mb-md">
+														<option>Option 1</option>
+														<option>Option 2</option>
+														<option>Option 3</option>
+													</select>
+													<select class="form-control mb-md">
+														<option>Option 1</option>
+														<option>Option 2</option>
+														<option>Option 3</option>
+													</select>
+													<select class="form-control input-sm mb-md">
+														<option>Option 1</option>
+														<option>Option 2</option>
+														<option>Option 3</option>
+													</select>
+												</div>
+											</div>
+										</form>
+									</div>
+								</section>
+								<section class="panel">
+									<div class="panel-body">
+										<form class="form-horizontal form-bordered" method="get">
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputSuccess">Checkboxes and radios</label>
+												<div class="col-md-6">
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" value="">
+															Option one is this and that—be sure to include why it's great
+														</label>
+													</div>
+						
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" value="">
+															Option one is this and that—be sure to include why it's great option one
+														</label>
+													</div>
+						
+													<div class="radio">
+														<label>
+															<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+															Option one is this and that—be sure to include why it's great
+														</label>
+													</div>
+													<div class="radio">
+														<label>
+															<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+															Option two can be something else and selecting it will deselect option one
+														</label>
+													</div>
+						
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputSuccess">Inline checkboxes</label>
+												<div class="col-md-6">
+													<label class="checkbox-inline">
+														<input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+													</label>
+													<label class="checkbox-inline">
+														<input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+													</label>
+													<label class="checkbox-inline">
+														<input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+													</label>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputSuccess">Selects</label>
+												<div class="col-md-6">
+													<select class="form-control mb-md">
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+														<option>4</option>
+														<option>5</option>
+													</select>
+						
+													<select multiple="" class="form-control">
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+														<option>4</option>
+														<option>5</option>
+													</select>
+												</div>
+											</div>
+						
+										</form>
+									</div>
+								</section>
+						
+								<section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+										</div>
+						
+										<h2 class="panel-title">Input Groups</h2>
+									</header>
+									<div class="panel-body">
+										<form class="form-horizontal form-bordered" method="get">
+											<div class="form-group">
+												<label class="col-md-3 control-label">Basic examples</label>
+												<div class="col-md-6">
+													<div class="input-group mb-md">
+														<span class="input-group-addon btn-success">@</span>
+														<input type="text" class="form-control" placeholder="Username">
+													</div>
+						
+													<div class="input-group mb-md">
+														<input type="text" class="form-control">
+														<span class="input-group-addon btn-warning">.00</span>
+													</div>
+						
+													<div class="input-group mb-md">
+														<span class="input-group-addon">$</span>
+														<input type="text" class="form-control">
+														<span class="input-group-addon ">.00</span>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">Sizing</label>
+												<div class="col-md-6">
+													<div class="input-group input-group-lg mb-md">
+														<span class="input-group-addon btn-danger">@</span>
+														<input type="text" class="form-control input-lg" placeholder="Username">
+													</div>
+						
+													<div class="input-group mb-md">
+														<span class="input-group-addon">@</span>
+														<input type="text" class="form-control" placeholder="Username">
+													</div>
+						
+													<div class="input-group input-group-sm mb-md">
+														<span class="input-group-addon">@</span>
+														<input type="text" class="form-control" placeholder="Username">
+													</div>
+						
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">Iconic</label>
+												<div class="col-md-6">
+													<div class="input-group mb-md">
+														<span class="input-group-addon">
+															<i class="fa fa-user"></i>
+														</span>
+														<input type="text" class="form-control" placeholder="Username">
+													</div>
+													<div class="input-group mb-md">
+														<span class="input-group-addon">
+															<i class="fa fa-envelope"></i>
+														</span>
+														<input type="text" class="form-control" placeholder="Email">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">Checkbox and radio</label>
+												<div class="col-md-6">
+													<div class="input-group mb-md">
+														<span class="input-group-addon">
+															<input type="checkbox">
+														</span>
+														<input type="text" class="form-control">
+													</div>
+						
+													<div class="input-group mb-md">
+														<span class="input-group-addon">
+															<input type="radio">
+														</span>
+														<input type="text" class="form-control">
+													</div>
+						
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">Button addons</label>
+												<div class="col-md-6">
+													<div class="input-group mb-md">
+														<span class="input-group-btn">
+															<button class="btn btn-danger" type="button">Go!</button>
+														</span>
+														<input type="text" class="form-control">
+													</div>
+						
+													<div class="input-group mb-md">
+														<input type="text" class="form-control">
+														<span class="input-group-btn">
+															<button class="btn btn-success" type="button">Go!</button>
+														</span>
+													</div>
+												</div>
+											</div>
+						
+											<div class="form-group">
+												<label class="col-md-3 control-label">Segmented buttons</label>
+												<div class="col-md-6">
+													<div class="input-group mb-md">
+														<div class="input-group-btn">
+															<button tabindex="-1" class="btn btn-primary" type="button">Action</button>
+															<button tabindex="-1" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">
+																<span class="caret"></span>
+															</button>
+															<ul role="menu" class="dropdown-menu">
+																<li><a href="#">Action</a></li>
+																<li><a href="#">Another action</a></li>
+																<li><a href="#">Something else here</a></li>
+																<li class="divider"></li>
+																<li><a href="#">Separated link</a></li>
+															</ul>
+														</div>
+														<input type="text" class="form-control">
+													</div>
+						
+													<div class="input-group mb-md">
+														<input type="text" class="form-control">
+														<div class="input-group-btn">
+															<button tabindex="-1" class="btn btn-primary" type="button">Action</button>
+															<button tabindex="-1" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">
+																<span class="caret"></span>
+															</button>
+															<ul role="menu" class="dropdown-menu pull-right">
+																<li><a href="#">Action</a></li>
+																<li><a href="#">Another action</a></li>
+																<li><a href="#">Something else here</a></li>
+																<li class="divider"></li>
+																<li><a href="#">Separated link</a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+						
+										</form>
+									</div>
+								</section>
+						
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-lg-12">
+								<section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+										</div>
+						
+										<h2 class="panel-title">Custom Checkbox &amp; Radio</h2>
+									</header>
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-md-6">
+												<form class="form-horizontal form-bordered" method="get">
+													<div class="form-group">
+														<label class="col-sm-4 control-label">Checkboxes</label>
+						
+														<div class="col-sm-8">
+															<div class="checkbox-custom checkbox-default">
+																<input type="checkbox" checked="" id="checkboxExample1">
+																<label for="checkboxExample1">Checkbox Default</label>
+															</div>
+						
+															<div class="checkbox-custom checkbox-primary">
+																<input type="checkbox" checked="" id="checkboxExample2">
+																<label for="checkboxExample2">Checkbox Primary</label>
+															</div>
+						
+															<div class="checkbox-custom checkbox-success">
+																<input type="checkbox" checked="" id="checkboxExample3">
+																<label for="checkboxExample3">Checkbox Success</label>
+															</div>
+						
+															<div class="checkbox-custom checkbox-warning">
+																<input type="checkbox" checked="" id="checkboxExample4">
+																<label for="checkboxExample4">Checkbox Warning</label>
+															</div>
+						
+															<div class="checkbox-custom checkbox-danger">
+																<input type="checkbox" checked="" id="checkboxExample5">
+																<label for="checkboxExample5">Checkbox Danger</label>
+															</div>
+						
+															<div class="checkbox-custom">
+																<input type="checkbox" disabled="">
+																<label>Checkbox Disabled</label>
+															</div>
+						
+															<div class="checkbox-custom">
+																<input type="checkbox" disabled="" checked="">
+																<label>Checked &amp; Disabled</label>
+															</div>
+						
+														</div>
+													</div>
+												</form>
+											</div>
+											<div class="col-md-6">
+												<form class="form-horizontal form-bordered" method="get">
+													<div class="form-group">
+														<label class="col-sm-4 control-label">Radios</label>
+						
+														<div class="col-sm-8">
+															<div class="radio-custom">
+																<input type="radio" id="radioExample1" name="radioExample">
+																<label for="radioExample1">Radio Default</label>
+															</div>
+						
+															<div class="radio-custom radio-primary">
+																<input type="radio" id="radioExample2" name="radioExample">
+																<label for="radioExample2">Radio Primary</label>
+															</div>
+						
+															<div class="radio-custom radio-success">
+																<input type="radio" id="radioExample3" name="radioExample">
+																<label for="radioExample3">Radio Success</label>
+															</div>
+						
+															<div class="radio-custom radio-warning">
+																<input type="radio" id="radioExample4" name="radioExample">
+																<label for="radioExample4">Radio Warning</label>
+															</div>
+						
+															<div class="radio-custom radio-danger">
+																<input type="radio" id="radioExample5" name="radioExample">
+																<label for="radioExample5">Radio Danger</label>
+															</div>
+						
+															<div class="radio-custom">
+																<input type="radio" disabled="">
+																<label>Radio Disabled</label>
+															</div>
+						
+															<div class="radio-custom">
+																<input type="radio" disabled="" checked="">
+																<label>Checked &amp; Disabled</label>
+															</div>
+						
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-lg-12">
+								<section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+										</div>
+						
+										<h2 class="panel-title">Textarea</h2>
+									</header>
+									<div class="panel-body">
+										<form class="form-horizontal form-bordered" method="get">
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="textareaDefault">Textarea</label>
+												<div class="col-md-6">
+													<textarea class="form-control" rows="3" id="textareaDefault"></textarea>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="textareaAutosize">Textarea autosize</label>
+												<div class="col-md-6">
+													<textarea class="form-control" rows="3" id="textareaAutosize" data-plugin-textarea-autosize></textarea>
+												</div>
+											</div>
+										</form>
+									</div>
+								</section>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+						
+								<div data-collapsed="0" class="panel">
+						
+									<div class="panel-heading">
+										<div class="panel-title">
+											<div class="panel-actions">
+												<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+												<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+											</div>
+						
+											<h2 class="panel-title">Input Grid</h2>
+										</div>
+									</div>
+						
+									<div class="panel-body">
+						
+										<div class="row">
+						
+											<div class="col-md-12 form-group">
+												<input type="text" placeholder=".col-md-12" class="form-control">
+											</div>
+						
+											<div class="col-md-6 form-group">
+												<input type="text" placeholder=".col-md-6" class="form-control">
+											</div>
+						
+											<div class="col-md-6 form-group">
+												<input type="text" placeholder=".col-md-6" class="form-control">
+											</div>
+						
+						
+											<div class="col-md-4 form-group">
+												<input type="text" placeholder=".col-md-4" class="form-control">
+											</div>
+						
+											<div class="col-md-4 form-group">
+												<input type="text" placeholder=".col-md-4" class="form-control">
+											</div>
+						
+											<div class="col-md-4 form-group">
+												<input type="text" placeholder=".col-md-4" class="form-control">
+											</div>
+						
+						
+											<div class="col-md-3 form-group">
+												<input type="text" placeholder=".col-md-3" class="form-control">
+											</div>
+						
+											<div class="col-md-3 form-group">
+												<input type="text" placeholder=".col-md-3" class="form-control">
+											</div>
+						
+											<div class="col-md-3 form-group">
+												<input type="text" placeholder=".col-md-3" class="form-control">
+											</div>
+						
+											<div class="col-md-3 form-group">
+												<input type="text" placeholder=".col-md-3" class="form-control">
+											</div>
+						
+						
+											<div class="col-md-2 form-group">
+												<input type="text" placeholder=".col-md-2" class="form-control">
+											</div>
+						
+											<div class="col-md-2 form-group">
+												<input type="text" placeholder=".col-md-2" class="form-control">
+											</div>
+						
+											<div class="col-md-2 form-group">
+												<input type="text" placeholder=".col-md-2" class="form-control">
+											</div>
+						
+											<div class="col-md-2 form-group">
+												<input type="text" placeholder=".col-md-2" class="form-control">
+											</div>
+						
+											<div class="col-md-2 form-group">
+												<input type="text" placeholder=".col-md-2" class="form-control">
+											</div>
+						
+											<div class="col-md-2 form-group">
+												<input type="text" placeholder=".col-md-2" class="form-control">
+											</div>
+						
+						
+											<div class="col-md-1 form-group">
+												<input type="text" placeholder=".col-md-1" class="form-control">
+											</div>
+						
+											<div class="col-md-1 form-group">
+												<input type="text" placeholder=".col-md-1" class="form-control">
+											</div>
+						
+											<div class="col-md-1 form-group">
+												<input type="text" placeholder=".col-md-1" class="form-control">
+											</div>
+						
+											<div class="col-md-1 form-group">
+												<input type="text" placeholder=".col-md-1" class="form-control">
+											</div>
+						
+											<div class="col-md-1 form-group">
+												<input type="text" placeholder=".col-md-1" class="form-control">
+											</div>
+						
+											<div class="col-md-1 form-group">
+												<input type="text" placeholder=".col-md-1" class="form-control">
+											</div>
+						
+											<div class="col-md-1 form-group">
+												<input type="text" placeholder=".col-md-1" class="form-control">
+											</div>
+						
+											<div class="col-md-1 form-group">
+												<input type="text" placeholder=".col-md-1" class="form-control">
+											</div>
+						
+											<div class="col-md-1 form-group">
+												<input type="text" placeholder=".col-md-1" class="form-control">
+											</div>
+						
+											<div class="col-md-1 form-group">
+												<input type="text" placeholder=".col-md-1" class="form-control">
+											</div>
+						
+											<div class="col-md-1 form-group">
+												<input type="text" placeholder=".col-md-1" class="form-control">
+											</div>
+						
+											<div class="col-md-1 form-group">
+												<input type="text" placeholder=".col-md-1" class="form-control">
+											</div>
+										</div>
+						
+									</div>
+						
+								</div>
+						
+							</div>
+						</div>
+					<!-- end: page -->
+				</section>
+			</div>
+
+			<aside id="sidebar-right" class="sidebar-right">
+				<div class="nano">
+					<div class="nano-content">
+						<a href="#" class="mobile-close visible-xs">
+							Collapse <i class="fa fa-chevron-right"></i>
+						</a>
+			
+						<div class="sidebar-right-wrapper">
+			
+							<div class="sidebar-widget widget-calendar">
+								<h6>Upcoming Tasks</h6>
+								<div data-plugin-datepicker data-plugin-skin="dark" ></div>
+			
+								<ul>
+									<li>
+										<time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
+										<span>Company Meeting</span>
+									</li>
+								</ul>
+							</div>
+			
+							<div class="sidebar-widget widget-friends">
+								<h6>Friends</h6>
+								<ul>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+			
+						</div>
+					</div>
+				</div>
+			</aside>
+		</section>
+
+		<!-- Vendor -->
+		<script src="static/vendor/jquery/jquery.js"></script>
+		<script src="static/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+		<script src="static/vendor/bootstrap/js/bootstrap.js"></script>
+		<script src="static/vendor/nanoscroller/nanoscroller.js"></script>
+		<script src="static/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script src="static/vendor/magnific-popup/magnific-popup.js"></script>
+		<script src="static/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+		
+		<!-- Specific Page Vendor -->
+		<script src="static/vendor/jquery-autosize/jquery.autosize.js"></script>
+		<script src="static/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+		
+		<!-- Theme Base, Components and Settings -->
+		<script src="static/javascripts/theme.js"></script>
+		
+		<!-- Theme Custom -->
+		<script src="static/javascripts/theme.custom.js"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="static/javascripts/theme.init.js"></script>
+
+	</body>
+</html>
