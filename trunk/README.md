@@ -23,7 +23,7 @@
 
 * fs_manager模块：fshell的主控制模块。该模块实现：对agent配置管理；用户UI的管理；样本特征库的管理；机器学习检测模块相关配置以及结果的管理；以及其他预警通知、文件传输等的管理。
 
-* fs_deploy模块：fshell的安装部署模块。该模块实现对fs_agent和fs_server的部署，基于Nginx、mysql、python-virtualenv的底层基础环境，采用supervisor托管fs_server的各进程稳定运行。
+* fs_deploy模块：fshell的安装部署脚本。该模块实现对fs_agent和fs_server的自动化一键脚本部署，基于Nginx、mysql、python-virtualenv的底层基础环境，采用supervisor托管fs_server的各进程稳定运行。
 
 #### 3. 机器学习核心算法
 （待完善。。。）
