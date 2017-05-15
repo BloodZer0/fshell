@@ -12,8 +12,8 @@ if __name__ == "__main__":
     sys.path.append("../base")
 
 import web
-from yg_log import *
-from yg_util import *
+from fs_log import *
+from fs_util import *
 
 
 ###########################

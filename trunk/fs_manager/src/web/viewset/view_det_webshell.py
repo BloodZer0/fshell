@@ -11,21 +11,19 @@ from view_base import *
 from fsm_det_webshell import *
 
 
-class FsmDetWebshell(ViewBase):
+class ViewDetWebshell(ViewBase):
 
-    def __init__(self):
-        pass
+    def GET(self):
+        bRet, sRet = self.check_login()
+        if not bRet:
+            Log.err("not login!")
+            return web.seeother("/login")
 
-
-    def _check_param(self):
-        pass
-
-
-    def _deal_user_add(self):
-        pass
+        render=web.template.frender("templates/detection-webshell.html")
+        return render()
 
     def POST(self):
-        pass
+        return self.GET()
 
 
 

@@ -81,61 +81,66 @@ CREATE TABLE `tb_conf_weblog` (
 
 DROP TABLE IF EXISTS `tb_data_danfunc`;
 CREATE TABLE `tb_data_danfunc` (
-  `id` varchar(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `agent_id` int(11) NOT NULL,
-  `filename` varchar(50) NOT NULL,
+  `filename` varchar(200) NOT NULL,
   `weight_sum` int(5) NOT NULL,
   `functions` text NOT NULL,
-  `insert_tm` datetime NOT NULL
+  `insert_tm` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `tb_data_fileatt`;
 CREATE TABLE `tb_data_fileatt` (
-  `id` varchar(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `agent_id` int(11) NOT NULL,
-  `filename` varchar(50) NOT NULL,
-  `file_ctime` datetime NOT NULL,
-  `file_mtime` datetime NOT NULL,
+  `filename` varchar(200) NOT NULL,
+  `file_ctime` int(11) NOT NULL,
+  `file_mtime` int(11) NOT NULL,
   `file_mode` int(5) NOT NULL,
   `file_owner` varchar(20) NOT NULL,
-  `insert_tm` datetime NOT NULL
+  `insert_tm` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `tb_data_fuzzhash`;
 CREATE TABLE `tb_data_fuzzhash` (
-  `id` varchar(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `agent_id` int(11) NOT NULL,
-  `filename` varchar(50) NOT NULL,
-  `fuzz_hash` varchar(50) NOT NULL,
-  `insert_tm` datetime NOT NULL
+  `filename` varchar(200) NOT NULL,
+  `fuzz_hash` varchar(300) NOT NULL,
+  `insert_tm` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `tb_data_statics`;
 CREATE TABLE `tb_data_statics` (
-  `id` varchar(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `agent_id` int(11) NOT NULL,
-  `filename` varchar(50) NOT NULL,
+  `filename` varchar(200) NOT NULL,
   `text_ic` varchar(10) NOT NULL,
   `text_ent` varchar(10) NOT NULL,
   `text_lw` int(11) NOT NULL,
   `text_cmp` varchar(10) NOT NULL,
-  `insert_tm` datetime NOT NULL
+  `insert_tm` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `tb_data_weblog`;
 CREATE TABLE `tb_data_weblog` (
-  `id` varchar(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `agent_id` int(11) NOT NULL,
   `client_ip` varchar(20) NOT NULL,
   `time_local` datetime NOT NULL,
   `method` varchar(6) NOT NULL,
   `url` varchar(200) NOT NULL,
   `req_body` text NOT NULL,
-  `referer` varchar(100) NOT NULL
+  `referer` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -271,6 +276,15 @@ CREATE TABLE `tb_sample_lib_shell` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `tb_session`;
+CREATE TABLE `tb_session` (
+  `session_id` char(128) NOT NULL,
+  `atime` datetime NOT NULL,
+  `data` text,
+  UNIQUE KEY `session_id` (`session_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 DROP TABLE IF EXISTS `tb_sys_agent`;
 CREATE TABLE `tb_sys_agent` (
   `id` int(11) NOT NULL,
@@ -282,6 +296,21 @@ CREATE TABLE `tb_sys_agent` (
   `edit_tm` datetime DEFAULT NULL,
   `action_tm` datetime DEFAULT NULL,
   `insert_tm` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `tb_sys_log`;
+CREATE TABLE `tb_sys_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `log_content` varchar(255) NOT NULL,
+  `log_attr` text,
+  `log_result` varchar(32) NOT NULL,
+  `log_reason` varchar(255) DEFAULT NULL,
+  `referee` varchar(255) NOT NULL,
+  `remote_addr` varchar(32) NOT NULL,
+  `insert_tm` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -299,7 +328,7 @@ CREATE TABLE `tb_sys_send` (
 
 DROP TABLE IF EXISTS `tb_user_pwd`;
 CREATE TABLE `tb_user_pwd` (
-  `uid` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
@@ -310,4 +339,4 @@ CREATE TABLE `tb_user_pwd` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- 2017-01-06 13:39:05
+-- 2017-05-15 23:03:02

@@ -5,17 +5,16 @@
 # time: 2017-05-14
 # desc: web框架_基本类
 
-
-import web
-from web_util import *
-from yg_log import *
-from hps_cfg import *
-from hps_log_manager import *
-from hps_whitelist import *
 import os
 import re
+import web
+from web_util import *
+from fs_log import *
+from fsm_cfg import *
+from fsm_log_manager import *
 
-from xml.etree import ElementTree as ET
+
+#from xml.etree import ElementTree as ET
 
 t_globals = dict(datestr=web.datestr, )
 curPath = os.path.abspath(os.path.dirname(__file__))
@@ -109,7 +108,7 @@ class ViewBase(object):
         log_attr = getattr(self, 'logAttr', None)
         if log_type == SysLogType.LOG_UNDEFINED:
             return False, ''
-        return HpsLogManager.write_log(user_name, remote_ip, log_type, log_attr, opt_result, opt_reason)
+        return FsmLogManager.write_log(user_name, remote_ip, log_type, log_attr, opt_result, opt_reason)
 
     def process(self, _process=None):
         try:
@@ -226,7 +225,7 @@ class ViewBase(object):
         elif not isinstance(cnt, unicode):
             cnt = unicode(cnt)
 
-        return htmlquote(cnt)
+        return web.net.htmlquote(cnt)
 
     def html_decode(self, cnt):
         if cnt is None:
@@ -236,7 +235,7 @@ class ViewBase(object):
         elif not isinstance(cnt, unicode):
             cnt = unicode(cnt)
 
-        return htmlunquote(cnt)
+        return web.net.htmlunquote(cnt)
 
     def html_encode_result(self, result):
         if isinstance(result, basestring):

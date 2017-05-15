@@ -25,6 +25,7 @@ from viewset.view_login import *
 urls = (
     "/", ViewIndex,
     "/index", ViewIndex,
+    "/index.html", ViewIndex,
     "/detection-events.html", ViewDetEvents,
     "/detection-top.html", ViewDetTop,
     "/detection-model.html", ViewDetModel,
@@ -39,10 +40,20 @@ urls = (
     "/user-list.html", ViewUserList,
     "/user-add.html", ViewUserAdd,
     "/sys-status.html", ViewSysStatus,
-    "/sys-log.html", ViewLog,
+    "/sys-log.html", ViewSysLog,
     "/sys-reboot.html", ViewSysReboot,
+    "/login.html", ViewLogin,
     "/login", ViewLogin,
     "/logout", ViewLogout,
+
+    "/api/dashboard/charts", ViewDashboardCharts,
+    "/api/dashboard/statistics", ViewDashboardStatistics,
+    "/api/dashboard/top_charts", ViewDashboardTopsCharts,
+    "/api/dashboard/logs", ViewDashboardLogs,
+    "/api/dashboard/top_webshell", ViewDashboardTopsWebshell,
+    "/api/dashboard/sys", ViewDashboardSys,
+    "/api/dashboard/agents", ViewDashboardAgents,
+
 
     #"/api/det/events/list", ViewDetEventsList,
     #"/api/det/top/list", ViewDetTopList,

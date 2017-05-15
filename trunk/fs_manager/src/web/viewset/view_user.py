@@ -7,7 +7,7 @@
 
 
 from view_base import *
-from hps_bu_user import *
+from fsm_user import *
 
 
 class ViewUser(ViewBase):
@@ -16,7 +16,7 @@ class ViewUser(ViewBase):
         if not bRet:
             Log.err("user not login!")
             return web.seeother("/login")
-        return render.user()
+        return render.user-list()
 
     def POST(self):
         return self.GET()

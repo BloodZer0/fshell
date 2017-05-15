@@ -29,6 +29,7 @@ from url import urls
 
 
 # 权限校验
+'''
 def user_check(handler):
     def _login():
         return True if Session.get_val("user_name") is not None else False
@@ -39,12 +40,12 @@ def user_check(handler):
             return web.notfound()
 
     return handler()
-
+'''
 
 # 启动
 app = web.application(urls, globals())
 Session.init(app)
-app.add_processor(user_check)
+#app.add_processor(user_check)
 
 if __name__ == "__main__":
     try:
