@@ -30,12 +30,18 @@ class ViewDetTopList(ViewBase):
 
     def __init__(self):
         self._rDict = {
-            "top_count": {'n': 'top_count', 't': int, 'v': 12}
+            "sum_count": {'n': 'sum_count', 't': int, 'v': 12},
+            "weblog_count": {'n': 'weblog_count', 't': int, 'v': 15},
+            "statistics_count": {'n': 'statistics_count', 't': int, 'v': 16},
+            "fileatt_count": {'n': 'fileatt_count', 't': int, 'v': 15}
         }
 
     def _check_param(self):
 
-        if not self.top_count: return False, "param(top_count) is None!"
+        if not self.sum_count: return False, "param(sum_count) is None!"
+        if not self.weblog_count: return False, "param(weblog_count) is None!"
+        if not self.statistics_count: return False, "param(statistics_count) is None!"
+        if not self.fileatt_count: return False, "param(fileatt_count) is None!"
 
         return True, None
 
@@ -45,7 +51,7 @@ class ViewDetTopList(ViewBase):
             Log.err("username: %s not bussiness" % (self.get_user_name()))
             return bRet, userId
 
-        bRet, sRet = FsmDetTop.det_top_list(userId, self.top_count)
+        bRet, sRet = FsmDetTop.det_top_list(userId, self.sum_count,self.weblog_count,self.statistics_count,self.fileatt_count)
         if not bRet:
             return False, sRet
 

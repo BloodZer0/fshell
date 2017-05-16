@@ -14,7 +14,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 		<!-- Web Fonts  -->
-		<link href="fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+		<link href="/static/stylesheets/fonts.googleapis.css" rel="stylesheet" type="text/css">
 
 		<!-- Vendor CSS -->
 		<link rel="stylesheet" href="static/vendor/bootstrap/css/bootstrap.css" />
@@ -407,7 +407,7 @@
 					</header>
 
 					<!-- start: page -->
-						<div class="alert alert-info">
+						<div class="alert alert-info" id="top_list">
 							基于多维度的数据采集与分析算法，对web源码文件做综合计算（数据采集截止2017-05-17）
 						</div>
 						
@@ -425,143 +425,24 @@
 									<table class="table table-bordered table-striped table-condensed mb-none">
 										<thead>
 											<tr>
-												<th>ID</th>
-												<th>filename</th>
-												<th class="text-right">Statics</th>
-												<th class="text-right">Fileatt</th>
-												<th class="text-right">Weblog</th>
-												<th class="text-right">Danfunc</th>
-												<th class="text-right">Fuzzhash</th>
-												<th class="text-right">Synthetic</th>
+												<th>TOP</th>
+												<th>检测文件名</th>
+												<th class="text-right">统计学分析</th>
+												<th class="text-right">文本属性</th>
+												<th class="text-right">WEB Log日志</th>
+												<th class="text-right">危险函数</th>
+												<th class="text-right">模糊Hash</th>
+												<th class="text-right">综合分析</th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr>
-												<td>1002</td>
-												<td>/AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-												<td class="text-right"></td>
-												<td class="text-right">-0.01</td>
-												<td class="text-right"></td>
-												<td class="text-right">68</td>
-												<td class="text-right">89.5%</td>
-												<td class="text-right">9,395</td>
-											</tr>
-											<tr>
-												<td>AAD</td>
-												<td>ARDENT LEISURE GROUP</td>
-												<td class="text-right">$1.15</td>
-												<td class="text-right">  +0.02</td>
-												<td class="text-right">1.32%</td>
-												<td class="text-right">$1.14</td>
-												<td class="text-right">$1.15</td>
-												<td class="text-right">$1.13</td>
-												<td class="text-right">56,431</td>
-											</tr>
-											<tr>
-												<td>AAX</td>
-												<td>AUSENCO LIMITED</td>
-												<td class="text-right">$4.00</td>
-												<td class="text-right">-0.04</td>
-												<td class="text-right">-0.99%</td>
-												<td class="text-right">$4.01</td>
-												<td class="text-right">$4.05</td>
-												<td class="text-right">$4.00</td>
-												<td class="text-right">90,641</td>
-											</tr>
-											<tr>
-												<td>ABC</td>
-												<td>ADELAIDE BRIGHTON LIMITED</td>
-												<td class="text-right">$3.00</td>
-												<td class="text-right">  +0.06</td>
-												<td class="text-right">2.04%</td>
-												<td class="text-right">$2.98</td>
-												<td class="text-right">$3.00</td>
-												<td class="text-right">$2.96</td>
-												<td class="text-right">862,518</td>
-											</tr>
-											<tr>
-												<td>ABP</td>
-												<td>ABACUS PROPERTY GROUP</td>
-												<td class="text-right">$1.91</td>
-												<td class="text-right">0.00</td>
-												<td class="text-right">0.00%</td>
-												<td class="text-right">$1.92</td>
-												<td class="text-right">$1.93</td>
-												<td class="text-right">$1.90</td>
-												<td class="text-right">595,701</td>
-											</tr>
-											<tr>
-												<td>ABY</td>
-												<td>ADITYA BIRLA MINERALS LIMITED</td>
-												<td class="text-right">$0.77</td>
-												<td class="text-right">  +0.02</td>
-												<td class="text-right">2.00%</td>
-												<td class="text-right">$0.76</td>
-												<td class="text-right">$0.77</td>
-												<td class="text-right">$0.76</td>
-												<td class="text-right">54,567</td>
-											</tr>
-											<tr>
-												<td>ACR</td>
-												<td>ACRUX LIMITED</td>
-												<td class="text-right">$3.71</td>
-												<td class="text-right">  +0.01</td>
-												<td class="text-right">0.14%</td>
-												<td class="text-right">$3.70</td>
-												<td class="text-right">$3.72</td>
-												<td class="text-right">$3.68</td>
-												<td class="text-right">191,373</td>
-											</tr>
-											<tr>
-												<td>ADU</td>
-												<td>ADAMUS RESOURCES LIMITED</td>
-												<td class="text-right">$0.72</td>
-												<td class="text-right">0.00</td>
-												<td class="text-right">0.00%</td>
-												<td class="text-right">$0.73</td>
-												<td class="text-right">$0.74</td>
-												<td class="text-right">$0.72</td>
-												<td class="text-right">8,602,291</td>
-											</tr>
-											<tr>
-												<td>AGG</td>
-												<td>ANGLOGOLD ASHANTI LIMITED</td>
-												<td class="text-right">$7.81</td>
-												<td class="text-right">-0.22</td>
-												<td class="text-right">-2.74%</td>
-												<td class="text-right">$7.82</td>
-												<td class="text-right">$7.82</td>
-												<td class="text-right">$7.81</td>
-												<td class="text-right">148</td>
-											</tr>
-											<tr>
-												<td>AGK</td>
-												<td>AGL ENERGY LIMITED</td>
-												<td class="text-right">$13.82</td>
-												<td class="text-right">  +0.02</td>
-												<td class="text-right">0.14%</td>
-												<td class="text-right">$13.83</td>
-												<td class="text-right">$13.83</td>
-												<td class="text-right">$13.67</td>
-												<td class="text-right">846,403</td>
-											</tr>
-											<tr>
-												<td>AGO</td>
-												<td>ATLAS IRON LIMITED</td>
-												<td class="text-right">$3.17</td>
-												<td class="text-right">-0.02</td>
-												<td class="text-right">-0.47%</td>
-												<td class="text-right">$3.11</td>
-												<td class="text-right">$3.22</td>
-												<td class="text-right">$3.10</td>
-												<td class="text-right">5,416,303</td>
-											</tr>
+										<tbody id="top_sum">
+											<!-- JS reload data, see static/javascripts/detection.js -->
 										</tbody>
 									</table>
 								</div>
 							</div>
 						</section>
-						
+
 						<section class="panel">
 							<header class="panel-heading">
 								<div class="panel-actions">
@@ -572,147 +453,27 @@
 								<h2 class="panel-title">基于Web Log分析</h2>
 							</header>
 							<div class="panel-body">
-								<table class="table table-bordered table-striped table-condensed mb-none">
-									<thead>
-										<tr>
-											<th>Code</th>
-											<th class="hidden-xs hidden-sm">Company</th>
-											<th class="text-right">Price</th>
-											<th class="text-right hidden-xs hidden-sm">Change</th>
-											<th class="text-right hidden-xs">Change %</th>
-											<th class="text-right">Open</th>
-											<th class="text-right hidden-xs hidden-sm">High</th>
-											<th class="text-right hidden-xs hidden-sm">Low</th>
-											<th class="text-right">Volume</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>AAC</td>
-											<td class="hidden-xs hidden-sm">AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-											<td class="text-right">$1.38</td>
-											<td class="text-right hidden-xs hidden-sm">-0.01</td>
-											<td class="text-right hidden-xs">-0.36%</td>
-											<td class="text-right">$1.39</td>
-											<td class="text-right hidden-xs hidden-sm">$1.39</td>
-											<td class="text-right hidden-xs hidden-sm">$1.38</td>
-											<td class="text-right">9,395</td>
-										</tr>
-										<tr>
-											<td>AAD</td>
-											<td class="hidden-xs hidden-sm">ARDENT LEISURE GROUP</td>
-											<td class="text-right">$1.15</td>
-											<td class="text-right hidden-xs hidden-sm">  +0.02</td>
-											<td class="text-right hidden-xs">1.32%</td>
-											<td class="text-right">$1.14</td>
-											<td class="text-right hidden-xs hidden-sm">$1.15</td>
-											<td class="text-right hidden-xs hidden-sm">$1.13</td>
-											<td class="text-right">56,431</td>
-										</tr>
-										<tr>
-											<td>AAX</td>
-											<td class="hidden-xs hidden-sm">AUSENCO LIMITED</td>
-											<td class="text-right">$4.00</td>
-											<td class="text-right hidden-xs hidden-sm">-0.04</td>
-											<td class="text-right hidden-xs">-0.99%</td>
-											<td class="text-right">$4.01</td>
-											<td class="text-right hidden-xs hidden-sm">$4.05</td>
-											<td class="text-right hidden-xs hidden-sm">$4.00</td>
-											<td class="text-right">90,641</td>
-										</tr>
-										<tr>
-											<td>ABC</td>
-											<td class="hidden-xs hidden-sm">ADELAIDE BRIGHTON LIMITED</td>
-											<td class="text-right">$3.00</td>
-											<td class="text-right hidden-xs hidden-sm">  +0.06</td>
-											<td class="text-right hidden-xs">2.04%</td>
-											<td class="text-right">$2.98</td>
-											<td class="text-right hidden-xs hidden-sm">$3.00</td>
-											<td class="text-right hidden-xs hidden-sm">$2.96</td>
-											<td class="text-right">862,518</td>
-										</tr>
-										<tr>
-											<td>ABP</td>
-											<td class="hidden-xs hidden-sm">ABACUS PROPERTY GROUP</td>
-											<td class="text-right">$1.91</td>
-											<td class="text-right hidden-xs hidden-sm">0.00</td>
-											<td class="text-right hidden-xs">0.00%</td>
-											<td class="text-right">$1.92</td>
-											<td class="text-right hidden-xs hidden-sm">$1.93</td>
-											<td class="text-right hidden-xs hidden-sm">$1.90</td>
-											<td class="text-right">595,701</td>
-										</tr>
-										<tr>
-											<td>ABY</td>
-											<td class="hidden-xs hidden-sm">ADITYA BIRLA MINERALS LIMITED</td>
-											<td class="text-right">$0.77</td>
-											<td class="text-right hidden-xs hidden-sm">  +0.02</td>
-											<td class="text-right hidden-xs">2.00%</td>
-											<td class="text-right">$0.76</td>
-											<td class="text-right hidden-xs hidden-sm">$0.77</td>
-											<td class="text-right hidden-xs hidden-sm">$0.76</td>
-											<td class="text-right">54,567</td>
-										</tr>
-										<tr>
-											<td>ACR</td>
-											<td class="hidden-xs hidden-sm">ACRUX LIMITED</td>
-											<td class="text-right">$3.71</td>
-											<td class="text-right hidden-xs hidden-sm">  +0.01</td>
-											<td class="text-right hidden-xs">0.14%</td>
-											<td class="text-right">$3.70</td>
-											<td class="text-right hidden-xs hidden-sm">$3.72</td>
-											<td class="text-right hidden-xs hidden-sm">$3.68</td>
-											<td class="text-right">191,373</td>
-										</tr>
-										<tr>
-											<td>ADU</td>
-											<td class="hidden-xs hidden-sm">ADAMUS RESOURCES LIMITED</td>
-											<td class="text-right">$0.72</td>
-											<td class="text-right hidden-xs hidden-sm">0.00</td>
-											<td class="text-right hidden-xs">0.00%</td>
-											<td class="text-right">$0.73</td>
-											<td class="text-right hidden-xs hidden-sm">$0.74</td>
-											<td class="text-right hidden-xs hidden-sm">$0.72</td>
-											<td class="text-right">8,602,291</td>
-										</tr>
-										<tr>
-											<td>AGG</td>
-											<td class="hidden-xs hidden-sm">ANGLOGOLD ASHANTI LIMITED</td>
-											<td class="text-right">$7.81</td>
-											<td class="text-right hidden-xs hidden-sm">-0.22</td>
-											<td class="text-right hidden-xs">-2.74%</td>
-											<td class="text-right">$7.82</td>
-											<td class="text-right hidden-xs hidden-sm">$7.82</td>
-											<td class="text-right hidden-xs hidden-sm">$7.81</td>
-											<td class="text-right">148</td>
-										</tr>
-										<tr>
-											<td>AGK</td>
-											<td class="hidden-xs hidden-sm">AGL ENERGY LIMITED</td>
-											<td class="text-right">$13.82</td>
-											<td class="text-right hidden-xs hidden-sm">  +0.02</td>
-											<td class="text-right hidden-xs">0.14%</td>
-											<td class="text-right">$13.83</td>
-											<td class="text-right hidden-xs hidden-sm">$13.83</td>
-											<td class="text-right hidden-xs hidden-sm">$13.67</td>
-											<td class="text-right">846,403</td>
-										</tr>
-										<tr>
-											<td>AGO</td>
-											<td class="hidden-xs hidden-sm">ATLAS IRON LIMITED</td>
-											<td class="text-right">$3.17</td>
-											<td class="text-right hidden-xs hidden-sm">-0.02</td>
-											<td class="text-right hidden-xs">-0.47%</td>
-											<td class="text-right">$3.11</td>
-											<td class="text-right hidden-xs hidden-sm">$3.22</td>
-											<td class="text-right hidden-xs hidden-sm">$3.10</td>
-											<td class="text-right">5,416,303</td>
-										</tr>
-									</tbody>
-								</table>
+								<div class="table-responsive">
+									<table class="table table-bordered table-striped table-condensed mb-none">
+										<thead>
+											<tr>
+												<th>TOP</th>
+												<th>检测文件名</th>
+												<th class="text-right">参数信息熵</th>
+												<th class="text-right">URI访问频率</th>
+												<th class="text-right">Referer字段</th>
+												<th class="text-right">参数keys出现频率</th>
+												<th class="text-right">参数keys关联页面数</th>
+											</tr>
+										</thead>
+										<tbody id="top_weblog">
+											<!-- JS reload data, see static/javascripts/detection.js -->
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</section>
-						
+
 						<section class="panel">
 							<header class="panel-heading">
 								<div class="panel-actions">
@@ -720,147 +481,56 @@
 									<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
 								</div>
 						
-								<h2 class="panel-title">No More Tables</h2>
+								<h2 class="panel-title">基于统计学分析</h2>
 							</header>
 							<div class="panel-body">
-								<table class="table table-no-more table-bordered table-striped mb-none">
-									<thead>
-										<tr>
-											<th>Code</th>
-											<th class="hidden-xs hidden-sm">Company</th>
-											<th class="text-right">Price</th>
-											<th class="text-right hidden-xs hidden-sm">Change</th>
-											<th class="text-right">Change %</th>
-											<th class="text-right">Open</th>
-											<th class="text-right hidden-xs hidden-sm">High</th>
-											<th class="text-right hidden-xs hidden-sm">Low</th>
-											<th class="text-right">Volume</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td data-title="Code">AAC</td>
-											<td data-title="Company" class="hidden-xs hidden-sm">AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-											<td data-title="Price" class="text-right">$1.38</td>
-											<td data-title="Change" class="text-right hidden-xs hidden-sm">-0.01</td>
-											<td data-title="Change %" class="text-right">-0.36%</td>
-											<td data-title="Open" class="text-right">$1.39</td>
-											<td data-title="High" class="text-right hidden-xs hidden-sm">$1.39</td>
-											<td data-title="Low" class="text-right hidden-xs hidden-sm">$1.38</td>
-											<td data-title="Volume" class="text-right">9,395</td>
-										</tr>
-										<tr>
-											<td data-title="Code">AAD</td>
-											<td data-title="Company" class="hidden-xs hidden-sm">ARDENT LEISURE GROUP</td>
-											<td data-title="Price" class="text-right">$1.15</td>
-											<td data-title="Change" class="text-right hidden-xs hidden-sm">  +0.02</td>
-											<td data-title="Change %" class="text-right">1.32%</td>
-											<td data-title="Open" class="text-right">$1.14</td>
-											<td data-title="High" class="text-right hidden-xs hidden-sm">$1.15</td>
-											<td data-title="Low" class="text-right hidden-xs hidden-sm">$1.13</td>
-											<td data-title="Volume" class="text-right">56,431</td>
-										</tr>
-										<tr>
-											<td data-title="Code">AAX</td>
-											<td data-title="Company" class="hidden-xs hidden-sm">AUSENCO LIMITED</td>
-											<td data-title="Price" class="text-right">$4.00</td>
-											<td data-title="Change" class="text-right hidden-xs hidden-sm">-0.04</td>
-											<td data-title="Change %" class="text-right">-0.99%</td>
-											<td data-title="Open" class="text-right">$4.01</td>
-											<td data-title="High" class="text-right hidden-xs hidden-sm">$4.05</td>
-											<td data-title="Low" class="text-right hidden-xs hidden-sm">$4.00</td>
-											<td data-title="Volume" class="text-right">90,641</td>
-										</tr>
-										<tr>
-											<td data-title="Code">ABC</td>
-											<td data-title="Company" class="hidden-xs hidden-sm">ADELAIDE BRIGHTON LIMITED</td>
-											<td data-title="Price" class="text-right">$3.00</td>
-											<td data-title="Change" class="text-right hidden-xs hidden-sm">  +0.06</td>
-											<td data-title="Change %" class="text-right">2.04%</td>
-											<td data-title="Open" class="text-right">$2.98</td>
-											<td data-title="High" class="text-right hidden-xs hidden-sm">$3.00</td>
-											<td data-title="Low" class="text-right hidden-xs hidden-sm">$2.96</td>
-											<td data-title="Volume" class="text-right">862,518</td>
-										</tr>
-										<tr>
-											<td data-title="Code">ABP</td>
-											<td data-title="Company" class="hidden-xs hidden-sm">ABACUS PROPERTY GROUP</td>
-											<td data-title="Price" class="text-right">$1.91</td>
-											<td data-title="Change" class="text-right hidden-xs hidden-sm">0.00</td>
-											<td data-title="Change %" class="text-right">0.00%</td>
-											<td data-title="Open" class="text-right">$1.92</td>
-											<td data-title="High" class="text-right hidden-xs hidden-sm">$1.93</td>
-											<td data-title="Low" class="text-right hidden-xs hidden-sm">$1.90</td>
-											<td data-title="Volume" class="text-right">595,701</td>
-										</tr>
-										<tr>
-											<td data-title="Code">ABY</td>
-											<td data-title="Company" class="hidden-xs hidden-sm">ADITYA BIRLA MINERALS LIMITED</td>
-											<td data-title="Price" class="text-right">$0.77</td>
-											<td data-title="Change" class="text-right hidden-xs hidden-sm">  +0.02</td>
-											<td data-title="Change %" class="text-right">2.00%</td>
-											<td data-title="Open" class="text-right">$0.76</td>
-											<td data-title="High" class="text-right hidden-xs hidden-sm">$0.77</td>
-											<td data-title="Low" class="text-right hidden-xs hidden-sm">$0.76</td>
-											<td data-title="Volume" class="text-right">54,567</td>
-										</tr>
-										<tr>
-											<td data-title="Code">ACR</td>
-											<td data-title="Company" class="hidden-xs hidden-sm">ACRUX LIMITED</td>
-											<td data-title="Price" class="text-right">$3.71</td>
-											<td data-title="Change" class="text-right hidden-xs hidden-sm">  +0.01</td>
-											<td data-title="Change %" class="text-right">0.14%</td>
-											<td data-title="Open" class="text-right">$3.70</td>
-											<td data-title="High" class="text-right hidden-xs hidden-sm">$3.72</td>
-											<td data-title="Low" class="text-right hidden-xs hidden-sm">$3.68</td>
-											<td data-title="Volume" class="text-right">191,373</td>
-										</tr>
-										<tr>
-											<td data-title="Code">ADU</td>
-											<td data-title="Company" class="hidden-xs hidden-sm">ADAMUS RESOURCES LIMITED</td>
-											<td data-title="Price" class="text-right">$0.72</td>
-											<td data-title="Change" class="text-right hidden-xs hidden-sm">0.00</td>
-											<td data-title="Change %" class="text-right">0.00%</td>
-											<td data-title="Open" class="text-right">$0.73</td>
-											<td data-title="High" class="text-right hidden-xs hidden-sm">$0.74</td>
-											<td data-title="Low" class="text-right hidden-xs hidden-sm">$0.72</td>
-											<td data-title="Volume" class="text-right">8,602,291</td>
-										</tr>
-										<tr>
-											<td data-title="Code">AGG</td>
-											<td data-title="Company" class="hidden-xs hidden-sm">ANGLOGOLD ASHANTI LIMITED</td>
-											<td data-title="Price" class="text-right">$7.81</td>
-											<td data-title="Change" class="text-right hidden-xs hidden-sm">-0.22</td>
-											<td data-title="Change %" class="text-right">-2.74%</td>
-											<td data-title="Open" class="text-right">$7.82</td>
-											<td data-title="High" class="text-right hidden-xs hidden-sm">$7.82</td>
-											<td data-title="Low" class="text-right hidden-xs hidden-sm">$7.81</td>
-											<td data-title="Volume" class="text-right">148</td>
-										</tr>
-										<tr>
-											<td data-title="Code">AGK</td>
-											<td data-title="Company" class="hidden-xs hidden-sm">AGL ENERGY LIMITED</td>
-											<td data-title="Price" class="text-right">$13.82</td>
-											<td data-title="Change" class="text-right hidden-xs hidden-sm">  +0.02</td>
-											<td data-title="Change %" class="text-right">0.14%</td>
-											<td data-title="Open" class="text-right">$13.83</td>
-											<td data-title="High" class="text-right hidden-xs hidden-sm">$13.83</td>
-											<td data-title="Low" class="text-right hidden-xs hidden-sm">$13.67</td>
-											<td data-title="Volume" class="text-right">846,403</td>
-										</tr>
-										<tr>
-											<td data-title="Code">AGO</td>
-											<td data-title="Company" class="hidden-xs hidden-sm">ATLAS IRON LIMITED</td>
-											<td data-title="Price" class="text-right">$3.17</td>
-											<td data-title="Change" class="text-right hidden-xs hidden-sm">-0.02</td>
-											<td data-title="Change %" class="text-right">-0.47%</td>
-											<td data-title="Open" class="text-right">$3.11</td>
-											<td data-title="High" class="text-right hidden-xs hidden-sm">$3.22</td>
-											<td data-title="Low" class="text-right hidden-xs hidden-sm">$3.10</td>
-											<td data-title="Volume" class="text-right">5,416,303</td>
-										</tr>
-									</tbody>
-								</table>
+								<div class="table-responsive">
+									<table class="table table-bordered table-striped table-condensed mb-none">
+										<thead>
+											<tr>
+												<th>TOP</th>
+												<th>检测文件名</th>
+												<th class="text-right">文件重合指数</th>
+												<th class="text-right">信息熵</th>
+												<th class="text-right">最长单词</th>
+												<th class="text-right">可压缩比</th>
+											</tr>
+										</thead>
+										<tbody id="top_statistics">
+											<!-- JS reload data, see static/javascripts/detection.js -->
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+
+						<section class="panel">
+							<header class="panel-heading">
+								<div class="panel-actions">
+									<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+									<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+								</div>
+						
+								<h2 class="panel-title">基于文本属性分析</h2>
+							</header>
+							<div class="panel-body">
+								<div class="table-responsive">
+									<table class="table table-bordered table-striped table-condensed mb-none">
+										<thead>
+											<tr>
+												<th>TOP</th>
+												<th>检测文件名</th>
+												<th class="text-right">创建时间</th>
+												<th class="text-right">修改时间</th>
+												<th class="text-right">权限</th>
+												<th class="text-right">所属者</th>
+											</tr>
+										</thead>
+										<tbody id="top_fileatt">
+											<!-- JS reload data, see static/javascripts/detection.js -->
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</section>
 					<!-- end: page -->
@@ -953,6 +623,15 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="static/javascripts/theme.init.js"></script>
+
+		<!-- Load user define js resource -->
+		<script src="static/javascripts/cookie.js"></script>
+		<script src="static/javascripts/detection.js"></script>
+		<script>
+			$$(document).ready(function(){
+    			det_top_list();
+			});
+		</script>
 
 	</body>
 </html>
