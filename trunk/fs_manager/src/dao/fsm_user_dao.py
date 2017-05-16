@@ -10,10 +10,10 @@
 CREATE TABLE `tb_user_pwd` (
     `user_id` int(11) NOT NULL,
     `username` varchar(30) NOT NULL,
-    `password` varchar(30) NOT NULL,
+    `password` varchar(50) NOT NULL,
     `email` varchar(30) NOT NULL,
     `phone` varchar(20) DEFAULT NULL,
-    `priv` int(2) NOT NULL DEFAULT '1',
+    `role` int(2) NOT NULL DEFAULT '1',
     `remark` varchar(50) DEFAULT NULL,
     `insert_tm` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -34,11 +34,11 @@ from fs_database_pid import *
 class FsmUserDao:
 
     @staticmethod
-    def insert_node(username, password, email, phone, priv, remark):
+    def insert_node(username, password, email, phone, role, remark):
         dataBase = DataBase()
-        sql = "insert into tb_user_pwd(username, password, email, phone, priv, remark, insert_tm) " \
+        sql = "insert into tb_user_pwd(username, password, email, phone, role, remark, insert_tm) " \
               "values(%s, %s, %s, %s, %s, %s, %s)"
-        param = (username, password, email, phone, priv, remark, get_cur_time())
+        param = (username, password, email, phone, role, remark, get_cur_time())
 
         bRet, sRet = dataBase.insert_data(sql, param)
 

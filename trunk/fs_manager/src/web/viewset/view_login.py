@@ -13,13 +13,13 @@ from fsm_user import *
 class ViewLogin(ViewBase):
     def __init__(self):
         self._rDict = {
-            "username": {'n': 'userName', 't': str, 'v': None},
+            "user_name": {'n': 'userName', 't': str, 'v': None},
             "password": {'n': 'passWord', 't': str, 'v': None}
         }
 
     def _check_param(self):
 
-        if not self.userName: return False, "param(username) is None!"
+        if not self.userName: return False, "param(user_name) is None!"
         if not self.passWord: return False, "param(password) is None!"
 
         return True, None
@@ -31,7 +31,7 @@ class ViewLogin(ViewBase):
         bRet, sRet = FsmUser.login(self.userName, self.passWord)
         if not bRet:
             return bRet, sRet
-        Session.set_val("username", self.userName)
+        Session.set_val("user_name", self.userName)
         return True, sRet
 
     def POST(self):
@@ -46,7 +46,7 @@ class ViewLogin(ViewBase):
 class ViewLogout(ViewBase):
     def GET(self):
         username = self.get_user_name()
-        Session.set_val("username", None)
+        Session.set_val("user_name", None)
         Session.delete()
 
         return web.seeother("/login")

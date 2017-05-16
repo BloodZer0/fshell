@@ -23,7 +23,7 @@ class FsmUser:
 
     @staticmethod
     def login(userName, password):
-        bRet, record = fsmUserDao.query_node_un(userName)
+        bRet, record = FsmUserDao.query_node_un(userName)
         if not bRet:  return False, u"用户名或密码错误"
 
         if record['password'] != comput_md5_text('fshell#' + password):
@@ -31,16 +31,16 @@ class FsmUser:
 
         userInfo = {
             "user_id": record['user_id'],
-            "userame": record['username'],
+            "username": record['username'],
             "email": record['email'],
-            "priv": record['priv']
+            "user_role": record['role']
         }
 
         return True, userInfo
 
     @staticmethod
     def get_user_id(userName):
-        bRet, record = fsmUserDao.query_node_un(userName)
+        bRet, record = FsmUserDao.query_node_un(userName)
         if not bRet:
             return False, record
 

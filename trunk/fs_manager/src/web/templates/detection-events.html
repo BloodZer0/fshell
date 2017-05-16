@@ -14,7 +14,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 		<!-- Web Fonts  -->
-		<link href="fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+		<link href="/static/stylesheets/fonts.googleapis.css" rel="stylesheet" type="text/css">
 
 		<!-- Vendor CSS -->
 		<link rel="stylesheet" href="static/vendor/bootstrap/css/bootstrap.css" />
@@ -39,6 +39,7 @@
 
 		<!-- Head Libs -->
 		<script src="static/vendor/modernizr/modernizr.js"></script>
+
 	</head>
 	<body>
 		<section class="body">
@@ -408,18 +409,10 @@
 
 					<!-- start: page -->
 					<div class="timeline timeline-simple changelog">
-						<div class="tm-body">
-							<ol class="tm-items">
+						<div class="tm-body" id="time_logs">
+							<ol class="tm-items" id="tm-items">
 								<li>
 									<div class="tm-box">
-										<!--
-										define risk class
-											primary: low-risk
-											info: medium-risk
-											warning: high-risk
-											danger: webshell
-
-										-->
 										<h4>1.4.0</h4> – <span class="release-date">2017-05-17</span>
 										<ul class="list-unstyled">
 											<li><span class="label label-primary">low</span> - <a href="file_info/id=1005">show.php</a> (19:23)</li>
@@ -434,26 +427,8 @@
 										</ul>
 									</div>
 								</li>
-								<li>
-									<div class="tm-box">
-										<h4>1.3.0</h4> – <span class="release-date">2017-05-15</span>
-										<ul class="list-unstyled">
-											<li><span class="label label-info">Updated</span> - Bootstrap 3.3</li>
-											<li><span class="label label-primary">Added</span> - Dark Background</li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<div class="tm-box">
-										<h4>1.2.0</h4> – <span class="release-date">24 September 14</span>
-										<ul class="list-unstyled">
-											<li><span class="label label-primary">Added</span> - Admin Extension</li>
-											<li><span class="label label-primary">Added</span> - Menu Levels</li>
-											<li><span class="label label-primary">Added</span> - Sidebar Left Size</li>
-											<li><span class="label label-primary">Added</span> - <a href="pages-search-results.html">Search Results Page</a></li>
-										</ul>
-									</div>
-								</li>
+
+
 								<li>
 									<div class="tm-box">
 										<h4>1.1.0</h4> – <span class="release-date">27 August 14</span>
@@ -463,22 +438,6 @@
 											<li><span class="label label-primary">Added</span> - <a href="ui-elements-portlets.html">Portlets</a></li>
 											<li><span class="label label-primary">Added</span> - <a href="pages-log-viewer.html">Log Viewer Page</a></li>
 											<li><span class="label label-danger">Fixed</span> - Minor Bug Fixes</li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<div class="tm-box">
-										<h4>1.0.1</h4> - <span class="release-date">14 August 14</span>
-										<ul class="list-unstyled">
-											<li><span class="label label-primary">Added</span> - Missing SASS files: assets/stylesheets/sass</li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<div class="tm-box">
-										<h4>1.0.0</h4> - <span class="release-date">09 August 14</span>
-										<ul class="list-unstyled">
-											<li><span class="label label-primary">Initial</span> - Initial Release</li>
 										</ul>
 									</div>
 								</li>
@@ -507,6 +466,15 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="static/javascripts/theme.init.js"></script>
+
+		<!-- Load user define js resource -->
+		<script src="static/javascripts/cookie.js"></script>
+		<script src="static/javascripts/detection.js"></script>
+		<script>
+			$$(document).ready(function(){
+    			det_events_list();
+			});
+		</script>
 
 	</body>
 </html>

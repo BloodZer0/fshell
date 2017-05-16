@@ -49,14 +49,16 @@ urls = (
     "/api/dashboard/charts", ViewDashboardCharts,
     "/api/dashboard/statistics", ViewDashboardStatistics,
     "/api/dashboard/top_charts", ViewDashboardTopsCharts,
-    "/api/dashboard/logs", ViewDashboardLogs,
+    "/api/dashboard/log_charts", ViewDashboardLogCharts,
     "/api/dashboard/top_webshell", ViewDashboardTopsWebshell,
-    "/api/dashboard/sys", ViewDashboardSys,
+    "/api/dashboard/sys_status", ViewDashboardSysStatus,
     "/api/dashboard/agents", ViewDashboardAgents,
 
 
-    #"/api/det/events/list", ViewDetEventsList,
-    #"/api/det/top/list", ViewDetTopList,
+    "/api/det/events/list", ViewDetEventsList,
+    "/api/det/top/list", ViewDetTopList,
+
+
     #"/api/lib/fuzzhash/list", ViewLibFuzzhashList,
     #"/api/lib/danfunc/list", ViewLibDanfuncList,
 
