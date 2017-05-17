@@ -19,7 +19,7 @@ class ViewAgentList(ViewBase):
             Log.err("not login!")
             return web.seeother("/login")
 
-        render=web.template.frender("templates/agent-list.html")
+        render = web.template.frender("templates/agent-list.html")
         return render()
 
     def POST(self):
@@ -35,7 +35,7 @@ class ViewAgentAdd(ViewBase):
             Log.err("not login!")
             return web.seeother("/login")
 
-        render=web.template.frender("templates/agent-add.html")
+        render = web.template.frender("templates/agent-add.html")
         return render()
 
     def POST(self):

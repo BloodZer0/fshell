@@ -22,5 +22,12 @@ from fs_util import *
 class FsmLibFuzzhash:
 
     @staticmethod
-    def get_lib_fuzzhash_list():
-        pass
+    def lib_fuzzhash_list(userId, page, count):
+        fuzzhashList = [
+
+
+
+        ]
+
+
+        return True, fuzzhashList

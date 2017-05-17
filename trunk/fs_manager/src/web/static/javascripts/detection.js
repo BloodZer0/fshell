@@ -226,3 +226,126 @@ function det_top_list(){
 
 
 
+/*获取已检测webshell列表*/
+function det_webshell_list(){
+    var page = 1;
+    var count = 10;
+
+    $.ajax({
+        type: "GET",
+        async: true,
+        dataType: "json",
+        url: "/api/det/webshell/list",
+        data: {
+            "page": page,
+            "count": count
+        },
+        error: function(){
+            console.log("/api/det/webshell/list/error");
+        },
+        success: function(data){
+            if(data.code == 101){
+                alert(data.message);
+            }
+            if(data.code == 201){
+                var empty = false;
+                if (!data.result) {
+                    empty = true;
+                }
+                var dataLen = data.result.length;
+                if (dataLen == 0) {
+                    empty = true;
+                }
+                if(empty){
+                    $("#webshell_list").html("");
+                    $('<tr><td style="text-align:center;padding-top:30px;font-size:16px" colspan="7">没有查询到事件</td></tr>').appendTo($("#webshell_list"));
+                }else{
+                    $("#webshell_list").html("");
+                    var html_node = '';
+                    for(var i=0; i<data.result.length; i++){
+                        var item = data.result[i];
+                        var webshell_id = item['webshell_id'];
+                        var webshell_name = item['webshell_name'];
+                        var webshell_md5 = item['webshell_md5'];
+                        var webshell_type = item['webshell_type'];
+                        var webshell_risk = item['webshell_risk'];
+                        var det_tm = item['det_tm'];
+
+                        var node = '<tr class="gradeX">';
+                        node += '<td class="text-center"><i data-toggle class="fa fa-plus-square-o text-primary h5 m-none" style="cursor: pointer;"></i></td>';
+                        node += '<td><a href="webshell_id='+webshell_id+'">'+webshell_name+'</a></td>';
+                        node += '<td>'+webshell_md5+'</td>';
+                        node += '<td>'+webshell_type+'</td>';
+                        node += '<td class="center">'+webshell_risk+'</td>';
+                        node += '<td class="center">'+det_tm+'</td></tr>';
+                        html_node += node;
+                    }
+                    $(html_node).appendTo($("#webshell_list"));
+                }
+            }
+        }
+    });
+    
+
+
+
+
+   var $table = $('#datatable-details');
+    // initialize
+    var datatable = $table.dataTable({
+        aoColumnDefs: [{
+            bSortable: false,
+            aTargets: [ 0 ]
+        }],
+        aaSorting: [
+            [1, 'asc']
+        ]
+    });
+
+
+
+    // format function for row details
+    var fnFormatDetails = function( datatable, tr ) {
+        var data = datatable.fnGetData( tr );
+        return [
+            '<table class="table mb-none">',
+                '<tr class="b-top-none">',
+                    '<td><label class="mb-none">Rendering engine:</label></td>',
+                    '<td>' +'heheda ' + '</td>',
+                '</tr>',
+                '<tr>',
+                    '<td><label class="mb-none">Link to source:</label></td>',
+                    '<td>Could provide a link here</td>',
+                '</tr>',
+                '<tr>',
+                    '<td><label class="mb-none">Extra info:</label></td>',
+                    '<td>And any further details here (images etc)</td>',
+                '</tr>',
+            '</div>'
+            ].join('');
+    };
+
+    // add a listener
+    $table.on('click', 'i[data-toggle]', function() {
+        var $this = $(this);
+        var tr = $(this).closest( 'tr' ).get(0);
+
+        if ( datatable.fnIsOpen(tr) ) {
+            $this.removeClass( 'fa-minus-square-o' ).addClass( 'fa-plus-square-o' );
+            datatable.fnClose( tr );
+        } else {
+            $this.removeClass( 'fa-plus-square-o' ).addClass( 'fa-minus-square-o' );
+            datatable.fnOpen( tr, fnFormatDetails( datatable, tr), 'details' );
+        }
+    });
+
+
+
+}
+
+
+
+
+
+
+

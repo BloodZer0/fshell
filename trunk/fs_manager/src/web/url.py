@@ -54,13 +54,12 @@ urls = (
     "/api/dashboard/sys_status", ViewDashboardSysStatus,
     "/api/dashboard/agents", ViewDashboardAgents,
 
-
     "/api/det/events/list", ViewDetEventsList,
     "/api/det/top/list", ViewDetTopList,
+    "/api/det/webshell/list", ViewDetWebshellList,
 
-
-    #"/api/lib/fuzzhash/list", ViewLibFuzzhashList,
-    #"/api/lib/danfunc/list", ViewLibDanfuncList,
+    "/api/lib/fuzzhash/list", ViewLibFuzzhashList,
+    "/api/lib/danfunc/list", ViewLibDanfuncList,
 
     #"/api/agent/list", ViewAgentList,
     #"/api/agent/add", ViewAgentAdd,

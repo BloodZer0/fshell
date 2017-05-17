@@ -416,26 +416,26 @@
 											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
 										</div>
 
-										<h2 class="panel-title">Basic Form Validation</h2>
+										<h2 class="panel-title">添加通知</h2>
 										<p class="panel-subtitle">
-											Basic validation will display a label with the error after the form control.
+											您可在此处添加：邮件、短信或钉钉群的实时预警通知
 										</p>
 									</header>
 									<div class="panel-body">
 										<div class="form-group">
-											<label class="col-sm-3 control-label">Full Name <span class="required">*</span></label>
+											<label class="col-sm-3 control-label">通知主题 <span class="required">*</span></label>
 											<div class="col-sm-9">
-												<input type="text" name="fullname" class="form-control" placeholder="eg.: John Doe" required/>
+												<input type="text" name="fullname" class="form-control" placeholder="Fshell-Msg" required/>
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 control-label">Email <span class="required">*</span></label>
+											<label class="col-sm-3 control-label">通知地址 <span class="required">*</span></label>
 											<div class="col-sm-9">
 												<div class="input-group">
 													<span class="input-group-addon">
 														<i class="fa fa-envelope"></i>
 													</span>
-													<input type="email" name="email" class="form-control" placeholder="eg.: email@email.com" required/>
+													<input type="email" name="email" class="form-control" placeholder="Email / SMS / Ding-Token" required/>
 												</div>
 											</div>
 											<div class="col-sm-9">
@@ -443,23 +443,23 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 control-label">GitHub</label>
+											<label class="col-sm-3 control-label">通知联系人</label>
 											<div class="col-sm-9">
-												<input type="url" name="github" class="form-control" placeholder="eg.: https://github.com/johndoe" />
+												<input type="url" name="github" class="form-control" placeholder="eg: s0nnet, admin, baidu@sec" />
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 control-label">Skills <span class="required">*</span></label>
+											<label class="col-sm-3 control-label">通知模版 <span class="required">*</span></label>
 											<div class="col-sm-9">
-												<textarea name="skills" rows="5" class="form-control" placeholder="Describe your skills" required></textarea>
+												<textarea name="skills" rows="5" class="form-control" placeholder="[Fshell-Msg][msg_risk)](@msg_title)(@msg_content)" required></textarea>
 											</div>
 										</div>
 									</div>
 									<footer class="panel-footer">
 										<div class="row">
 											<div class="col-sm-9 col-sm-offset-3">
-												<button class="btn btn-primary">Submit</button>
-												<button type="reset" class="btn btn-default">Reset</button>
+												<button class="btn btn-primary">添 加</button>
+												<button type="reset" class="btn btn-default">重 置</button>
 											</div>
 										</div>
 									</footer>
@@ -476,163 +476,59 @@
 											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
 										</div>
 
-										<h2 class="panel-title">Validating Checkbox and Radios</h2>
+										<h2 class="panel-title">预警相关配置</h2>
 
 										<p class="panel-subtitle">
-											Easily validate checkboxes and radios tags.
+											在此可以配置发送的灵明度，以及其他相关重要设置
 										</p>
 									</header>
 									<div class="panel-body">
 										<div class="form-group">
-											<label class="col-sm-3 control-label">Porto Admin is <span class="required">*</span></label>
+											<label class="col-sm-3 control-label">发送等级 <span class="required">*</span></label>
 											<div class="col-sm-9">
 												<div class="radio-custom radio-primary">
 													<input id="awesome" name="porto_is" type="radio" value="awesome" required />
-													<label for="awesome">Awesome</label>
+													<label for="awesome">Danger 90%</label>
 												</div>
 												<div class="radio-custom radio-primary">
 													<input id="very-awesome" name="porto_is" type="radio" value="very-awesome" />
-													<label for="very-awesome">Very Awesome</label>
+													<label for="very-awesome">Warning 80%</label>
 												</div>
 												<div class="radio-custom radio-primary">
 													<input id="ultra-awesome" name="porto_is" type="radio" value="ultra-awesome" />
-													<label for="ultra-awesome">Ultra Awesome</label>
+													<label for="ultra-awesome">Info 60% (Default)</label>
 												</div>
 												<label class="error" for="porto_is"></label>
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 control-label">I will use it for <span class="required">*</span></label>
+											<label class="col-sm-3 control-label">其他配置 <span class="required">*</span></label>
 											<div class="col-sm-9">
 												<div class="checkbox-custom chekbox-primary">
 													<input id="for-project" value="project" type="checkbox" name="for[]" required />
-													<label for="for-project">My Project</label>
+													<label for="for-project">是否重发通知</label>
 												</div>
 												<div class="checkbox-custom chekbox-primary">
 													<input id="for-website" value="website" type="checkbox" name="for[]" />
-													<label for="for-website">My Website</label>
+													<label for="for-website">通知后立即处理</label>
 												</div>
 												<div class="checkbox-custom chekbox-primary">
 													<input id="for-all" value="all" type="checkbox" name="for[]" />
-													<label for="for-all">All things I do</label>
+													<label for="for-all">通知后触发WAF拦截</label>
 												</div>
 												<label class="error" for="for[]"></label>
 											</div>
 										</div>
-									</div>
-									<footer class="panel-footer">
-										<div class="row">
-											<div class="col-sm-9 col-sm-offset-3">
-												<button class="btn btn-primary">Submit</button>
-												<button type="reset" class="btn btn-default">Reset</button>
-											</div>
-										</div>
-									</footer>
-								</section>
-							</form>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<form id="summary-form" action="forms-validation.html" class="form-horizontal">
-								<section class="panel">
-									<header class="panel-heading">
-										<div class="panel-actions">
-											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
-											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
-										</div>
-
-										<h2 class="panel-title">Validation Summary</h2>
-										<p class="panel-subtitle">
-											Validation summary will display an error list above the form.
-										</p>
-									</header>
-									<div class="panel-body">
-										<div class="validation-message">
-											<ul></ul>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label">Full Name <span class="required">*</span></label>
-											<div class="col-sm-9">
-												<input type="text" name="fullname" class="form-control" title="Plase enter a name." placeholder="eg.: John Doe" required/>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label">Email <span class="required">*</span></label>
-											<div class="col-sm-9">
-												<input type="email" name="email" class="form-control" title="Please enter an email address." placeholder="eg.: john@doe.com" required/>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label">GitHub</label>
-											<div class="col-sm-9">
-												<input type="url" name="url" title="Please enter a valid url." class="form-control" placeholder="eg.: https://github.com/johndoe" />
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label">Resume <span class="required">*</span></label>
-											<div class="col-sm-9">
-												<textarea name="resume" rows="5" title="Your resume is too short." class="form-control" placeholder="Enter your resume" required></textarea>
-											</div>
+										<div class="panel-subtitle">
+											注: （1）通知后立即处理，即采用基于发送等级对可疑文件做相应处理；
+											（2）通知后触发WAF拦截，需在Agent端配置，WEB网关的地址。
 										</div>
 									</div>
 									<footer class="panel-footer">
 										<div class="row">
 											<div class="col-sm-9 col-sm-offset-3">
-												<button class="btn btn-primary">Submit</button>
-												<button type="reset" class="btn btn-default">Reset</button>
-											</div>
-										</div>
-									</footer>
-								</section>
-							</form>
-						</div>
-						<div class="col-md-6">
-							<form id="selects-form" action="forms-validation.html">
-								<section class="panel">
-									<header class="panel-heading">
-										<div class="panel-actions">
-											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
-											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
-										</div>
-
-										<h2 class="panel-title">Validation Selects</h2>
-										<p class="panel-subtitle">
-											Easily validate select tags, does not matter if is single or multiple.
-										</p>
-									</header>
-									<div class="panel-body">
-										<div class="form-group">
-											<label class="col-sm-3 control-label">Company</label>
-											<div class="col-sm-9">
-												<select id="company" class="form-control" required>
-													<option value="">Choose a Company</option>
-													<option value="apple">Apple</option>
-													<option value="google">Google</option>
-													<option value="microsoft">Microsoft</option>
-													<option value="yahoo">Yahoo</option>
-												</select>
-												<label class="error" for="company"></label>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label">Browsers</label>
-											<div class="col-sm-9">
-												<select id="browsers" name="browsers" title="Please select at least one browser" class="form-control" size="5" multiple="multiple" required>
-													<option value="chrome">Chrome / Safari</option>
-													<option value="ff">Firefox</option>
-													<option value="ie">Internet Explorer</option>
-													<option value="opera">Opera</option>
-												</select>
-												<label class="error" for="browsers"></label>
-											</div>
-										</div>
-									</div>
-									<footer class="panel-footer">
-										<div class="row">
-											<div class="col-sm-9 col-sm-offset-3">
-												<button class="btn btn-primary">Submit</button>
-												<button type="reset" class="btn btn-default">Reset</button>
+												<button class="btn btn-primary">确认保存</button>
+												<button type="reset" class="btn btn-default">恢复默认</button>
 											</div>
 										</div>
 									</footer>
@@ -643,74 +539,6 @@
 					<!-- end: page -->
 				</section>
 			</div>
-
-			<aside id="sidebar-right" class="sidebar-right">
-				<div class="nano">
-					<div class="nano-content">
-						<a href="#" class="mobile-close visible-xs">
-							Collapse <i class="fa fa-chevron-right"></i>
-						</a>
-			
-						<div class="sidebar-right-wrapper">
-			
-							<div class="sidebar-widget widget-calendar">
-								<h6>Upcoming Tasks</h6>
-								<div data-plugin-datepicker data-plugin-skin="dark" ></div>
-			
-								<ul>
-									<li>
-										<time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
-										<span>Company Meeting</span>
-									</li>
-								</ul>
-							</div>
-			
-							<div class="sidebar-widget widget-friends">
-								<h6>Friends</h6>
-								<ul>
-									<li class="status-online">
-										<figure class="profile-picture">
-											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-									<li class="status-online">
-										<figure class="profile-picture">
-											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-									<li class="status-offline">
-										<figure class="profile-picture">
-											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-									<li class="status-offline">
-										<figure class="profile-picture">
-											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-								</ul>
-							</div>
-			
-						</div>
-					</div>
-				</div>
-			</aside>
 		</section>
 
 		<!-- Vendor -->

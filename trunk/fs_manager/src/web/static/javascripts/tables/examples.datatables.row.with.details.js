@@ -33,7 +33,7 @@ Theme Version: 	1.4.1
 			].join('');
 		};
 
-		// insert the expand/collapse column
+/*		// insert the expand/collapse column
 		var th = document.createElement( 'th' );
 		var td = document.createElement( 'td' );
 		td.innerHTML = '<i data-toggle class="fa fa-plus-square-o text-primary h5 m-none" style="cursor: pointer;"></i>';
@@ -47,7 +47,7 @@ Theme Version: 	1.4.1
 		$table
 			.find( 'tbody tr' ).each(function() {
 				this.insertBefore(  td.cloneNode( true ), this.childNodes[0] );
-			});
+			});*/
 
 		// initialize
 		var datatable = $table.dataTable({
