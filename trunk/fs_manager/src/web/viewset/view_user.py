@@ -10,21 +10,49 @@ from view_base import *
 from fsm_user import *
 
 
-class ViewUser(ViewBase):
+class ViewUserList(ViewBase):
+
     def GET(self):
         bRet, sRet = self.check_login()
         if not bRet:
-            Log.err("user not login!")
+            Log.err("not login!")
             return web.seeother("/login")
-        return render.user-list()
+
+        render=web.template.frender("templates/user-list.html")
+        return render()
 
     def POST(self):
         return self.GET()
 
 
-class ViewUserList(ViewBase):
+class ViewUserAdd(ViewBase):
+
+    def GET(self):
+        bRet, sRet = self.check_login()
+        if not bRet:
+            Log.err("not login!")
+            return web.seeother("/login")
+
+        render=web.template.frender("templates/user-add.html")
+        return render()
+
+    def POST(self):
+        return self.GET()
+
+
+class ViewApiUserList(ViewBase):
     def _deal_user_list_get(self):
-        return HpsBuUser.get_user_list(self.get_user_name())
+        bRet, userId = FsmUser.get_user_id(self.get_user_name())
+        if not bRet:
+            Log.err("username: %s not bussiness" % (self.get_user_name()))
+            return bRet, userId
+
+        bRet, userRole = FsmUser.get_user_role(userId)
+        if not bRet:
+            Log.err("get privilege err: %s" % (userRole))
+            return bRet, userRole
+
+        return FsmUser.get_user_list(userId, userRole)
 
     def GET(self):
         if not self.check_login():
@@ -34,10 +62,9 @@ class ViewUserList(ViewBase):
             Log.err("deal_user_list_get: %s" % (str(sRet)))
             return self.make_error(sRet)
         return self.make_response(sRet)
-        return self.make_response(sRet)
 
 
-class ViewUserAdd(ViewBase):
+class ViewApiUserAdd(ViewBase):
     def __init__(self):
         self._rDict = {
             "user_name": {'n': 'userName', 't': str, 'v': None},
@@ -76,7 +103,7 @@ class ViewUserAdd(ViewBase):
                         {'key': u'用户角色', 'val': UserRole.to_desc(self.role)}]
 
     def _deal_user_add(self):
-        return HpsBuUser.add_user(self.get_user_name(), self.userName, self.passwd, self.tel, self.email, self.role)
+        return FsmUser.add_user(self.get_user_name(), self.userName, self.passwd, self.tel, self.email, self.role)
 
     def POST(self):
         if not self.check_login():
@@ -88,6 +115,12 @@ class ViewUserAdd(ViewBase):
             return self.make_error(sRet)
 
         return self.make_response(ViewBase.RetMsg.MSG_SUCCESS)
+
+
+
+
+
+
 
 
 class ViewUserDel(ViewBase):
@@ -107,7 +140,7 @@ class ViewUserDel(ViewBase):
 
     def _deal_user_del(self):
         username = self.html_decode(self.userName)
-        return HpsBuUser.del_user(self.get_user_name(), username)
+        return FsmUser.del_user(self.get_user_name(), username)
 
     def POST(self):
         if not self.check_login():
@@ -133,7 +166,7 @@ class ViewUserEdit(ViewBase):
 
     def _deal_user_edit(self):
         data = {'email': self.email}
-        return HpsBuUser.edit_user(self.get_user_name(), data)
+        return FsmUser.edit_user(self.get_user_name(), data)
 
     def POST(self):
         if not self.check_login():
@@ -149,7 +182,7 @@ class ViewUserEdit(ViewBase):
 
 class ViewUserProfile(ViewBase):
     def _deal_user_info_get(self):
-        return HpsBuUser.get_user_profile(self.get_user_name())
+        return FsmUser.get_user_profile(self.get_user_name())
 
     def GET(self):
         if not self.check_login():
@@ -183,7 +216,7 @@ class ViewUserPasswdChange(ViewBase):
         return True, None
 
     def _deal_user_passwd_change(self):
-        return HpsBuUser.change_passwd(self.get_user_name(), self.oldPasswd, self.newPasswd)
+        return FsmUser.change_passwd(self.get_user_name(), self.oldPasswd, self.newPasswd)
 
     def POST(self):
         if not self.check_login():

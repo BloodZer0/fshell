@@ -19,6 +19,12 @@ from fs_util import *
 from fsm_user_dao import *
 
 
+
+class UserRole:
+    SUPER_USER = 2
+    BASE_USER =1
+
+
 class FsmUser:
 
     @staticmethod
@@ -44,10 +50,52 @@ class FsmUser:
         if not bRet:
             return False, record
 
-        return True, record['user_id'] 
-
+        return True, record['user_id']
 
     @staticmethod
-    def get_user_list(userId):
-        pass
+    def get_user_info(userId):
+        bRet, record = FsmUserDao.query_node_u(userId)
+        if not bRet:
+            return False, record
+
+        return True, record 
+
+    @staticmethod
+    def get_user_role(userId):
+        bRet, record = FsmUserDao.query_node_u(userId)
+        if not bRet:
+            return False, record
+
+        return True, record['role'] 
+        
+
+    @staticmethod
+    def get_user_list(userId, userRole):
+        if userRole == UserRole.SUPER_USER:
+            bRet, sRet = FsmUserDao.query_nodes()
+            if not bRet:
+                return False, sRet
+
+            userList = list()
+            for item in sRet:
+                userInfo = dict()
+                userInfo['user_id'] = item['user_id']
+                userInfo['user_name'] = item['username']
+                userInfo['email'] = item['email']
+                userInfo['phone'] = item['phone']
+                userInfo['insert_tm'] = safe_datetime_to_str(item['insert_tm'])
+                userInfo['role'] = int(item['role'])
+                userList.append(userInfo)
+            return True, userList
+        else:
+            bRet, userInfo = FsmUser.get_user_info(userId)
+            if not bRet: return False, userInfo
+            return True, [{
+                'user_id': userInfo['user_id'],
+                'user_name': userInfo['username'],
+                'phone': userInfo['phone'],
+                'email': userInfo['email'],
+                'create_tm': safe_datetime_to_str(userInfo['insert_tm']),
+                'role': userInfo['role'],
+            }]
 

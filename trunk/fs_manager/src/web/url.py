@@ -75,7 +75,7 @@ urls = (
     #"/api/msg/add/dingding", ViewAgentEdit,
     #"/api/msg/profile", ViewAgentProfile,
 
-    #"/api/user/list", ViewUserList,
+    "/api/user/list", ViewApiUserList,
     #"/api/user/add", ViewUserAdd,
     #"/api/user/del", ViewUserDel,
     #"/api/user/edit", ViewUserEdit,

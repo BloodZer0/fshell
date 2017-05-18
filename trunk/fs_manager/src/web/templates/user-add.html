@@ -14,7 +14,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 		<!-- Web Fonts  -->
-		<link href="fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+		<link href="static/stylesheets/fonts.googleapis.css" rel="stylesheet" type="text/css">
 
 		<!-- Vendor CSS -->
 		<link rel="stylesheet" href="static/vendor/bootstrap/css/bootstrap.css" />
@@ -416,26 +416,36 @@
 											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
 										</div>
 
-										<h2 class="panel-title">Basic Form Validation</h2>
+										<h2 class="panel-title">添加用户</h2>
 										<p class="panel-subtitle">
 											Basic validation will display a label with the error after the form control.
 										</p>
 									</header>
 									<div class="panel-body">
 										<div class="form-group">
-											<label class="col-sm-3 control-label">Full Name <span class="required">*</span></label>
+											<label class="col-sm-3 control-label">用户名 <span class="required">*</span></label>
 											<div class="col-sm-9">
-												<input type="text" name="fullname" class="form-control" placeholder="eg.: John Doe" required/>
+												<div class="input-group">
+											 		<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<input type="text" type="username" name="fullname" class="form-control" placeholder="username" required/>
+												</div>
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 control-label">Email <span class="required">*</span></label>
+											<label class="col-sm-3 control-label">密 码 <span class="required">*</span></label>
 											<div class="col-sm-9">
 												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="fa fa-envelope"></i>
-													</span>
-													<input type="email" name="email" class="form-control" placeholder="eg.: email@email.com" required/>
+													<span class="input-group-addon"><i class="fa fa-key"></i></span>
+													<input type="text" type="password" name="password" class="form-control" placeholder="password" required/>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">邮 箱 <span class="required">*</span></label>
+											<div class="col-sm-9">
+												<div class="input-group">
+													<span class="input-group-addon">@</span>
+													<input type="email" name="email" class="form-control" placeholder="email address" required/>
 												</div>
 											</div>
 											<div class="col-sm-9">
@@ -443,23 +453,41 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 control-label">GitHub</label>
+											<label class="col-sm-3 control-label">手机号 <span class="required">*</span></label>
 											<div class="col-sm-9">
-												<input type="url" name="github" class="form-control" placeholder="eg.: https://github.com/johndoe" />
+												<div class="input-group">
+													<span class="input-group-addon">
+														<i class="fa fa-envelope"></i>
+													</span>
+													<input type="phone" name="phone" class="form-control" placeholder="moble phone" required/>
+												</div>
+											</div>
+											<div class="col-sm-9">
+
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 control-label">Skills <span class="required">*</span></label>
+											<label class="col-sm-3 control-label">用户权限</label>
 											<div class="col-sm-9">
-												<textarea name="skills" rows="5" class="form-control" placeholder="Describe your skills" required></textarea>
+												<select  class="form-control mb-md">
+														<option>Administrator</option>
+														<option>Basic user</option>
+														<option>Guest user</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">备 注 <span class="required">*</span></label>
+											<div class="col-sm-9">
+												<textarea name="skills" rows="5" class="form-control" placeholder="Here input some remarks..." required></textarea>
 											</div>
 										</div>
 									</div>
 									<footer class="panel-footer">
 										<div class="row">
 											<div class="col-sm-9 col-sm-offset-3">
-												<button class="btn btn-primary">Submit</button>
-												<button type="reset" class="btn btn-default">Reset</button>
+												<button class="btn btn-primary">添 加</button>
+												<button type="reset" class="btn btn-default">重 置</button>
 											</div>
 										</div>
 									</footer>
@@ -476,7 +504,7 @@
 											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
 										</div>
 
-										<h2 class="panel-title">Validating Checkbox and Radios</h2>
+										<h2 class="panel-title">用户配置管理</h2>
 
 										<p class="panel-subtitle">
 											Easily validate checkboxes and radios tags.
@@ -532,185 +560,9 @@
 							</form>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<form id="summary-form" action="forms-validation.html" class="form-horizontal">
-								<section class="panel">
-									<header class="panel-heading">
-										<div class="panel-actions">
-											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
-											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
-										</div>
-
-										<h2 class="panel-title">Validation Summary</h2>
-										<p class="panel-subtitle">
-											Validation summary will display an error list above the form.
-										</p>
-									</header>
-									<div class="panel-body">
-										<div class="validation-message">
-											<ul></ul>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label">Full Name <span class="required">*</span></label>
-											<div class="col-sm-9">
-												<input type="text" name="fullname" class="form-control" title="Plase enter a name." placeholder="eg.: John Doe" required/>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label">Email <span class="required">*</span></label>
-											<div class="col-sm-9">
-												<input type="email" name="email" class="form-control" title="Please enter an email address." placeholder="eg.: john@doe.com" required/>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label">GitHub</label>
-											<div class="col-sm-9">
-												<input type="url" name="url" title="Please enter a valid url." class="form-control" placeholder="eg.: https://github.com/johndoe" />
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label">Resume <span class="required">*</span></label>
-											<div class="col-sm-9">
-												<textarea name="resume" rows="5" title="Your resume is too short." class="form-control" placeholder="Enter your resume" required></textarea>
-											</div>
-										</div>
-									</div>
-									<footer class="panel-footer">
-										<div class="row">
-											<div class="col-sm-9 col-sm-offset-3">
-												<button class="btn btn-primary">Submit</button>
-												<button type="reset" class="btn btn-default">Reset</button>
-											</div>
-										</div>
-									</footer>
-								</section>
-							</form>
-						</div>
-						<div class="col-md-6">
-							<form id="selects-form" action="forms-validation.html">
-								<section class="panel">
-									<header class="panel-heading">
-										<div class="panel-actions">
-											<a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
-											<a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
-										</div>
-
-										<h2 class="panel-title">Validation Selects</h2>
-										<p class="panel-subtitle">
-											Easily validate select tags, does not matter if is single or multiple.
-										</p>
-									</header>
-									<div class="panel-body">
-										<div class="form-group">
-											<label class="col-sm-3 control-label">Company</label>
-											<div class="col-sm-9">
-												<select id="company" class="form-control" required>
-													<option value="">Choose a Company</option>
-													<option value="apple">Apple</option>
-													<option value="google">Google</option>
-													<option value="microsoft">Microsoft</option>
-													<option value="yahoo">Yahoo</option>
-												</select>
-												<label class="error" for="company"></label>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label">Browsers</label>
-											<div class="col-sm-9">
-												<select id="browsers" name="browsers" title="Please select at least one browser" class="form-control" size="5" multiple="multiple" required>
-													<option value="chrome">Chrome / Safari</option>
-													<option value="ff">Firefox</option>
-													<option value="ie">Internet Explorer</option>
-													<option value="opera">Opera</option>
-												</select>
-												<label class="error" for="browsers"></label>
-											</div>
-										</div>
-									</div>
-									<footer class="panel-footer">
-										<div class="row">
-											<div class="col-sm-9 col-sm-offset-3">
-												<button class="btn btn-primary">Submit</button>
-												<button type="reset" class="btn btn-default">Reset</button>
-											</div>
-										</div>
-									</footer>
-								</section>
-							</form>
-						</div>
-					</div>
 					<!-- end: page -->
 				</section>
 			</div>
-
-			<aside id="sidebar-right" class="sidebar-right">
-				<div class="nano">
-					<div class="nano-content">
-						<a href="#" class="mobile-close visible-xs">
-							Collapse <i class="fa fa-chevron-right"></i>
-						</a>
-			
-						<div class="sidebar-right-wrapper">
-			
-							<div class="sidebar-widget widget-calendar">
-								<h6>Upcoming Tasks</h6>
-								<div data-plugin-datepicker data-plugin-skin="dark" ></div>
-			
-								<ul>
-									<li>
-										<time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
-										<span>Company Meeting</span>
-									</li>
-								</ul>
-							</div>
-			
-							<div class="sidebar-widget widget-friends">
-								<h6>Friends</h6>
-								<ul>
-									<li class="status-online">
-										<figure class="profile-picture">
-											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-									<li class="status-online">
-										<figure class="profile-picture">
-											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-									<li class="status-offline">
-										<figure class="profile-picture">
-											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-									<li class="status-offline">
-										<figure class="profile-picture">
-											<img src="static/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-								</ul>
-							</div>
-			
-						</div>
-					</div>
-				</div>
-			</aside>
 		</section>
 
 		<!-- Vendor -->
