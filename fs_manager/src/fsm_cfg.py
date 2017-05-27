@@ -42,5 +42,5 @@ else:
     
 
 # with local cfg, so do not modify the file when test in local env
-if os.path.exists(os.path.join(os.path.dirname(__file__), 'fss_local_cfg.py')):
-    from fss_local_cfg import *
+if os.path.exists(os.path.join(os.path.dirname(__file__), 'fsm_local_cfg.py')):
+    from fsm_local_cfg import *
